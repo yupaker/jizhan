@@ -1,0 +1,16 @@
+---------------------------------------------------------------
+[ 2018-05-14T16:58:07+08:00 ] 0.0.0.0 GET /news/show/id/7.html
+[ info ] localhost/news/show/id/7.html [运行时间：0.154000s][吞吐率：6.49req/s] [内存消耗：2,690.67kb] [文件加载：78]
+[ error ] [2]Missing argument 3 for app\yupaker\model\YupakerNews::getCommentlist(), called in E:\gitlearn\hisiphp\app\yupaker\home\News.php on line 58 and defined[E:\gitlearn\hisiphp\app\yupaker\model\YupakerNews.php:78]
+---------------------------------------------------------------
+[ 2018-05-14T17:00:18+08:00 ] 0.0.0.0 GET /news/show/id/7.html
+[ info ] localhost/news/show/id/7.html [运行时间：0.139000s][吞吐率：7.19req/s] [内存消耗：2,693.71kb] [文件加载：78]
+[ error ] [2]Missing argument 1 for think\db\Query::column(), called in E:\gitlearn\hisiphp\app\yupaker\model\YupakerNews.php on line 88 and defined[E:\gitlearn\hisiphp\thinkphp\library\think\db\Query.php:441]
+---------------------------------------------------------------
+[ 2018-05-14T17:00:48+08:00 ] 0.0.0.0 GET /news/show/id/7.html
+[ info ] localhost/news/show/id/7.html [运行时间：0.148000s][吞吐率：6.76req/s] [内存消耗：2,683.34kb] [文件加载：79]
+[ error ] [10501]SQLSTATE[42S22]: Column not found: 1054 Unknown column 'reid' in 'where clause'[E:\gitlearn\hisiphp\thinkphp\library\think\db\Connection.php:388]
+---------------------------------------------------------------
+[ 2018-05-14T17:02:28+08:00 ] 0.0.0.0 GET /news/show/id/7.html
+[ info ] localhost/news/show/id/7.html [运行时间：0.159000s][吞吐率：6.29req/s] [内存消耗：2,688.80kb] [文件加载：77]
+[ error ] [0]致命错误: Class 'app\yupaker\model\Db' not found[E:\gitlearn\hisiphp\app\yupaker\model\YupakerNews.php:88]
