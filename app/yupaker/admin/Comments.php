@@ -12,6 +12,7 @@
 namespace app\yupaker\admin;
 use app\admin\controller\Admin;
 use app\yupaker\model\YupakerComments as CommentsModel;
+use app\yupaker\model\YupakerNews as NewsModel;
 use think\Db;
 
 /**
@@ -34,6 +35,8 @@ class Comments extends Admin
         $list = CommentsModel::where($map)->paginate(50)->each(function($item, $key){
 			//回复至文章的个数
 			$item['newsnum'] = CommentsModel::where(' newsid='.$item['newsid'].'')->count();
+			//文章名称
+			$item['newstitle'] = NewsModel::where('id',$item['newsid'])->value('title');
 			return $item;
 		});
 		$pages = $list->render();
@@ -61,6 +64,9 @@ class Comments extends Admin
 		if (!$data) {
             return $this->error('评论不存在');
         }
+		//文章名称
+		$data['newstitle'] = NewsModel::where('id',$data['newsid'])->value('title');
+		$data['emailimg'] = strstr($data['email'], '@', TRUE);
         $this->assign('data', $data);
         return $this->afetch();
     }

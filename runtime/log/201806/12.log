@@ -1,0 +1,24 @@
+---------------------------------------------------------------
+[ 2018-06-12T13:46:52+08:00 ] 127.0.0.1 POST /comments/save.html
+[ info ] localhost/comments/save.html [运行时间：0.149000s][吞吐率：6.71req/s] [内存消耗：2,697.63kb] [文件加载：77]
+[ error ] [8]未定义数组索引: verifycode[E:\gitlearn\yupaker\app\yupaker\home\Comments.php:25]
+---------------------------------------------------------------
+[ 2018-06-12T14:28:53+08:00 ] 127.0.0.1 POST /comments/save.html
+[ info ] localhost/comments/save.html [运行时间：0.131000s][吞吐率：7.63req/s] [内存消耗：2,699.19kb] [文件加载：77]
+[ error ] [8]未定义数组索引: verifycode[E:\gitlearn\yupaker\app\yupaker\home\Comments.php:25]
+---------------------------------------------------------------
+[ 2018-06-12T14:29:01+08:00 ] 127.0.0.1 POST /comments/retextarea.html
+[ info ] localhost/comments/retextarea.html [运行时间：0.156000s][吞吐率：6.41req/s] [内存消耗：2,707.84kb] [文件加载：77]
+[ error ] [0]method not exist:think\db\Query->retextarea[E:\gitlearn\yupaker\thinkphp\library\think\db\Query.php:94]
+---------------------------------------------------------------
+[ 2018-06-12T15:07:12+08:00 ] 127.0.0.1 POST /comments/save.html
+[ info ] localhost/comments/save.html [运行时间：0.166000s][吞吐率：6.02req/s] [内存消耗：2,761.17kb] [文件加载：78]
+[ error ] [0]致命错误: Class 'app\yupaker\model\Cookie' not found[E:\gitlearn\yupaker\app\yupaker\model\YupakerComments.php:68]
+---------------------------------------------------------------
+[ 2018-06-12T15:32:22+08:00 ] 127.0.0.1 GET /news/show/id/5.html
+[ info ] localhost/news/show/id/5.html [运行时间：0.187000s][吞吐率：5.35req/s] [内存消耗：2,766.39kb] [文件加载：77]
+[ error ] [0]致命错误: Class 'app\yupaker\home\Cookie' not found[E:\gitlearn\yupaker\app\yupaker\home\News.php:61]
+---------------------------------------------------------------
+[ 2018-06-12T15:32:24+08:00 ] 127.0.0.1 GET /news/show/id/5.html
+[ info ] localhost/news/show/id/5.html [运行时间：0.172000s][吞吐率：5.81req/s] [内存消耗：2,766.39kb] [文件加载：77]
+[ error ] [0]致命错误: Class 'app\yupaker\home\Cookie' not found[E:\gitlearn\yupaker\app\yupaker\home\News.php:61]

@@ -82,10 +82,10 @@ class YupakerNews extends Model
 		$map['newsid'] = $newsid;
 		
 		$list = Db::name('yupaker_comments')->where($map)->select();
-        
 		if($list){
 			foreach ($list as $k => $v) {
 				$list[$k]['childlist'] = self::getCommentlist($v['id'], $status, $newsid);
+				$list[$k]['emailimg'] = strstr($v['email'], '@', TRUE);
 			}
 		}
         return $list;

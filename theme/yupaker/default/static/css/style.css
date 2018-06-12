@@ -150,56 +150,6 @@ header{height:450px; background:rgb(217, 211, 193) url(../image/bigbannerpic_01.
 	font-family: "Lucida Console", Consolas, Monaco;
 }
 
-.comments-box{ margin:20px 0; padding:0 30px; min-height:40px;background: #f7f6f1;box-shadow: 0 1px 1px rgba(0,0,0,0.15);border: 1px solid rgba(255,255,255,0.8);border-radius: 3px;}
-.comments-box .comments-title{ font-size:18px; line-height:50px;}
-.comments-box .comments-list{border-left: 1px solid #e8e2d2; padding:15px 0; margin-bottom:20px; position:relative;}
-.comments-box .comments-list:before{position: absolute;top: -6px;left: -6px;width: 4px;height: 4px; border:3px solid;border-radius: 50%;content: "";background: #fff;box-shadow: 0 0 0 3px #fff;}
-.comments-box .comments-list:after{position: absolute;bottom: -6px;left: -6px;width: 4px;height: 4px; border:3px solid;border-radius: 50%;content: "";background: #fff;box-shadow: 0 0 0 3px #fff;}
-.comments-box .comments-list .comments-li{ position:relative; margin-bottom:10px; padding:10px 0 10px 30px; font-size:1.1em;}
-.comments-box .comments-list .comments-li .author-img{position: absolute;top: 10px;left: -20px;padding: 5px;width: 30px;height: 30px;background: #fff;box-shadow: 0 0 1px #bfb7a3;border-radius: 50%;}
-.comments-box .comments-list .comments-li .author-img img{ width:100%; border-radius:50%;}
-.comments-list .comments-li .comments-body{ overflow:hidden;border-radius: 5px;background: #fff;box-shadow: 0 0 1px #bfb7a3;}
-.comments-list .comments-li .comments-body .comment-name {position: relative;padding: 5px 10px;border-bottom: 1px solid #e8e2d2;}
-.comments-list .comments-li .comments-body .comment-name .fn{ font-size:1.1em; font-weight:bold;}
-.comments-body .comment-name .arrow {position: absolute;left: 10px;top: 25px;}
-.commenst-body .comment-name .arrow:before {
-    position: absolute;
-    display: inline-block;
-    content: '';
-    top: -15px;
-    right: 10px;
-    left: auto;
-    border: 8px solid transparent;
-    border-right-color: rgba(95,95,95,0.15);
-}
-.comments-body .comment-name .arrow:after {
-    position: absolute;
-    display: inline-block;
-    content: '';
-    top: -14px;
-    right: 10px;
-    left: auto;
-    border: 7px solid transparent;
-    border-right-color: #fff;
-}
-.comments-body .comment-text{padding: 5px 10px;min-height: 80px;}
-.comments-body .recomment{ min-height:100px; background:#f7f8fa; margin:10px 10px 10px 100px; padding:10px;}
-.comments-body .recomment .recomlist{ margin:10px; overflow:hidden;}
-.comments-body .recomment .recomlist span{ float:right;}
-
-
-
-.comments-form{}
-.comments-form li{ margin-bottom:10px;}
-.comments-form .comli30:before{position: absolute;font-family: FontAwesome;padding-left: 10px;line-height: 38px;}
-.comments-form .comli30 input{ width:calc(100% - 67px); line-height: 24px;padding: 5px 10px 5px 35px;border-radius: 3px; background:#fff;   border: 1px solid #ddd;color: #867f6f;box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);}
-.comments-form .comli30{ float:left; width:33%;}
-.comments-form .nickname:before{content: "\f007";}
-.comments-form .email:before{content: "\f0e0";}
-.comments-form .site:before{content: "\f0ac";}
-.comments-form .comli100 textarea{ width:calc(100% - 43px); padding:10px; height:150px; line-height:22px; border-raduis:5px; background:#fff; border:1px solid #ddd; color:#867f6f; box-shadow:inset 0 1px 2px rgba(0,0,0,0.075);}
-.comments-form .comsubmit{ border:1px solid #00a1d6; background:#00a1d6; color:#fff; line-height:30px; padding:0 20px;}
-
 
 /*分页*/
 .pagination{ overflow:hidden; margin-top:30px;}

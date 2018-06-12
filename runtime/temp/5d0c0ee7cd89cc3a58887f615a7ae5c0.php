@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:50:"E:\gitlearn\hisiphp/app/yupaker\view\news\edit.php";i:1525748893;s:47:"E:\gitlearn\hisiphp\app\yupaker\view\layout.php";i:1523842193;s:51:"E:\gitlearn\hisiphp\app\admin\view\block\header.php";i:1523412544;s:50:"E:\gitlearn\hisiphp\app\admin\view\block\layui.php";i:1523412544;s:51:"E:\gitlearn\hisiphp\app\admin\view\block\footer.php";i:1523412544;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:50:"E:\gitlearn\yupaker/app/yupaker\view\news\edit.php";i:1525748893;s:47:"E:\gitlearn\yupaker\app\yupaker\view\layout.php";i:1523842193;s:51:"E:\gitlearn\yupaker\app\admin\view\block\header.php";i:1523412544;s:50:"E:\gitlearn\yupaker\app\admin\view\block\layui.php";i:1523412544;s:51:"E:\gitlearn\yupaker\app\admin\view\block\footer.php";i:1523412544;}*/ ?>
 <?php if(input('param.hisi_iframe') || cookie('hisi_iframe')): ?>
 <!DOCTYPE html>
 <html>

@@ -13,6 +13,8 @@ namespace app\yupaker\model;
 use think\Model;
 use think\Loader;
 use think\Db;
+use think\Cookie;
+use think\Request;
 
 class YupakerComments extends Model
 {
@@ -23,15 +25,27 @@ class YupakerComments extends Model
      * @author yupaker
      * @return bool
      */  
-    public function storage($data = [])
+    public function retextarea($data = [])
     {
         if (empty($data)) {
             $data = request()->post();
         }
-
-        if (isset($data['id']) && !empty($data['id'])) {
-            $res = $this->update($data);
-        } else {
+        if (isset($data['reid']) && !empty($data['reid'])) {
+			$comment = Db::name('yupaker_comments')->find($data['reid']);
+			$data['newsid'] = $comment['newsid'];
+			if(empty($data['rename'])) $data['rename'] = $comment['nickname'];
+			//获取cookie
+			$comment = Cookie::get('comment');
+			$data['nickname'] = $comment['nickname'];
+			$data['email'] = $comment['email'];
+			$data['site'] = $comment['site'];
+			if(empty($data['nickname'])){
+				$data['nickname']="匿名用户";
+			}
+			$request = Request::instance();
+			$data['addtime'] = time();
+			$data['ip'] = $request->ip();
+			$data['status'] = 1; //直接成功
             $res = $this->create($data);
         }
         if (!$res) {
@@ -53,10 +67,21 @@ class YupakerComments extends Model
         if (empty($data)) {
             $data = request()->post();
         }
-
+		unset($data['verifycode']);
         if (isset($data['newsid']) && !empty($data['newsid'])) {
-            print_r($data);
-			exit;
+			$request = Request::instance();
+			$data['addtime'] = time();
+			$data['ip'] = $request->ip();
+			$data['status'] = 1; //直接成功
+            $res = $this->create($data);
+			
+			$comment =array(
+				'nickname' => $data['nickname'],
+				'email' => $data['email'],
+				'site' => $data['site'],
+			);
+			// 设置Cookie 有效期为一周
+			Cookie::set('comment',$comment,604800);
         } else {
             $this->error = '保存失败';
             return false;

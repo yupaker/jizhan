@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:62:"E:\gitlearn\hisiphp\plugins/hisiphp/view/widget/systeminfo.php";i:1523412544;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:62:"E:\gitlearn\yupaker\plugins/hisiphp/view/widget/systeminfo.php";i:1523412544;}*/ ?>
 <div class="fl" style="width:49%">
     <table class="layui-table" lay-skin="line">
         <colgroup>

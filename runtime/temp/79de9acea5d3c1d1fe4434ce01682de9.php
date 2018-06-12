@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:54:"E:\gitlearn\hisiphp/app/yupaker\view\comments\edit.php";i:1524127693;s:47:"E:\gitlearn\hisiphp\app\yupaker\view\layout.php";i:1523842193;s:51:"E:\gitlearn\hisiphp\app\admin\view\block\header.php";i:1523412544;s:50:"E:\gitlearn\hisiphp\app\admin\view\block\layui.php";i:1523412544;s:51:"E:\gitlearn\hisiphp\app\admin\view\block\footer.php";i:1523412544;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:54:"E:\gitlearn\yupaker/app/yupaker\view\comments\edit.php";i:1528699096;s:47:"E:\gitlearn\yupaker\app\yupaker\view\layout.php";i:1523842193;s:51:"E:\gitlearn\yupaker\app\admin\view\block\header.php";i:1523412544;s:50:"E:\gitlearn\yupaker\app\admin\view\block\layui.php";i:1523412544;s:51:"E:\gitlearn\yupaker\app\admin\view\block\footer.php";i:1523412544;}*/ ?>
 <?php if(input('param.hisi_iframe') || cookie('hisi_iframe')): ?>
 <!DOCTYPE html>
 <html>
@@ -159,10 +159,10 @@ $ca = strtolower(request()->controller().'/'.request()->action());
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">QQ</label>
+        <label class="layui-form-label">E-mail</label>
         <div class="layui-input-inline w200">
-            <div class="layui-input" style="width:150px; float:left; margin-right:10px;"><?php echo $data['qq']; ?></div>
-            <img src="<?php if($data['qq'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $data['qq']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
+            <div class="layui-input" style="width:150px; float:left; margin-right:10px;"><?php echo $data['email']; ?></div>
+            <img src="<?php if($data['emailimg'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $data['emailimg']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
@@ -266,10 +266,10 @@ var formData = <?php echo json_encode($data); ?>;
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">QQ</label>
+        <label class="layui-form-label">E-mail</label>
         <div class="layui-input-inline w200">
-            <div class="layui-input" style="width:150px; float:left; margin-right:10px;"><?php echo $data['qq']; ?></div>
-            <img src="<?php if($data['qq'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $data['qq']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
+            <div class="layui-input" style="width:150px; float:left; margin-right:10px;"><?php echo $data['email']; ?></div>
+            <img src="<?php if($data['emailimg'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $data['emailimg']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
@@ -356,10 +356,10 @@ var formData = <?php echo json_encode($data); ?>;
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">QQ</label>
+        <label class="layui-form-label">E-mail</label>
         <div class="layui-input-inline w200">
-            <div class="layui-input" style="width:150px; float:left; margin-right:10px;"><?php echo $data['qq']; ?></div>
-            <img src="<?php if($data['qq'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $data['qq']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
+            <div class="layui-input" style="width:150px; float:left; margin-right:10px;"><?php echo $data['email']; ?></div>
+            <img src="<?php if($data['emailimg'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $data['emailimg']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
@@ -456,10 +456,10 @@ var formData = <?php echo json_encode($data); ?>;
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">QQ</label>
+        <label class="layui-form-label">E-mail</label>
         <div class="layui-input-inline w200">
-            <div class="layui-input" style="width:150px; float:left; margin-right:10px;"><?php echo $data['qq']; ?></div>
-            <img src="<?php if($data['qq'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $data['qq']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
+            <div class="layui-input" style="width:150px; float:left; margin-right:10px;"><?php echo $data['email']; ?></div>
+            <img src="<?php if($data['emailimg'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $data['emailimg']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>

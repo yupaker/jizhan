@@ -17,8 +17,8 @@ class Cookie
      * @var array cookie 设置参数
      */
     protected static $config = [
-        'prefix'    => '', // cookie 名称前缀
-        'expire'    => 0, // cookie 保存时间
+        'prefix'    => 'think_', // cookie 名称前缀
+        'expire'    => 3600, // cookie 保存时间
         'path'      => '/', // cookie 保存路径
         'domain'    => '', // cookie 有效域名
         'secure'    => false, //  cookie 启用安全传输

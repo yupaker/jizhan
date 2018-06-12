@@ -33,10 +33,10 @@
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">QQ</label>
+        <label class="layui-form-label">E-mail</label>
         <div class="layui-input-inline w200">
-            <div class="layui-input" style="width:150px; float:left; margin-right:10px;">{$data.qq}</div>
-            <img src="{if condition="$data.qq eq '' "}__ADMIN_IMG__/gravatar.png{else /}https://q1.qlogo.cn/g?b=qq&nk={$data.qq}&s=100{/if}" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
+            <div class="layui-input" style="width:150px; float:left; margin-right:10px;">{$data.email}</div>
+            <img src="{if condition="$data.emailimg eq '' "}__ADMIN_IMG__/gravatar.png{else /}https://q1.qlogo.cn/g?b=qq&nk={$data.emailimg}&s=100{/if}" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>

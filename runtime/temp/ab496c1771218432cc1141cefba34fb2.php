@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:52:"E:\gitlearn\hisiphp/app/admin\view\publics\index.php";i:1526264328;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:52:"E:\gitlearn\yupaker/app/admin\view\publics\index.php";i:1528436270;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>

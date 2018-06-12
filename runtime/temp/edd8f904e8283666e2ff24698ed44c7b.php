@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:51:"E:\gitlearn\hisiphp/app/yupaker\view\news\index.php";i:1523955247;s:47:"E:\gitlearn\hisiphp\app\yupaker\view\layout.php";i:1523842193;s:51:"E:\gitlearn\hisiphp\app\admin\view\block\header.php";i:1523412544;s:50:"E:\gitlearn\hisiphp\app\admin\view\block\layui.php";i:1523412544;s:51:"E:\gitlearn\hisiphp\app\admin\view\block\footer.php";i:1523412544;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:55:"E:\gitlearn\yupaker/app/yupaker\view\comments\index.php";i:1528697741;s:47:"E:\gitlearn\yupaker\app\yupaker\view\layout.php";i:1523842193;s:51:"E:\gitlearn\yupaker\app\admin\view\block\header.php";i:1523412544;s:50:"E:\gitlearn\yupaker\app\admin\view\block\layui.php";i:1523412544;s:51:"E:\gitlearn\yupaker\app\admin\view\block\footer.php";i:1523412544;}*/ ?>
 <?php if(input('param.hisi_iframe') || cookie('hisi_iframe')): ?>
 <!DOCTYPE html>
 <html>
@@ -136,46 +136,41 @@ $ca = strtolower(request()->controller().'/'.request()->action());
         </form>
     </div>
     <div class="layui-btn-group fl">
-        <a href="<?php echo url('add'); ?>" class="layui-btn layui-btn-primary"><i class="aicon ai-tianjia"></i>添加</a>
-        <a href="<?php echo url('status?table=yupaker_news&val=1'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-qiyong"></i>正常</a>
-        <a href="<?php echo url('status?table=yupaker_news&val=0'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-jinyong1"></i>关闭</a>
-        <a href="<?php echo url('del?table=yupaker_news'); ?>" class="layui-btn layui-btn-primary j-page-btns confirm"><i class="aicon ai-jinyong"></i>删除</a>
+        <a href="<?php echo url('status?table=yupaker_comments&val=1'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-qiyong"></i>通过</a>
+        <a href="<?php echo url('status?table=yupaker_comments&val=2'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-jinyong1"></i>驳回</a>
+        <a href="<?php echo url('del?table=yupaker_comments'); ?>" class="layui-btn layui-btn-primary j-page-btns confirm"><i class="aicon ai-jinyong"></i>删除</a>
     </div>
 </div>
 <form id="pageListForm">
 <div class="layui-form">
     <table class="layui-table mt10" lay-even="" lay-skin="row">
-        <colgroup>
-            <col width="50">
-        </colgroup>
         <thead>
             <tr>
-                <th><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
-                <th>标题</th>
-                <th>作者</th>
-                <th>时间</th>
-                <th>标签</th>
-                <th>状态</th>
-                <th>操作</th>
+                <th width="50"><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
+                <th width="100">姓名</th>
+                <th>内容</th>
+                <th width="230">文章</th>
+                <th width="80">时间</th>
+                <th width="60">状态</th>
+                <th width="120">操作</th>
             </tr> 
         </thead>
         <tbody>
             <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
             <tr>
-                <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="<?php echo $vo['id']; ?>" lay-skin="primary"></td>
-                <td><?php echo $vo['title']; if($vo['ishot'] == 1): ?><red>[热]</red><?php endif; if($vo['isnew'] == 1): ?><red>[新]</red><?php endif; ?></td>
-                <td><?php echo $vo['author']; ?></td>
-                <td><?php echo date('Y-m-d H:i:s',$vo['addtime']); ?></td>
+                <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="<?php echo $vo['id']; ?>" lay-skin="primary"> <?php echo $vo['id']; ?></td>
+                <td><img src="<?php if($vo['qq'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $vo['qq']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36"><?php echo $vo['nickname']; ?></td>
+                <td><?php if($vo['reid'] != 0): ?>回复给<blue><?php echo $vo['rename']; ?></blue>：<?php endif; ?><?php echo msubstr($vo['content'],0,100); ?></td>
                 <td>
-                <?php if(is_array($vo['tagids']) || $vo['tagids'] instanceof \think\Collection || $vo['tagids'] instanceof \think\Paginator): $i = 0; $__LIST__ = $vo['tagids'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vol): $mod = ($i % 2 );++$i;?>
-                &nbsp;<?php echo $vol; ?>&nbsp;
-                <?php endforeach; endif; else: echo "" ;endif; ?>
+                    <a href="<?php echo url('news/edit','id='.$vo['newsid']); ?>" class="shenglue w200" style="float:left;"><?php echo $vo['newstitle']; ?></a>
+                    <a href="<?php echo url('comments/index','newsid='.$vo['newsid']); ?>"><green>(<?php echo $vo['newsnum']; ?>)</green></a>
                 </td>
-                <td><input type="checkbox" name="status" <?php if($vo['status'] == 1): ?>checked=""<?php endif; ?> value="<?php echo $vo['status']; ?>" lay-skin="switch" lay-filter="switchStatus" lay-text="正常|关闭" data-href="<?php echo url('status?table=yupaker_news&ids='.$vo['id']); ?>"></td>
+                <td><?php echo date('Y-m-d H:i:s',$vo['addtime']); ?></td>
+                <td><input type="checkbox" name="status" <?php if($vo['status'] == 1): ?>checked=""<?php endif; ?> value="<?php echo $vo['status']; ?>" lay-skin="switch" lay-filter="switchStatus" lay-text="通过|审核" data-href="<?php echo url('status?table=yupaker_comments&ids='.$vo['id']); ?>"></td>
                 <td>
                     <div class="layui-btn-group">
                         <a href="<?php echo url('edit?id='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-small"><i class="layui-icon">&#xe642;</i></a>
-                        <a data-href="<?php echo url('del?table=yupaker_news&ids='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-small j-tr-del"><i class="layui-icon">&#xe640;</i></a>
+                        <a data-href="<?php echo url('del?table=yupaker_comments&ids='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-small j-tr-del"><i class="layui-icon">&#xe640;</i></a>
                     </div>
                 </td>
             </tr>
@@ -226,46 +221,41 @@ $ca = strtolower(request()->controller().'/'.request()->action());
         </form>
     </div>
     <div class="layui-btn-group fl">
-        <a href="<?php echo url('add'); ?>" class="layui-btn layui-btn-primary"><i class="aicon ai-tianjia"></i>添加</a>
-        <a href="<?php echo url('status?table=yupaker_news&val=1'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-qiyong"></i>正常</a>
-        <a href="<?php echo url('status?table=yupaker_news&val=0'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-jinyong1"></i>关闭</a>
-        <a href="<?php echo url('del?table=yupaker_news'); ?>" class="layui-btn layui-btn-primary j-page-btns confirm"><i class="aicon ai-jinyong"></i>删除</a>
+        <a href="<?php echo url('status?table=yupaker_comments&val=1'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-qiyong"></i>通过</a>
+        <a href="<?php echo url('status?table=yupaker_comments&val=2'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-jinyong1"></i>驳回</a>
+        <a href="<?php echo url('del?table=yupaker_comments'); ?>" class="layui-btn layui-btn-primary j-page-btns confirm"><i class="aicon ai-jinyong"></i>删除</a>
     </div>
 </div>
 <form id="pageListForm">
 <div class="layui-form">
     <table class="layui-table mt10" lay-even="" lay-skin="row">
-        <colgroup>
-            <col width="50">
-        </colgroup>
         <thead>
             <tr>
-                <th><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
-                <th>标题</th>
-                <th>作者</th>
-                <th>时间</th>
-                <th>标签</th>
-                <th>状态</th>
-                <th>操作</th>
+                <th width="50"><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
+                <th width="100">姓名</th>
+                <th>内容</th>
+                <th width="230">文章</th>
+                <th width="80">时间</th>
+                <th width="60">状态</th>
+                <th width="120">操作</th>
             </tr> 
         </thead>
         <tbody>
             <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
             <tr>
-                <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="<?php echo $vo['id']; ?>" lay-skin="primary"></td>
-                <td><?php echo $vo['title']; if($vo['ishot'] == 1): ?><red>[热]</red><?php endif; if($vo['isnew'] == 1): ?><red>[新]</red><?php endif; ?></td>
-                <td><?php echo $vo['author']; ?></td>
-                <td><?php echo date('Y-m-d H:i:s',$vo['addtime']); ?></td>
+                <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="<?php echo $vo['id']; ?>" lay-skin="primary"> <?php echo $vo['id']; ?></td>
+                <td><img src="<?php if($vo['qq'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $vo['qq']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36"><?php echo $vo['nickname']; ?></td>
+                <td><?php if($vo['reid'] != 0): ?>回复给<blue><?php echo $vo['rename']; ?></blue>：<?php endif; ?><?php echo msubstr($vo['content'],0,100); ?></td>
                 <td>
-                <?php if(is_array($vo['tagids']) || $vo['tagids'] instanceof \think\Collection || $vo['tagids'] instanceof \think\Paginator): $i = 0; $__LIST__ = $vo['tagids'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vol): $mod = ($i % 2 );++$i;?>
-                &nbsp;<?php echo $vol; ?>&nbsp;
-                <?php endforeach; endif; else: echo "" ;endif; ?>
+                    <a href="<?php echo url('news/edit','id='.$vo['newsid']); ?>" class="shenglue w200" style="float:left;"><?php echo $vo['newstitle']; ?></a>
+                    <a href="<?php echo url('comments/index','newsid='.$vo['newsid']); ?>"><green>(<?php echo $vo['newsnum']; ?>)</green></a>
                 </td>
-                <td><input type="checkbox" name="status" <?php if($vo['status'] == 1): ?>checked=""<?php endif; ?> value="<?php echo $vo['status']; ?>" lay-skin="switch" lay-filter="switchStatus" lay-text="正常|关闭" data-href="<?php echo url('status?table=yupaker_news&ids='.$vo['id']); ?>"></td>
+                <td><?php echo date('Y-m-d H:i:s',$vo['addtime']); ?></td>
+                <td><input type="checkbox" name="status" <?php if($vo['status'] == 1): ?>checked=""<?php endif; ?> value="<?php echo $vo['status']; ?>" lay-skin="switch" lay-filter="switchStatus" lay-text="通过|审核" data-href="<?php echo url('status?table=yupaker_comments&ids='.$vo['id']); ?>"></td>
                 <td>
                     <div class="layui-btn-group">
                         <a href="<?php echo url('edit?id='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-small"><i class="layui-icon">&#xe642;</i></a>
-                        <a data-href="<?php echo url('del?table=yupaker_news&ids='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-small j-tr-del"><i class="layui-icon">&#xe640;</i></a>
+                        <a data-href="<?php echo url('del?table=yupaker_comments&ids='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-small j-tr-del"><i class="layui-icon">&#xe640;</i></a>
                     </div>
                 </td>
             </tr>
@@ -299,46 +289,41 @@ $ca = strtolower(request()->controller().'/'.request()->action());
         </form>
     </div>
     <div class="layui-btn-group fl">
-        <a href="<?php echo url('add'); ?>" class="layui-btn layui-btn-primary"><i class="aicon ai-tianjia"></i>添加</a>
-        <a href="<?php echo url('status?table=yupaker_news&val=1'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-qiyong"></i>正常</a>
-        <a href="<?php echo url('status?table=yupaker_news&val=0'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-jinyong1"></i>关闭</a>
-        <a href="<?php echo url('del?table=yupaker_news'); ?>" class="layui-btn layui-btn-primary j-page-btns confirm"><i class="aicon ai-jinyong"></i>删除</a>
+        <a href="<?php echo url('status?table=yupaker_comments&val=1'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-qiyong"></i>通过</a>
+        <a href="<?php echo url('status?table=yupaker_comments&val=2'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-jinyong1"></i>驳回</a>
+        <a href="<?php echo url('del?table=yupaker_comments'); ?>" class="layui-btn layui-btn-primary j-page-btns confirm"><i class="aicon ai-jinyong"></i>删除</a>
     </div>
 </div>
 <form id="pageListForm">
 <div class="layui-form">
     <table class="layui-table mt10" lay-even="" lay-skin="row">
-        <colgroup>
-            <col width="50">
-        </colgroup>
         <thead>
             <tr>
-                <th><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
-                <th>标题</th>
-                <th>作者</th>
-                <th>时间</th>
-                <th>标签</th>
-                <th>状态</th>
-                <th>操作</th>
+                <th width="50"><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
+                <th width="100">姓名</th>
+                <th>内容</th>
+                <th width="230">文章</th>
+                <th width="80">时间</th>
+                <th width="60">状态</th>
+                <th width="120">操作</th>
             </tr> 
         </thead>
         <tbody>
             <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
             <tr>
-                <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="<?php echo $vo['id']; ?>" lay-skin="primary"></td>
-                <td><?php echo $vo['title']; if($vo['ishot'] == 1): ?><red>[热]</red><?php endif; if($vo['isnew'] == 1): ?><red>[新]</red><?php endif; ?></td>
-                <td><?php echo $vo['author']; ?></td>
-                <td><?php echo date('Y-m-d H:i:s',$vo['addtime']); ?></td>
+                <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="<?php echo $vo['id']; ?>" lay-skin="primary"> <?php echo $vo['id']; ?></td>
+                <td><img src="<?php if($vo['qq'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $vo['qq']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36"><?php echo $vo['nickname']; ?></td>
+                <td><?php if($vo['reid'] != 0): ?>回复给<blue><?php echo $vo['rename']; ?></blue>：<?php endif; ?><?php echo msubstr($vo['content'],0,100); ?></td>
                 <td>
-                <?php if(is_array($vo['tagids']) || $vo['tagids'] instanceof \think\Collection || $vo['tagids'] instanceof \think\Paginator): $i = 0; $__LIST__ = $vo['tagids'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vol): $mod = ($i % 2 );++$i;?>
-                &nbsp;<?php echo $vol; ?>&nbsp;
-                <?php endforeach; endif; else: echo "" ;endif; ?>
+                    <a href="<?php echo url('news/edit','id='.$vo['newsid']); ?>" class="shenglue w200" style="float:left;"><?php echo $vo['newstitle']; ?></a>
+                    <a href="<?php echo url('comments/index','newsid='.$vo['newsid']); ?>"><green>(<?php echo $vo['newsnum']; ?>)</green></a>
                 </td>
-                <td><input type="checkbox" name="status" <?php if($vo['status'] == 1): ?>checked=""<?php endif; ?> value="<?php echo $vo['status']; ?>" lay-skin="switch" lay-filter="switchStatus" lay-text="正常|关闭" data-href="<?php echo url('status?table=yupaker_news&ids='.$vo['id']); ?>"></td>
+                <td><?php echo date('Y-m-d H:i:s',$vo['addtime']); ?></td>
+                <td><input type="checkbox" name="status" <?php if($vo['status'] == 1): ?>checked=""<?php endif; ?> value="<?php echo $vo['status']; ?>" lay-skin="switch" lay-filter="switchStatus" lay-text="通过|审核" data-href="<?php echo url('status?table=yupaker_comments&ids='.$vo['id']); ?>"></td>
                 <td>
                     <div class="layui-btn-group">
                         <a href="<?php echo url('edit?id='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-small"><i class="layui-icon">&#xe642;</i></a>
-                        <a data-href="<?php echo url('del?table=yupaker_news&ids='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-small j-tr-del"><i class="layui-icon">&#xe640;</i></a>
+                        <a data-href="<?php echo url('del?table=yupaker_comments&ids='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-small j-tr-del"><i class="layui-icon">&#xe640;</i></a>
                     </div>
                 </td>
             </tr>
@@ -382,46 +367,41 @@ $ca = strtolower(request()->controller().'/'.request()->action());
         </form>
     </div>
     <div class="layui-btn-group fl">
-        <a href="<?php echo url('add'); ?>" class="layui-btn layui-btn-primary"><i class="aicon ai-tianjia"></i>添加</a>
-        <a href="<?php echo url('status?table=yupaker_news&val=1'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-qiyong"></i>正常</a>
-        <a href="<?php echo url('status?table=yupaker_news&val=0'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-jinyong1"></i>关闭</a>
-        <a href="<?php echo url('del?table=yupaker_news'); ?>" class="layui-btn layui-btn-primary j-page-btns confirm"><i class="aicon ai-jinyong"></i>删除</a>
+        <a href="<?php echo url('status?table=yupaker_comments&val=1'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-qiyong"></i>通过</a>
+        <a href="<?php echo url('status?table=yupaker_comments&val=2'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-jinyong1"></i>驳回</a>
+        <a href="<?php echo url('del?table=yupaker_comments'); ?>" class="layui-btn layui-btn-primary j-page-btns confirm"><i class="aicon ai-jinyong"></i>删除</a>
     </div>
 </div>
 <form id="pageListForm">
 <div class="layui-form">
     <table class="layui-table mt10" lay-even="" lay-skin="row">
-        <colgroup>
-            <col width="50">
-        </colgroup>
         <thead>
             <tr>
-                <th><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
-                <th>标题</th>
-                <th>作者</th>
-                <th>时间</th>
-                <th>标签</th>
-                <th>状态</th>
-                <th>操作</th>
+                <th width="50"><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
+                <th width="100">姓名</th>
+                <th>内容</th>
+                <th width="230">文章</th>
+                <th width="80">时间</th>
+                <th width="60">状态</th>
+                <th width="120">操作</th>
             </tr> 
         </thead>
         <tbody>
             <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
             <tr>
-                <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="<?php echo $vo['id']; ?>" lay-skin="primary"></td>
-                <td><?php echo $vo['title']; if($vo['ishot'] == 1): ?><red>[热]</red><?php endif; if($vo['isnew'] == 1): ?><red>[新]</red><?php endif; ?></td>
-                <td><?php echo $vo['author']; ?></td>
-                <td><?php echo date('Y-m-d H:i:s',$vo['addtime']); ?></td>
+                <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="<?php echo $vo['id']; ?>" lay-skin="primary"> <?php echo $vo['id']; ?></td>
+                <td><img src="<?php if($vo['qq'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $vo['qq']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36"><?php echo $vo['nickname']; ?></td>
+                <td><?php if($vo['reid'] != 0): ?>回复给<blue><?php echo $vo['rename']; ?></blue>：<?php endif; ?><?php echo msubstr($vo['content'],0,100); ?></td>
                 <td>
-                <?php if(is_array($vo['tagids']) || $vo['tagids'] instanceof \think\Collection || $vo['tagids'] instanceof \think\Paginator): $i = 0; $__LIST__ = $vo['tagids'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vol): $mod = ($i % 2 );++$i;?>
-                &nbsp;<?php echo $vol; ?>&nbsp;
-                <?php endforeach; endif; else: echo "" ;endif; ?>
+                    <a href="<?php echo url('news/edit','id='.$vo['newsid']); ?>" class="shenglue w200" style="float:left;"><?php echo $vo['newstitle']; ?></a>
+                    <a href="<?php echo url('comments/index','newsid='.$vo['newsid']); ?>"><green>(<?php echo $vo['newsnum']; ?>)</green></a>
                 </td>
-                <td><input type="checkbox" name="status" <?php if($vo['status'] == 1): ?>checked=""<?php endif; ?> value="<?php echo $vo['status']; ?>" lay-skin="switch" lay-filter="switchStatus" lay-text="正常|关闭" data-href="<?php echo url('status?table=yupaker_news&ids='.$vo['id']); ?>"></td>
+                <td><?php echo date('Y-m-d H:i:s',$vo['addtime']); ?></td>
+                <td><input type="checkbox" name="status" <?php if($vo['status'] == 1): ?>checked=""<?php endif; ?> value="<?php echo $vo['status']; ?>" lay-skin="switch" lay-filter="switchStatus" lay-text="通过|审核" data-href="<?php echo url('status?table=yupaker_comments&ids='.$vo['id']); ?>"></td>
                 <td>
                     <div class="layui-btn-group">
                         <a href="<?php echo url('edit?id='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-small"><i class="layui-icon">&#xe642;</i></a>
-                        <a data-href="<?php echo url('del?table=yupaker_news&ids='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-small j-tr-del"><i class="layui-icon">&#xe640;</i></a>
+                        <a data-href="<?php echo url('del?table=yupaker_comments&ids='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-small j-tr-del"><i class="layui-icon">&#xe640;</i></a>
                     </div>
                 </td>
             </tr>

@@ -32,7 +32,7 @@
         <tbody>
             {volist name="list" id="vo"}
             <tr>
-                <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="{$vo['id']}" lay-skin="primary"></td>
+                <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="{$vo['id']}" lay-skin="primary"> {$vo['id']}</td>
                 <td><img src="{if condition="$vo.qq eq '' "}__ADMIN_IMG__/gravatar.png{else /}https://q1.qlogo.cn/g?b=qq&nk={$vo.qq}&s=100{/if}" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">{$vo['nickname']}</td>
                 <td>{if condition="$vo.reid neq 0"}回复给<blue>{$vo.rename}</blue>：{/if}{$vo['content']|msubstr=0,100}</td>
                 <td>
