@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:9:{s:37:"theme\yupaker\default\index\index.php";i:1526007223;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\head.php";i:1524129565;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\index_head.php";i:1523933072;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\avatar_box.php";i:1524129961;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\menu.php";i:1524037356;s:64:"E:\gitlearn\yupaker\theme\yupaker\default\block\actions_menu.php";i:1524130058;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\left.php";i:1524105406;s:58:"E:\gitlearn\yupaker\theme\yupaker\default\block\canvas.php";i:1523934996;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\foot.php";i:1523931524;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:9:{s:37:"theme\yupaker\default\index\index.php";i:1526007223;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\head.php";i:1524129565;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\index_head.php";i:1528859023;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\avatar_box.php";i:1524129961;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\menu.php";i:1524037356;s:64:"E:\gitlearn\yupaker\theme\yupaker\default\block\actions_menu.php";i:1524130058;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\left.php";i:1524105406;s:58:"E:\gitlearn\yupaker\theme\yupaker\default\block\canvas.php";i:1523934996;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\foot.php";i:1523931524;}*/ ?>
 <?php defined("IN_SYSTEM") or die("Access Denied");/* 防止模板被盗 */?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -28,7 +28,7 @@
             <ul class="header-menu-list">
               <li><a href="/">首页</a></li>
               <li><a href="<?php echo url('/'); ?>">博客</a></li>
-              <li><a href="<?php echo url('example/index/index'); ?>">留言</a></li>
+              <li><a href="<?php echo url('messages/index'); ?>">留言</a></li>
               <li><a href="<?php echo url('example/index/index'); ?>">友链</a></li>
             </ul>
     	  </nav>

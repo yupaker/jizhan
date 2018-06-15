@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:35:"theme\yupaker\default\news\show.php";i:1528789039;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\head.php";i:1524129565;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\index_head.php";i:1528859023;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\avatar_box.php";i:1524129961;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\menu.php";i:1524037356;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\left.php";i:1524105406;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\foot.php";i:1523931524;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:39:"theme\yupaker\default\messages\demo.php";i:1528946159;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\head.php";i:1524129565;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\index_head.php";i:1528859023;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\foot.php";i:1523931524;}*/ ?>
 <?php defined("IN_SYSTEM") or die("Access Denied");/* 防止模板被盗 */?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -45,119 +45,50 @@
     	</div>
       </div>
     </header>
-	<section id="content">
-      <div class="container">
-		<div class="content-inner">
-		  <div class="main_header">
-            <div class="avatar_box">
-  <div class="me_img">
-    <div class="me_avatar">
-    <img src="/theme/yupaker/default/static/image/avatar.png" class="ajax_gif">
-    </div>
-    <ul class="me_name">
-      <li>
-        <p class="me_num">233</p>
-        <p class="me_title">文章</p>
-      </li>
-      <li>
-        <p class="me_num">107</p>
-        <p class="me_title">评论</p>
-      </li>
-      <li>
-        <p class="me_num">5</p>
-        <p class="me_title">友链</p>
-      </li>
-    </ul>
-  </div>
-  <div class="bulletin">喜欢这个网站的朋友可以加一下QQ群,我们一起交流技术。</div>
-</div> 
-			<div class="main-menu">
-              <ul class="header-menu-list">
-                <?php if(is_array($menu) || $menu instanceof \think\Collection || $menu instanceof \think\Paginator): $i = 0; $__LIST__ = $menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                <li class="menu-item-list-children"><a href="<?php if($vo['link'] != ''): ?><?php echo $vo['link']; else: ?><?php echo url('news/index','catid='.$vo['id']); endif; ?>"><?php echo $vo['title']; ?></a></li>
-                <?php endforeach; endif; else: echo "" ;endif; ?>
-              </ul>
-            </div>
-          </div>
-          <div class="main_body">
-			<aside id="sidebar">
-              <div class="widgets">
-                <dl>
-                  <dt><h3 class="red">定位</h3></dt>
-                  <dd>
-                    哏都的逗哏哏逗的都哏
-                  </dd>
-                </dl>
-              </div>
-              <div class="widgets">
-                <dl>
-                  <dt><h3 class="red">标签云</h3></dt>
-                  <dd>
-                    <div class="tagcloud">
-                      <?php if(is_array($tagslist) || $tagslist instanceof \think\Collection || $tagslist instanceof \think\Paginator): $i = 0; $__LIST__ = $tagslist;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                      <a href="<?php echo url('news/index','tagname='.$vo['title']); ?>" title="<?php echo $vo['title']; ?>"><?php echo $vo['title']; ?> <em>(<?php echo $vo['newsnum']; ?>)</em></a>
-                      <?php endforeach; endif; else: echo "" ;endif; ?>
-                    </div>
-                  </dd>
-                </dl>
-              </div>
-              <div class="widgets">
-                <dl>
-                  <dt><h3 class="red">最新文章</h3></dt>
-                  <dd>
-                    <ul class="list">
-                      <?php if(is_array($news['new']) || $news['new'] instanceof \think\Collection || $news['new'] instanceof \think\Paginator): $i = 0; $__LIST__ = $news['new'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                      <li class="list-bt fa"><a href="<?php echo url('news/show','id='.$vo['id']); ?>" title="<?php echo $vo['title']; ?>"><?php echo $vo['title']; ?></a></li>
-                      <?php endforeach; endif; else: echo "" ;endif; ?>
-                    </ul>
-                  </dd>
-                </dl>
-              </div>
-              <div class="widgets">
-                <dl>
-                  <dt><h3 class="green">热门文章</h3></dt>
-                  <dd>
-                    <ul class="list">
-                      <?php if(is_array($news['view']) || $news['view'] instanceof \think\Collection || $news['view'] instanceof \think\Paginator): $i = 0; $__LIST__ = $news['view'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                      <li class="list-bt fa"><a href="<?php echo url('news/show','id='.$vo['id']); ?>" title="<?php echo $vo['title']; ?>"><?php echo $vo['title']; ?></a></li>
-                      <?php endforeach; endif; else: echo "" ;endif; ?>
-                    </ul>
-                  </dd>
-                </dl>
-              </div>
-              <div class="widgets">
-                <dl>
-                  <dt><h3 class="blue">推荐文章</h3></dt>
-                  <dd>
-                    <ul class="list">
-                      <?php if(is_array($news['hot']) || $news['hot'] instanceof \think\Collection || $news['hot'] instanceof \think\Paginator): $i = 0; $__LIST__ = $news['hot'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                      <li class="list-bt fa"><a href="<?php echo url('news/show','id='.$vo['id']); ?>" title="<?php echo $vo['title']; ?>"><?php echo $vo['title']; ?></a></li>
-                      <?php endforeach; endif; else: echo "" ;endif; ?>
-                    </ul>
-                  </dd>
-                </dl>
-              </div>
-            
-            </aside>
-            <div id="main">
-              <div class="main-content">
-                <div id="posts-lists" class="posts-box">
-                  <div class="post-wrap show-wrap">
-                    <div class="post-title show-title"><a><?php echo $data['title']; ?></a></div>
-                    <div class="post-content show-content"><?php echo $data['content']; ?></div>
-              		<div class="post-btm">
-                      <span><i class="fa fa-clock-o"></i> <?php echo $data['addtime']; ?></span>
-                      <span title="作者"><i class="fa fa-bookmark"></i> <?php echo $data['author']; ?></span>
-                      <span title="标签"><i class="fa fa-tags"></i> 
-                      <?php if(is_array($data['tagids']) || $data['tagids'] instanceof \think\Collection || $data['tagids'] instanceof \think\Paginator): $i = 0; $__LIST__ = $data['tagids'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                      <a><?php echo $vo; ?></a>
-                      <?php endforeach; endif; else: echo "" ;endif; ?>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <!--评论-->
-                <div class="comments-box">
+	<section>
+      <div style="position: fixed;bottom: 0; z-index:-1;">
+    	<script src="/theme/yupaker/default/static/js/moon.js"></script>
+    	<div class="cannes">
+        <svg width="100%" height="100%" viewBox="0 0 600 600">
+            <filter id="displacementFilter">
+                <feTurbulence type="turbulence" baseFrequency="0.01 .1" numOctaves="1" result="turbulence" seed="53" />
+                <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="50" xChannelSelector="R" yChannelSelector="B" />
+            </filter>
+            <image id="blueMoon" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/theme/yupaker/default/static/image/moon.jpg" width="600" height="400"></image>
+            <use xlink:href="#blueMoon" x="-10" transform="translate(0, 600) scale(1 -0.5) " filter="url(#displacementFilter)" />
+        </svg>
+        <div>
+        <style>
+		header{ background:none !important;}
+		section{background: linear-gradient(-35deg, #2aa4d5, #030633);margin-top: -400px;}
+		.cannes {width: 100%;height: 100%;overflow: hidden;box-shadow: 0 0 150px #031f40; line-height:0;}
+		svg {background: #031f40;position: relative;}
+		</style>
+        <script>
+		var img = document.querySelector("#displacementFilter feTurbulence");
+		var frames = 0;
+		var rad = Math.PI / 180;
+		
+		function AnimateBaseFrequency() {
+			var bf = "0.01 .1";
+			bfx = Number(bf.split(" ")[0]);
+			bfy = Number(bf.split(" ")[1]);
+			frames += .5
+			bfx += 0.001 * Math.cos(frames * rad);
+			bfy += 0.005 * Math.sin(frames * rad);
+		
+			bf = bfx.toString() + ' ' + bfy.toString();
+			img.setAttributeNS(null, 'baseFrequency', bf);
+		
+			window.requestAnimationFrame(AnimateBaseFrequency);
+		}
+		
+		window.requestAnimationFrame(AnimateBaseFrequency);
+		</script>
+      </div>
+	</section>
+      
+      <div style="width:80%; margin:0 auto;">
                   <dl>
                     <dt class="comments-title">评论列表</dt>
                     <dd>
@@ -200,7 +131,7 @@
                         	<input class="inputtext" type="text" id="verifycode" name="verifycode" placeholder="验证码" maxlength="10" required>
                         </li><div class="codeimg"><?php echo captcha_img(); ?></div>
                         <div class="clearfix"></div>
-                        <input type="hidden" name="newsid" value="<?php echo $data['id']; ?>">
+                        <input type="hidden" name="newsid" value="5">
                         <li><input class="comsubmit" type="submit" value="发表评论"></li>
                       </ul>
                     </form></dd>
@@ -208,12 +139,7 @@
                   
     			  <script type="text/javascript" src="/theme/yupaker/default/static/js/retextarea.js"></script>
                 </div>
-              </div>
-            </div>
-          </div>
-		</div>
-	  </div>
-	</section>
+      
     <?php defined("IN_SYSTEM") or die("Access Denied");/* 防止模板被盗 */?>
 <footer>
       <div class="container">

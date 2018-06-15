@@ -1,0 +1,60 @@
+---------------------------------------------------------------
+[ 2018-06-15T10:31:14+08:00 ] 0.0.0.0 GET /messages/index.html
+[ info ] localhost/messages/index.html [运行时间：0.210000s][吞吐率：4.76req/s] [内存消耗：2,960.62kb] [文件加载：83]
+[ error ] [8]未定义数组索引: nick[E:\gitlearn\yupaker\runtime\temp\9b0b841c85857576fccff94f5c597db1.php:120]
+---------------------------------------------------------------
+[ 2018-06-15T10:41:46+08:00 ] 0.0.0.0 POST /messages/save.html
+[ info ] localhost/messages/save.html [运行时间：0.142000s][吞吐率：7.04req/s] [内存消耗：2,699.02kb] [文件加载：76]
+[ error ] [0]致命错误: Class 'app\yupaker\home\Loader' not found[E:\gitlearn\yupaker\app\yupaker\home\Messages.php:39]
+---------------------------------------------------------------
+[ 2018-06-15T10:44:23+08:00 ] 0.0.0.0 POST /messages/save.html
+[ info ] localhost/messages/save.html [运行时间：0.151000s][吞吐率：6.62req/s] [内存消耗：2,697.39kb] [文件加载：76]
+[ error ] [0]致命错误: Class 'app\yupaker\home\CommentsModel' not found[E:\gitlearn\yupaker\app\yupaker\home\Messages.php:39]
+---------------------------------------------------------------
+[ 2018-06-15T10:44:54+08:00 ] 0.0.0.0 POST /messages/save.html
+[ info ] localhost/messages/save.html [运行时间：0.146000s][吞吐率：6.85req/s] [内存消耗：2,766.65kb] [文件加载：79]
+[ error ] [0]method not exist:think\db\Query->error[E:\gitlearn\yupaker\thinkphp\library\think\db\Query.php:94]
+---------------------------------------------------------------
+[ 2018-06-15T10:45:59+08:00 ] 0.0.0.0 POST /messages/save.html
+[ info ] localhost/messages/save.html [运行时间：0.149000s][吞吐率：6.71req/s] [内存消耗：2,766.65kb] [文件加载：79]
+[ error ] [0]method not exist:think\db\Query->error[E:\gitlearn\yupaker\thinkphp\library\think\db\Query.php:94]
+---------------------------------------------------------------
+[ 2018-06-15T11:33:42+08:00 ] 0.0.0.0 POST /messages/save.html
+[ info ] localhost/messages/save.html [运行时间：0.154000s][吞吐率：6.49req/s] [内存消耗：2,822.63kb] [文件加载：81]
+[ error ] [8192]Non-static method app\common\model\AdminMember::setNickAttr() should not be called statically[E:\gitlearn\yupaker\app\yupaker\model\YupakerMessages.php:97]
+---------------------------------------------------------------
+[ 2018-06-15T11:35:52+08:00 ] 0.0.0.0 POST /messages/save.html
+[ info ] localhost/messages/save.html [运行时间：0.154000s][吞吐率：6.49req/s] [内存消耗：2,771.35kb] [文件加载：80]
+[ error ] [8]未定义数组索引: email[E:\gitlearn\yupaker\app\yupaker\model\YupakerMessages.php:100]
+---------------------------------------------------------------
+[ 2018-06-15T11:36:59+08:00 ] 0.0.0.0 POST /messages/save.html
+[ info ] localhost/messages/save.html [运行时间：0.147000s][吞吐率：6.80req/s] [内存消耗：2,771.23kb] [文件加载：80]
+[ error ] [8]未定义数组索引: email[E:\gitlearn\yupaker\app\yupaker\model\YupakerMessages.php:101]
+---------------------------------------------------------------
+[ 2018-06-15T11:37:50+08:00 ] 0.0.0.0 POST /messages/save.html
+[ info ] localhost/messages/save.html [运行时间：0.147000s][吞吐率：6.80req/s] [内存消耗：2,771.23kb] [文件加载：80]
+[ error ] [8]未定义数组索引: email[E:\gitlearn\yupaker\app\yupaker\model\YupakerMessages.php:101]
+---------------------------------------------------------------
+[ 2018-06-15T11:39:31+08:00 ] 0.0.0.0 POST /messages/save.html
+[ info ] localhost/messages/save.html [运行时间：0.152000s][吞吐率：6.58req/s] [内存消耗：2,771.23kb] [文件加载：80]
+[ error ] [8]未定义数组索引: email[E:\gitlearn\yupaker\app\yupaker\model\YupakerMessages.php:101]
+---------------------------------------------------------------
+[ 2018-06-15T11:40:09+08:00 ] 0.0.0.0 POST /messages/save.html
+[ info ] localhost/messages/save.html [运行时间：0.148000s][吞吐率：6.76req/s] [内存消耗：2,822.56kb] [文件加载：81]
+[ error ] [8192]Non-static method app\common\model\AdminMember::msgcreatemem() should not be called statically[E:\gitlearn\yupaker\app\yupaker\model\YupakerMessages.php:105]
+---------------------------------------------------------------
+[ 2018-06-15T11:42:37+08:00 ] 0.0.0.0 POST /messages/save.html
+[ info ] localhost/messages/save.html [运行时间：0.145000s][吞吐率：6.90req/s] [内存消耗：2,770.44kb] [文件加载：79]
+[ error ] [0]致命错误: Class 'app\yupaker\model\MessagesModel' not found[E:\gitlearn\yupaker\app\yupaker\model\YupakerMessages.php:97]
+---------------------------------------------------------------
+[ 2018-06-15T11:43:25+08:00 ] 0.0.0.0 POST /messages/save.html
+[ info ] localhost/messages/save.html [运行时间：0.158000s][吞吐率：6.33req/s] [内存消耗：2,824.62kb] [文件加载：81]
+[ error ] [8]未定义变量: v[E:\gitlearn\yupaker\app\common\model\AdminMember.php:346]
+---------------------------------------------------------------
+[ 2018-06-15T11:44:20+08:00 ] 0.0.0.0 POST /messages/save.html
+[ info ] localhost/messages/save.html [运行时间：0.145000s][吞吐率：6.90req/s] [内存消耗：2,824.66kb] [文件加载：81]
+[ error ] [8]未定义数组索引: username[E:\gitlearn\yupaker\app\common\model\AdminMember.php:356]
+---------------------------------------------------------------
+[ 2018-06-15T11:45:03+08:00 ] 0.0.0.0 POST /messages/save.html
+[ info ] localhost/messages/save.html [运行时间：0.314000s][吞吐率：3.18req/s] [内存消耗：2,808.87kb] [文件加载：80]
+[ error ] [0]类的属性不存在:app\common\model\AdminMember->id[E:\gitlearn\yupaker\thinkphp\library\think\Model.php:600]

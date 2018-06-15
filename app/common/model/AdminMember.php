@@ -330,4 +330,36 @@ class AdminMember extends Model
         $sign = sha1($code);
         return $sign;
     }
+	
+    /**
+     * 留言成功为访客生成游客身份会员
+     * @param array $data 数据
+     * @author 橘子俊 <364666827@qq.com>
+     * @return string 签名
+     */
+    public function msgcreatemem($data = [])
+    {
+        $map = [];
+        $map['nick'] = isset($data['nick']) ? $data['nick'] : '';
+        $map['email'] = isset($data['email']) ? $data['email'] : '';
+        $map['site'] = isset($data['site']) ? $data['site'] : '';
+        $map['avatar'] = "https://q1.qlogo.cn/g?b=qq&nk=".strstr($data['email'], '@', TRUE)."&s=100";
+        $map['level_id'] = 0;
+        $map['password'] = "123456";
+        if (empty($data['email'])) {
+            $this->error = '邮箱必须填写！';
+            return false;
+
+        }
+        $level = model('AdminMemberLevel')->find(2);//游客
+        if ($level) {
+            $map['level_id'] = $level['id'];
+            $map['expire_time'] = $level['expire'] > 0 ? strtotime('+ '.$level['expire'].' days') : 0;
+        }
+        $res = $this->create($map);
+        $id = $res->id;
+        return $id;
+    }
+	
+	
 }
