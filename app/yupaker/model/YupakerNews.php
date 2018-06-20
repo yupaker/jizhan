@@ -66,28 +66,4 @@ class YupakerNews extends Model
         
         return $res;
     }
-	
-	 /**
-     * 获取新闻下的留言列表
-     * @param int $reid 回复id
-     * @param int $status 状态值
-     * @param int $newsid 新闻ID
-     * @author yupaker
-     * @return string
-     */
-    public static function getCommentlist($reid = 0, $status = 1, $newsid)
-    {
-		$map['reid'] = $reid;
-		$map['status'] = $status;
-		$map['newsid'] = $newsid;
-		
-		$list = Db::name('yupaker_comments')->where($map)->select();
-		if($list){
-			foreach ($list as $k => $v) {
-				$list[$k]['childlist'] = self::getCommentlist($v['id'], $status, $newsid);
-				$list[$k]['emailimg'] = strstr($v['email'], '@', TRUE);
-			}
-		}
-        return $list;
-    }
 }

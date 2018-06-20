@@ -54,5 +54,5 @@
 .comments-form .email:before{content: "\f0e0";}
 .comments-form .site:before{content: "\f0ac";}
 .comments-form .verifycode:before{content: "\f071";}
-.comments-form .comli100 textarea{ width:calc(100% - 43px); padding:10px; height:150px; line-height:22px; border-raduis:5px; background:#fff; border:1px solid #ddd; color:#867f6f; box-shadow:inset 0 1px 2px rgba(0,0,0,0.075);}
+.comments-form .comli100 textarea{ width:calc(100% - 22px); padding:10px; height:150px; line-height:22px; border-radius:5px; background:#fff; border:1px solid #ddd; color:#867f6f; box-shadow:inset 0 1px 2px rgba(0,0,0,0.075);}
 .comments-form .comsubmit{ border:1px solid #00a1d6; background:#00a1d6; color:#fff; line-height:30px; padding:0 20px;}

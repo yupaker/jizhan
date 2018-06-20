@@ -21,7 +21,7 @@
         <thead>
             <tr>
                 <th width="50"><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
-                <th width="100">姓名</th>
+                <th width="120">姓名</th>
                 <th>内容</th>
                 <th width="230">文章</th>
                 <th width="80">时间</th>
@@ -33,8 +33,8 @@
             {volist name="list" id="vo"}
             <tr>
                 <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="{$vo['id']}" lay-skin="primary"> {$vo['id']}</td>
-                <td><img src="{if condition="$vo.qq eq '' "}__ADMIN_IMG__/gravatar.png{else /}https://q1.qlogo.cn/g?b=qq&nk={$vo.qq}&s=100{/if}" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">{$vo['nickname']}</td>
-                <td>{if condition="$vo.reid neq 0"}回复给<blue>{$vo.rename}</blue>：{/if}{$vo['content']|msubstr=0,100}</td>
+                <td><img src='{$vo.meminfo.avatar|default="__IMG__/avatar.png"}' style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36"><a href="{:url('comments/index','memid='.$vo['memid'])}">{$vo.meminfo.nick}</a><br> {$vo.ip}</td>
+                <td>{if condition="$vo.catreid neq 0"}回复给<blue>【{$vo.catreid}】</blue>：{/if}{$vo['content']|msubstr=0,100}</td>
                 <td>
                     <a href="{:url('news/edit','id='.$vo['newsid'])}" class="shenglue w200" style="float:left;">{$vo.newstitle}</a>
                     <a href="{:url('comments/index','newsid='.$vo['newsid'])}"><green>({$vo.newsnum})</green></a>

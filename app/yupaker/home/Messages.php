@@ -25,12 +25,12 @@ class Messages extends Base
 		$list = MessagesModel::getMessagelist(0, 1);
 		$this->assign('list',$list);
 		//获取cookie
-		$comment = Cookie::get('comment');
-		$this->assign('comment',$comment);
+		$memid = Cookie::get('memid');
+		$this->assign('memid',$memid);
         return $this->fetch();
     }
 	/**
-	 * 发表评论
+	 * 发表留言
 	 *
 	 */
 	public function save(){

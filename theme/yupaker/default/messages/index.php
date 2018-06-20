@@ -19,10 +19,10 @@
         </svg>
 	</div>
 	<style>
-	body{background: linear-gradient(-35deg, #2aa4d5, #030633);}
+	body{background: linear-gradient(-35deg, #d9d3c1, #ffefce);}
     header{ background:none !important; position:fixed; width:100%; z-index:100; height:auto;}
     section{background: linear-gradient(-35deg, #2aa4d5, #030633);margin-top: -400px;}
-    .cannes {width: 100%;position: fixed;bottom: 0; z-index:-1;overflow: hidden;box-shadow: 0 0 150px #031f40; line-height:0;}
+    .cannes {width: 100%;position: fixed;bottom: 0; z-index:-1;overflow: hidden;box-shadow: 0 0 150px #031f40; line-height:0; display:none;}
     svg {background: #031f40;position: relative;}
     </style>
 	<script src="__JS__/moon.js"></script>
@@ -47,7 +47,26 @@
     </script>
     <div style="width:80%; margin:0 auto; padding:80px 0;">
       <dl>
-        <dt class="comments-title"></dt>
+        <dt class="comments-title">留言</dt>
+        <dd class="comments-form"><form action="{:url('messages/save')}" method="post" >
+          <ul>
+          	{if condition="$memid eq '' "}
+            <li class="comli30 nickname"><input class="inputtext" type="text" id="nick" name="nick" placeholder="尊姓大名" maxlength="10" required ></li>
+            <li class="comli30 email"><input class="inputtext" type="email" id="email" name="email" placeholder="联系邮箱" maxlength="30" required></li>
+            <li class="comli30 site"><input class="inputtext" type="text" id="site" name="site" placeholder="站点域名" ></li>
+            {/if}
+            <li class="comli100"><textarea name="content"  placeholder="留言..."></textarea></li>
+            <li class="comli30 verifycode">
+                <input class="inputtext" type="text" id="verifycode" name="verifycode" placeholder="验证码" maxlength="10" required>
+            </li><div class="codeimg">{:captcha_img()}</div>
+            <div class="clearfix"></div>
+            {:token()}
+            <li><input class="comsubmit" type="submit" value="发表评论"></li>
+          </ul>
+        </form></dd>
+      </dl>
+      <dl>
+        <dt class="comments-title">留言列表</dt>
         <dd>
           <ul class="comments-list">
             {volist name="$list" id="vo"}
@@ -56,14 +75,14 @@
               <div class="comments-body">
                 <div class="comment-name">
                   <span class="arrow left"></span>
-                  <cite class="fn">{$vo.meminfo.nick}</cite><span class="right">{$vo.addtime|date='Y-m-d H:i:s', ###} <a href="javascript:;" onClick="retextarea({$vo.id},{$vo.id},'{$vo.nickname}');">回复</a></span>
+                  <cite class="fn">{$vo.meminfo.nick}</cite><span class="right">{$vo.addtime|date='Y-m-d H:i:s', ###} <a href="javascript:;" onClick="retextarea({$vo.id},{$vo.id},'{$vo.meminfo.nick}');">回复</a></span>
                 </div>
                 <div class="comment-text">
                 {$vo.content}
                 </div>
                 <div class="recomment">
                   {volist name="$vo['childlist']" id="vol"}
-                  <div class="recomlist"><blue>{$vol.meminfo.nick}</blue> 回复： {$vol.content}  <span>{$vol.addtime|date='Y-m-d H:i:s', ###} <a href="javascript:;" onClick="retextarea({$vol.id},{$vo.id},'{$vol.nickname}');">回复</a></span></div>
+                  <div class="recomlist"><blue>{$vol.meminfo.nick}</blue> 回复： {$vol.content}  <span>{$vol.addtime|date='Y-m-d H:i:s', ###} <a href="javascript:;" onClick="retextarea({$vol.id},{$vo.id},'{$vol.meminfo.nick}');">回复</a></span></div>
                   {/volist}
                   <div class="retextarea" id="retextarea{$vo.id}">
                       
@@ -76,24 +95,7 @@
           </ul>
         </dd>
       </dl>
-      <dl>
-        <dt class="comments-title">发表评论</dt>
-        <dd class="comments-form"><form action="{:url('messages/save')}" method="post" >
-          <ul>
-            <li class="comli30 nickname"><input class="inputtext" type="text" id="nick" name="nick" placeholder="尊姓大名" maxlength="10" required ></li>
-            <li class="comli30 email"><input class="inputtext" type="email" id="email" name="email" placeholder="联系邮箱" maxlength="30" required></li>
-            <li class="comli30 site"><input class="inputtext" type="text" id="site" name="site" placeholder="站点域名" ></li>
-            <li class="comli100"><textarea name="content"  placeholder="留言..."></textarea></li>
-            <li class="comli30 verifycode">
-                <input class="inputtext" type="text" id="verifycode" name="verifycode" placeholder="验证码" maxlength="10" required>
-            </li><div class="codeimg">{:captcha_img()}</div>
-            <div class="clearfix"></div>
-            {:token()}
-            <li><input class="comsubmit" type="submit" value="发表评论"></li>
-          </ul>
-        </form></dd>
-      </dl>
-      {load href="__JS__/retextarea.js" /}
+      {load href="__JS__/messages.js" /}
     </div>
     {include file="public/foot" /}
 </div>

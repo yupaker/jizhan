@@ -13,6 +13,7 @@ namespace app\yupaker\admin;
 use app\admin\controller\Admin;
 use app\yupaker\model\YupakerComments as CommentsModel;
 use app\yupaker\model\YupakerNews as NewsModel;
+use app\common\model\AdminMember as MemberModel;
 use think\Db;
 
 /**
@@ -25,6 +26,7 @@ class Comments extends Admin
     {
         $_keywords = input('param.keywords/s');
         $newsid = input('param.newsid/s');
+        $memid = input('param.memid/s');
         $map = [];
         if ($_keywords) {
             $map['content'] = ['like', '%'.$_keywords.'%'];
@@ -32,11 +34,13 @@ class Comments extends Admin
         if ($newsid) {
             $map['newsid'] = $newsid;
         }
-        $list = CommentsModel::where($map)->paginate(50)->each(function($item, $key){
-			//回复至文章的个数
-			$item['newsnum'] = CommentsModel::where(' newsid='.$item['newsid'].'')->count();
-			//文章名称
-			$item['newstitle'] = NewsModel::where('id',$item['newsid'])->value('title');
+        if ($memid) {
+            $map['memid'] = $memid;
+        }
+        $list = CommentsModel::where($map)->order('addtime desc, id desc')->paginate(10)->each(function($item, $key){
+			$item['newsnum'] = CommentsModel::where(' newsid='.$item['newsid'].'')->count();//回复至文章的个数
+			$item['newstitle'] = NewsModel::where('id',$item['newsid'])->value('title');//文章名称
+			$item['meminfo'] = MemberModel::where('id', $item['memid'])->field('nick,email,avatar')->find()->toArray();
 			return $item;
 		});
 		$pages = $list->render();
@@ -66,7 +70,7 @@ class Comments extends Admin
         }
 		//文章名称
 		$data['newstitle'] = NewsModel::where('id',$data['newsid'])->value('title');
-		$data['emailimg'] = strstr($data['email'], '@', TRUE);
+		$data['meminfo'] = MemberModel::where('id', $data['memid'])->field('nick,email,avatar')->find()->toArray();
         $this->assign('data', $data);
         return $this->afetch();
     }

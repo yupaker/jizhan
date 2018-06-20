@@ -10,6 +10,7 @@
 // +----------------------------------------------------------------------
 namespace app\yupaker\home;
 use app\yupaker\model\YupakerNews as NewsModel;
+use app\yupaker\model\YupakerComments as CommentsModel;
 use think\Db;
 use think\Cookie;
 
@@ -56,11 +57,11 @@ class News extends Base
 		$this->assign('data',$data);
 		
 		//留言内容
-		$list = NewsModel::getCommentlist(0, 1, $id);
+		$list = CommentsModel::getCommentlist(0, 1, $id);
 		$this->assign('list',$list);
 		//获取cookie
-		$comment = Cookie::get('comment');
-		$this->assign('comment',$comment);
+		$memid = Cookie::get('memid');
+		$this->assign('memid',$memid);
 		return $this->fetch();	
 	}
 	

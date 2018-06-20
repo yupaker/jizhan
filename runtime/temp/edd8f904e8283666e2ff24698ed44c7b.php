@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:55:"E:\gitlearn\yupaker/app/yupaker\view\comments\index.php";i:1528697741;s:47:"E:\gitlearn\yupaker\app\yupaker\view\layout.php";i:1523842193;s:51:"E:\gitlearn\yupaker\app\admin\view\block\header.php";i:1523412544;s:50:"E:\gitlearn\yupaker\app\admin\view\block\layui.php";i:1523412544;s:51:"E:\gitlearn\yupaker\app\admin\view\block\footer.php";i:1523412544;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:55:"E:\gitlearn\yupaker/app/yupaker\view\comments\index.php";i:1529484620;s:47:"E:\gitlearn\yupaker\app\yupaker\view\layout.php";i:1523842193;s:51:"E:\gitlearn\yupaker\app\admin\view\block\header.php";i:1523412544;s:50:"E:\gitlearn\yupaker\app\admin\view\block\layui.php";i:1523412544;s:51:"E:\gitlearn\yupaker\app\admin\view\block\footer.php";i:1523412544;}*/ ?>
 <?php if(input('param.hisi_iframe') || cookie('hisi_iframe')): ?>
 <!DOCTYPE html>
 <html>
@@ -147,7 +147,7 @@ $ca = strtolower(request()->controller().'/'.request()->action());
         <thead>
             <tr>
                 <th width="50"><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
-                <th width="100">姓名</th>
+                <th width="120">姓名</th>
                 <th>内容</th>
                 <th width="230">文章</th>
                 <th width="80">时间</th>
@@ -159,8 +159,8 @@ $ca = strtolower(request()->controller().'/'.request()->action());
             <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
             <tr>
                 <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="<?php echo $vo['id']; ?>" lay-skin="primary"> <?php echo $vo['id']; ?></td>
-                <td><img src="<?php if($vo['qq'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $vo['qq']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36"><?php echo $vo['nickname']; ?></td>
-                <td><?php if($vo['reid'] != 0): ?>回复给<blue><?php echo $vo['rename']; ?></blue>：<?php endif; ?><?php echo msubstr($vo['content'],0,100); ?></td>
+                <td><img src='<?php echo (isset($vo['meminfo']['avatar']) && ($vo['meminfo']['avatar'] !== '')?$vo['meminfo']['avatar']:"/theme/yupaker/default/static/image/avatar.png"); ?>' style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36"><a href="<?php echo url('comments/index','memid='.$vo['memid']); ?>"><?php echo $vo['meminfo']['nick']; ?></a><br> <?php echo $vo['ip']; ?></td>
+                <td><?php if($vo['catreid'] != 0): ?>回复给<blue>【<?php echo $vo['catreid']; ?>】</blue>：<?php endif; ?><?php echo msubstr($vo['content'],0,100); ?></td>
                 <td>
                     <a href="<?php echo url('news/edit','id='.$vo['newsid']); ?>" class="shenglue w200" style="float:left;"><?php echo $vo['newstitle']; ?></a>
                     <a href="<?php echo url('comments/index','newsid='.$vo['newsid']); ?>"><green>(<?php echo $vo['newsnum']; ?>)</green></a>
@@ -232,7 +232,7 @@ $ca = strtolower(request()->controller().'/'.request()->action());
         <thead>
             <tr>
                 <th width="50"><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
-                <th width="100">姓名</th>
+                <th width="120">姓名</th>
                 <th>内容</th>
                 <th width="230">文章</th>
                 <th width="80">时间</th>
@@ -244,8 +244,8 @@ $ca = strtolower(request()->controller().'/'.request()->action());
             <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
             <tr>
                 <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="<?php echo $vo['id']; ?>" lay-skin="primary"> <?php echo $vo['id']; ?></td>
-                <td><img src="<?php if($vo['qq'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $vo['qq']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36"><?php echo $vo['nickname']; ?></td>
-                <td><?php if($vo['reid'] != 0): ?>回复给<blue><?php echo $vo['rename']; ?></blue>：<?php endif; ?><?php echo msubstr($vo['content'],0,100); ?></td>
+                <td><img src='<?php echo (isset($vo['meminfo']['avatar']) && ($vo['meminfo']['avatar'] !== '')?$vo['meminfo']['avatar']:"/theme/yupaker/default/static/image/avatar.png"); ?>' style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36"><a href="<?php echo url('comments/index','memid='.$vo['memid']); ?>"><?php echo $vo['meminfo']['nick']; ?></a><br> <?php echo $vo['ip']; ?></td>
+                <td><?php if($vo['catreid'] != 0): ?>回复给<blue>【<?php echo $vo['catreid']; ?>】</blue>：<?php endif; ?><?php echo msubstr($vo['content'],0,100); ?></td>
                 <td>
                     <a href="<?php echo url('news/edit','id='.$vo['newsid']); ?>" class="shenglue w200" style="float:left;"><?php echo $vo['newstitle']; ?></a>
                     <a href="<?php echo url('comments/index','newsid='.$vo['newsid']); ?>"><green>(<?php echo $vo['newsnum']; ?>)</green></a>
@@ -300,7 +300,7 @@ $ca = strtolower(request()->controller().'/'.request()->action());
         <thead>
             <tr>
                 <th width="50"><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
-                <th width="100">姓名</th>
+                <th width="120">姓名</th>
                 <th>内容</th>
                 <th width="230">文章</th>
                 <th width="80">时间</th>
@@ -312,8 +312,8 @@ $ca = strtolower(request()->controller().'/'.request()->action());
             <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
             <tr>
                 <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="<?php echo $vo['id']; ?>" lay-skin="primary"> <?php echo $vo['id']; ?></td>
-                <td><img src="<?php if($vo['qq'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $vo['qq']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36"><?php echo $vo['nickname']; ?></td>
-                <td><?php if($vo['reid'] != 0): ?>回复给<blue><?php echo $vo['rename']; ?></blue>：<?php endif; ?><?php echo msubstr($vo['content'],0,100); ?></td>
+                <td><img src='<?php echo (isset($vo['meminfo']['avatar']) && ($vo['meminfo']['avatar'] !== '')?$vo['meminfo']['avatar']:"/theme/yupaker/default/static/image/avatar.png"); ?>' style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36"><a href="<?php echo url('comments/index','memid='.$vo['memid']); ?>"><?php echo $vo['meminfo']['nick']; ?></a><br> <?php echo $vo['ip']; ?></td>
+                <td><?php if($vo['catreid'] != 0): ?>回复给<blue>【<?php echo $vo['catreid']; ?>】</blue>：<?php endif; ?><?php echo msubstr($vo['content'],0,100); ?></td>
                 <td>
                     <a href="<?php echo url('news/edit','id='.$vo['newsid']); ?>" class="shenglue w200" style="float:left;"><?php echo $vo['newstitle']; ?></a>
                     <a href="<?php echo url('comments/index','newsid='.$vo['newsid']); ?>"><green>(<?php echo $vo['newsnum']; ?>)</green></a>
@@ -378,7 +378,7 @@ $ca = strtolower(request()->controller().'/'.request()->action());
         <thead>
             <tr>
                 <th width="50"><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
-                <th width="100">姓名</th>
+                <th width="120">姓名</th>
                 <th>内容</th>
                 <th width="230">文章</th>
                 <th width="80">时间</th>
@@ -390,8 +390,8 @@ $ca = strtolower(request()->controller().'/'.request()->action());
             <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
             <tr>
                 <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="<?php echo $vo['id']; ?>" lay-skin="primary"> <?php echo $vo['id']; ?></td>
-                <td><img src="<?php if($vo['qq'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $vo['qq']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36"><?php echo $vo['nickname']; ?></td>
-                <td><?php if($vo['reid'] != 0): ?>回复给<blue><?php echo $vo['rename']; ?></blue>：<?php endif; ?><?php echo msubstr($vo['content'],0,100); ?></td>
+                <td><img src='<?php echo (isset($vo['meminfo']['avatar']) && ($vo['meminfo']['avatar'] !== '')?$vo['meminfo']['avatar']:"/theme/yupaker/default/static/image/avatar.png"); ?>' style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36"><a href="<?php echo url('comments/index','memid='.$vo['memid']); ?>"><?php echo $vo['meminfo']['nick']; ?></a><br> <?php echo $vo['ip']; ?></td>
+                <td><?php if($vo['catreid'] != 0): ?>回复给<blue>【<?php echo $vo['catreid']; ?>】</blue>：<?php endif; ?><?php echo msubstr($vo['content'],0,100); ?></td>
                 <td>
                     <a href="<?php echo url('news/edit','id='.$vo['newsid']); ?>" class="shenglue w200" style="float:left;"><?php echo $vo['newstitle']; ?></a>
                     <a href="<?php echo url('comments/index','newsid='.$vo['newsid']); ?>"><green>(<?php echo $vo['newsnum']; ?>)</green></a>

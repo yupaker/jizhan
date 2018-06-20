@@ -9,46 +9,14 @@
 // | Author: yupaker
 // +----------------------------------------------------------------------
 namespace app\yupaker\model;
+use app\common\model\AdminMember as MemberModel;
 
 use think\Model;
 use think\Loader;
-
-use app\common\model\AdminMember as MemberModel;
+use think\Cookie;
 
 class YupakerMessages extends Model
 {
-    // 定义时间戳字段名
-    protected $createTime = 'retime';
-    protected $updateTime = false;
-    // 自动写入时间戳
-    protected $autoWriteTimestamp = true;
-
-
-    /**
-     * 回复留言
-     * @param array $data 入库数据
-     * @author yupaker
-     * @return bool
-     */  
-    public function storage($data = [])
-    {
-        if (empty($data)) {
-            $data = request()->post();
-        }
-
-        if (isset($data['id']) && !empty($data['id'])) {
-            $res = $this->update($data);
-        } else {
-            $res = $this->create($data);
-        }
-        if (!$res) {
-            $this->error = '保存失败';
-            return false;
-        }
-        
-        return $res;
-    }
-	
 	/**
      * 获取留言列表
      * @param int $reid 回复id
@@ -61,8 +29,13 @@ class YupakerMessages extends Model
     {
 		$map['reid'] = $reid;
 		$map['status'] = $status;
+		if($reid == 0){
+			$order = "addtime desc,id desc";
+		}else{
+			$order = "addtime asc,id asc";
+		}
 		
-		$list = self::where($map)->order('addtime desc,id desc')->select();
+		$list = self::where($map)->order($order)->select();
 		if($list){
 			foreach ($list as $k => $v) {
 				$list[$k]['childlist'] = self::getMessagelist($v['id'], $status);
@@ -73,7 +46,7 @@ class YupakerMessages extends Model
     }
 	
 	/**
-     * 发表评论
+     * 发表留言
      * @param array $data 入库数据
      * @author yupaker
      * @return $res
@@ -83,63 +56,53 @@ class YupakerMessages extends Model
         if (empty($data)) {
             $data = request()->post();
         }
-		$valid = Loader::validate('Messages');
-		if($valid->check($data) !== true) {
-			$this->error = $valid->getError();
-			return false;
-		}
-		if(!captcha_check($data['verifycode'])) {
+		if(empty($data['reid']) && !captcha_check($data['verifycode'])) {
 			// 校验失败
             $this->error = '验证码不正确';
 			return false;
 		}
-		//过滤昵称里面的表情符号
-		$mod = new MemberModel();
-		$data['nick'] = $mod->setNickAttr($data['nick']);
-		$arr = array(
-			'nick'=> $data['nick'],
-			'email'=> $data['email'],
-			'site'=> $data['site'],
-		);
-		//为访客生成游客会员身份
-		$memid = $mod->msgcreatemem($arr);
-		unset($arr);
+		//获取cookie 有效期为一周
+		$memid = Cookie::get('memid');
+		if(empty($memid)){
+			if(!empty($data['reid'])){
+				// 回复失败
+				$this->error = '网站没有您的信息无法回复，请先发表评论吧';
+				return false;
+			}
+			$valid = Loader::validate('Messages');
+			if($valid->check($data) !== true) {
+				$this->error = $valid->getError();
+				return false;
+			}
+			//过滤昵称里面的表情符号
+			$mod = new MemberModel();
+			$data['nick'] = $mod->setNickAttr($data['nick']);
+			$arr = array(
+				'nick'=> $data['nick'],
+				'email'=> $data['email'],
+				'site'=> $data['site'],
+			);
+			//为访客生成游客会员身份
+			$memid = $mod->msgcreatemem($arr);
+			unset($arr);
+		}
+		// 设置Cookie 有效期为一周,留言刷新cookie时间
+		Cookie::set('memid',$memid,604800);
 		$arr = array(
 			'content'=> $data['content'],
 			'addtime'=> time(),
 			'ip'=> get_client_ip(),
-			'status'=> 1,
+			'status'=> 1,//直接留言成功
 			'memid'=> $memid,
-		);
-		print_r($arr);
-		exit;
-		
-		
-		
-		unset($data['verifycode']);
-        if (isset($data['newsid']) && !empty($data['newsid'])) {
-			$data['addtime'] = time();
-			$data['ip'] = get_client_ip();
-			$data['status'] = 1; //直接成功
-            $res = $this->create($data);
+			'reid'=> empty($data['reid'])?0:$data['reid'],
+			'catreid'=> empty($data['catreid'])?0:$data['catreid'],
 			
-			$comment =array(
-				'nickname' => $data['nickname'],
-				'email' => $data['email'],
-				'site' => $data['site'],
-			);
-			// 设置Cookie 有效期为一周
-			Cookie::set('comment',$comment,604800);
-        } else {
-            $this->error = '保存失败';
-            return false;
-        }
+		);
+        $res = $this->create($arr);
         if (!$res) {
             $this->error = '保存失败';
             return false;
         }
-        
         return $res;
     }
-	
 }

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:35:"theme\yupaker\default\news\show.php";i:1528789039;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\head.php";i:1524129565;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\index_head.php";i:1528859023;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\avatar_box.php";i:1524129961;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\menu.php";i:1524037356;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\left.php";i:1524105406;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\foot.php";i:1523931524;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:35:"theme\yupaker\default\news\show.php";i:1529480851;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\head.php";i:1524129565;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\index_head.php";i:1528859023;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\avatar_box.php";i:1524129961;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\menu.php";i:1524037356;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\left.php";i:1524105406;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\foot.php";i:1523931524;}*/ ?>
 <?php defined("IN_SYSTEM") or die("Access Denied");/* 防止模板被盗 */?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -164,18 +164,18 @@
                       <ul class="comments-list">
                         <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                       	<li class="comments-li">
-                          <div class="author-img"><img src='<?php if($vo['emailimg'] == ''): ?>/theme/yupaker/default/static/image/avatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $vo['emailimg']; ?>&s=100<?php endif; ?>' ></div>
+                          <div class="author-img"><img src='<?php echo (isset($vo['meminfo']['avatar']) && ($vo['meminfo']['avatar'] !== '')?$vo['meminfo']['avatar']:"/theme/yupaker/default/static/image/avatar.png"); ?>' ></div>
                           <div class="comments-body">
                             <div class="comment-name">
                               <span class="arrow left"></span>
-                              <cite class="fn"><?php echo $vo['nickname']; ?></cite><span class="right"><?php echo date('Y-m-d H:i:s', $vo['addtime']); ?> <a href="javascript:;" onClick="retextarea(<?php echo $vo['id']; ?>,<?php echo $vo['id']; ?>,'<?php echo $vo['nickname']; ?>');">回复</a></span>
+                              <cite class="fn"><?php echo $vo['meminfo']['nick']; ?></cite><span class="right"><?php echo date('Y-m-d H:i:s', $vo['addtime']); ?> <a href="javascript:;" onClick="retextarea(<?php echo $vo['id']; ?>,<?php echo $vo['id']; ?>,'<?php echo $vo['meminfo']['nick']; ?>',<?php echo $vo['newsid']; ?>);">回复</a></span>
                             </div>
                             <div class="comment-text">
                             <?php echo $vo['content']; ?>
                             </div>
                             <div class="recomment">
                               <?php if(is_array($vo['childlist']) || $vo['childlist'] instanceof \think\Collection || $vo['childlist'] instanceof \think\Paginator): $i = 0; $__LIST__ = $vo['childlist'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vol): $mod = ($i % 2 );++$i;?>
-                              <div class="recomlist"><blue><?php echo $vol['nickname']; ?></blue> 回复 <blue><?php echo $vol['rename']; ?></blue> ： <?php echo $vol['content']; ?>  <span><?php echo date('Y-m-d H:i:s', $vol['addtime']); ?> <a href="javascript:;" onClick="retextarea(<?php echo $vol['id']; ?>,<?php echo $vo['id']; ?>,'<?php echo $vol['nickname']; ?>');">回复</a></span></div>
+                              <div class="recomlist"><blue><?php echo $vol['meminfo']['nick']; ?></blue> 回复： <?php echo $vol['content']; ?>  <span><?php echo date('Y-m-d H:i:s', $vol['addtime']); ?> <a href="javascript:;" onClick="retextarea(<?php echo $vol['id']; ?>,<?php echo $vo['id']; ?>,'<?php echo $vol['meminfo']['nick']; ?>',<?php echo $vo['newsid']; ?>);">回复</a></span></div>
                               <?php endforeach; endif; else: echo "" ;endif; ?>
                               <div class="retextarea" id="retextarea<?php echo $vo['id']; ?>">
                                   
@@ -192,21 +192,24 @@
                     <dt class="comments-title">发表评论</dt>
                     <dd class="comments-form"><form action="<?php echo url('comments/save'); ?>" method="post" >
                       <ul>
-                    	<li class="comli30 nickname"><input class="inputtext" type="text" id="nickname" name="nickname" placeholder="尊姓大名" maxlength="10" required <?php if($comment['nickname'] != ''): ?>value="<?php echo $comment['nickname']; ?>" disabled <?php endif; ?>></li>
-                    	<li class="comli30 email"><input class="inputtext" type="email" id="email" name="email" placeholder="联系邮箱" maxlength="30" required <?php if($comment['email'] != ''): ?>value="<?php echo $comment['email']; ?>" disabled <?php endif; ?>></li>
-                    	<li class="comli30 site"><input class="inputtext" type="text" id="site" name="site" placeholder="站点域名" <?php if($comment['site'] != ''): ?>value="<?php echo $comment['site']; ?>" disabled <?php endif; ?>></li>
-                        <li class="comli100"><textarea name="content"  placeholder="留言..."></textarea></li>
+                        <?php if($memid == ''): ?>
+                        <li class="comli30 nickname"><input class="inputtext" type="text" id="nick" name="nick" placeholder="尊姓大名" maxlength="10" required ></li>
+                        <li class="comli30 email"><input class="inputtext" type="email" id="email" name="email" placeholder="联系邮箱" maxlength="30" required></li>
+                        <li class="comli30 site"><input class="inputtext" type="text" id="site" name="site" placeholder="站点域名" ></li>
+                        <?php endif; ?>
+                        <li class="comli100"><textarea name="content"  placeholder="评论..."></textarea></li>
                     	<li class="comli30 verifycode">
                         	<input class="inputtext" type="text" id="verifycode" name="verifycode" placeholder="验证码" maxlength="10" required>
                         </li><div class="codeimg"><?php echo captcha_img(); ?></div>
                         <div class="clearfix"></div>
+            			<?php echo token(); ?>
                         <input type="hidden" name="newsid" value="<?php echo $data['id']; ?>">
                         <li><input class="comsubmit" type="submit" value="发表评论"></li>
                       </ul>
                     </form></dd>
                   </dl>
                   
-    			  <script type="text/javascript" src="/theme/yupaker/default/static/js/retextarea.js"></script>
+    			  <script type="text/javascript" src="/theme/yupaker/default/static/js/comments.js"></script>
                 </div>
               </div>
             </div>

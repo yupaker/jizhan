@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:54:"E:\gitlearn\yupaker/app/yupaker\view\comments\edit.php";i:1528699096;s:47:"E:\gitlearn\yupaker\app\yupaker\view\layout.php";i:1523842193;s:51:"E:\gitlearn\yupaker\app\admin\view\block\header.php";i:1523412544;s:50:"E:\gitlearn\yupaker\app\admin\view\block\layui.php";i:1523412544;s:51:"E:\gitlearn\yupaker\app\admin\view\block\footer.php";i:1523412544;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:54:"E:\gitlearn\yupaker/app/yupaker\view\comments\edit.php";i:1529484826;s:47:"E:\gitlearn\yupaker\app\yupaker\view\layout.php";i:1523842193;s:51:"E:\gitlearn\yupaker\app\admin\view\block\header.php";i:1523412544;s:50:"E:\gitlearn\yupaker\app\admin\view\block\layui.php";i:1523412544;s:51:"E:\gitlearn\yupaker\app\admin\view\block\footer.php";i:1523412544;}*/ ?>
 <?php if(input('param.hisi_iframe') || cookie('hisi_iframe')): ?>
 <!DOCTYPE html>
 <html>
@@ -136,11 +136,11 @@ $ca = strtolower(request()->controller().'/'.request()->action());
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
-    <?php if($data['reid'] != 0): ?>
+    <?php if($data['catreid'] != 0): ?>
     <div class="layui-form-item">
         <label class="layui-form-label">回复给</label>
         <div class="layui-input-inline w500">
-            <div class="layui-input"><a href="<?php echo url('edit?id='.$data['reid']); ?>" class="shenglue"><?php echo $data['rename']; ?></a></div>
+            <div class="layui-input"><a href="<?php echo url('edit?id='.$data['reid']); ?>" class="shenglue"><?php echo $data['catreid']; ?></a></div>
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
@@ -154,15 +154,15 @@ $ca = strtolower(request()->controller().'/'.request()->action());
     <div class="layui-form-item">
         <label class="layui-form-label">姓名</label>
         <div class="layui-input-inline w200">
-            <div class="layui-input"><?php echo $data['nickname']; ?></div>
+            <div class="layui-input"><?php echo $data['meminfo']['nick']; ?></div>
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">E-mail</label>
         <div class="layui-input-inline w200">
-            <div class="layui-input" style="width:150px; float:left; margin-right:10px;"><?php echo $data['email']; ?></div>
-            <img src="<?php if($data['emailimg'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $data['emailimg']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
+            <div class="layui-input" style="width:150px; float:left; margin-right:10px;"><?php echo $data['meminfo']['email']; ?></div>
+            <img src='<?php echo (isset($vo['meminfo']['avatar']) && ($vo['meminfo']['avatar'] !== '')?$vo['meminfo']['avatar']:"/theme/yupaker/default/static/image/avatar.png"); ?>' style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
@@ -243,11 +243,11 @@ var formData = <?php echo json_encode($data); ?>;
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
-    <?php if($data['reid'] != 0): ?>
+    <?php if($data['catreid'] != 0): ?>
     <div class="layui-form-item">
         <label class="layui-form-label">回复给</label>
         <div class="layui-input-inline w500">
-            <div class="layui-input"><a href="<?php echo url('edit?id='.$data['reid']); ?>" class="shenglue"><?php echo $data['rename']; ?></a></div>
+            <div class="layui-input"><a href="<?php echo url('edit?id='.$data['reid']); ?>" class="shenglue"><?php echo $data['catreid']; ?></a></div>
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
@@ -261,15 +261,15 @@ var formData = <?php echo json_encode($data); ?>;
     <div class="layui-form-item">
         <label class="layui-form-label">姓名</label>
         <div class="layui-input-inline w200">
-            <div class="layui-input"><?php echo $data['nickname']; ?></div>
+            <div class="layui-input"><?php echo $data['meminfo']['nick']; ?></div>
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">E-mail</label>
         <div class="layui-input-inline w200">
-            <div class="layui-input" style="width:150px; float:left; margin-right:10px;"><?php echo $data['email']; ?></div>
-            <img src="<?php if($data['emailimg'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $data['emailimg']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
+            <div class="layui-input" style="width:150px; float:left; margin-right:10px;"><?php echo $data['meminfo']['email']; ?></div>
+            <img src='<?php echo (isset($vo['meminfo']['avatar']) && ($vo['meminfo']['avatar'] !== '')?$vo['meminfo']['avatar']:"/theme/yupaker/default/static/image/avatar.png"); ?>' style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
@@ -333,11 +333,11 @@ var formData = <?php echo json_encode($data); ?>;
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
-    <?php if($data['reid'] != 0): ?>
+    <?php if($data['catreid'] != 0): ?>
     <div class="layui-form-item">
         <label class="layui-form-label">回复给</label>
         <div class="layui-input-inline w500">
-            <div class="layui-input"><a href="<?php echo url('edit?id='.$data['reid']); ?>" class="shenglue"><?php echo $data['rename']; ?></a></div>
+            <div class="layui-input"><a href="<?php echo url('edit?id='.$data['reid']); ?>" class="shenglue"><?php echo $data['catreid']; ?></a></div>
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
@@ -351,15 +351,15 @@ var formData = <?php echo json_encode($data); ?>;
     <div class="layui-form-item">
         <label class="layui-form-label">姓名</label>
         <div class="layui-input-inline w200">
-            <div class="layui-input"><?php echo $data['nickname']; ?></div>
+            <div class="layui-input"><?php echo $data['meminfo']['nick']; ?></div>
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">E-mail</label>
         <div class="layui-input-inline w200">
-            <div class="layui-input" style="width:150px; float:left; margin-right:10px;"><?php echo $data['email']; ?></div>
-            <img src="<?php if($data['emailimg'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $data['emailimg']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
+            <div class="layui-input" style="width:150px; float:left; margin-right:10px;"><?php echo $data['meminfo']['email']; ?></div>
+            <img src='<?php echo (isset($vo['meminfo']['avatar']) && ($vo['meminfo']['avatar'] !== '')?$vo['meminfo']['avatar']:"/theme/yupaker/default/static/image/avatar.png"); ?>' style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
@@ -433,11 +433,11 @@ var formData = <?php echo json_encode($data); ?>;
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
-    <?php if($data['reid'] != 0): ?>
+    <?php if($data['catreid'] != 0): ?>
     <div class="layui-form-item">
         <label class="layui-form-label">回复给</label>
         <div class="layui-input-inline w500">
-            <div class="layui-input"><a href="<?php echo url('edit?id='.$data['reid']); ?>" class="shenglue"><?php echo $data['rename']; ?></a></div>
+            <div class="layui-input"><a href="<?php echo url('edit?id='.$data['reid']); ?>" class="shenglue"><?php echo $data['catreid']; ?></a></div>
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
@@ -451,15 +451,15 @@ var formData = <?php echo json_encode($data); ?>;
     <div class="layui-form-item">
         <label class="layui-form-label">姓名</label>
         <div class="layui-input-inline w200">
-            <div class="layui-input"><?php echo $data['nickname']; ?></div>
+            <div class="layui-input"><?php echo $data['meminfo']['nick']; ?></div>
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">E-mail</label>
         <div class="layui-input-inline w200">
-            <div class="layui-input" style="width:150px; float:left; margin-right:10px;"><?php echo $data['email']; ?></div>
-            <img src="<?php if($data['emailimg'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $data['emailimg']; ?>&s=100<?php endif; ?>" style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
+            <div class="layui-input" style="width:150px; float:left; margin-right:10px;"><?php echo $data['meminfo']['email']; ?></div>
+            <img src='<?php echo (isset($vo['meminfo']['avatar']) && ($vo['meminfo']['avatar'] !== '')?$vo['meminfo']['avatar']:"/theme/yupaker/default/static/image/avatar.png"); ?>' style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
