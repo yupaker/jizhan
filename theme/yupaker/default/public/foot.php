@@ -5,4 +5,4 @@
     	<p class="power">ICP备案号：津ICP备00000000号</p>
       </div>
     </footer>
-<script src="__JS__/canvas-nest.min.js"></script>
+<!--script src="__JS__/canvas-nest.min.js"></script-->

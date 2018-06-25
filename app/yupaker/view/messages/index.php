@@ -18,25 +18,22 @@
 <form id="pageListForm">
 <div class="layui-form">
     <table class="layui-table mt10" lay-even="" lay-skin="row">
-        <colgroup>
-            <col width="50">
-        </colgroup>
         <thead>
             <tr>
-                <th><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
+                <th width="50"><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
+                <th width="120">姓名</th>
                 <th>内容</th>
-                <th>姓名</th>
-                <th>时间</th>
-                <th>状态</th>
-                <th>操作</th>
+                <th width="80">时间</th>
+                <th width="60">状态</th>
+                <th width="120">操作</th>
             </tr> 
         </thead>
         <tbody>
             {volist name="list" id="vo"}
             <tr>
-                <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="{$vo['id']}" lay-skin="primary"></td>
-                <td>{$vo['content']|msubstr=0,100}</td>
-                <td>{$vo['nickname']}</td>
+                <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="{$vo['id']}" lay-skin="primary"> {$vo['id']}</td>
+                <td><img src='{$vo.meminfo.avatar|default="__IMG__/avatar.png"}' style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36"><a href="{:url('comments/index','memid='.$vo['memid'])}">{$vo.meminfo.nick}</a><br> {$vo.ip}</td>
+                <td>{if condition="$vo.catreid neq 0"}回复给<blue>【{$vo.catreid}】</blue>：{/if}{$vo['content']|msubstr=0,100}</td>
                 <td>{$vo.addtime|date='Y-m-d H:i:s',###}</td>
                 <td><input type="checkbox" name="status" {if condition="$vo['status'] eq 1"}checked=""{/if} value="{$vo['status']}" lay-skin="switch" lay-filter="switchStatus" lay-text="通过|审核" data-href="{:url('status?table=yupaker_messages&ids='.$vo['id'])}"></td>
                 <td>

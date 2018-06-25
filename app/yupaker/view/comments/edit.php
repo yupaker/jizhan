@@ -62,6 +62,12 @@
         </div>
     </div>
     <div class="layui-form-item">
+        <label class="layui-form-label">回复内容</label>
+        <div class="layui-input-block w500" style="overflow:hidden;padding:0 10px 0 0">
+            <textarea name="recontent" class="field-recontent layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
         <div class="layui-input-block">
             <input type="hidden" class="field-id" name="id">
             <button type="submit" class="layui-btn" lay-submit="" lay-filter="formSubmit">提交</button>

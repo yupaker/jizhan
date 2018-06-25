@@ -3,6 +3,15 @@
 </style>
 <form class="layui-form layui-form-pane" action="{:url()}" method="post" id="editForm">
 <div class="page-form">
+	{if condition="$data.catreid neq 0"}
+    <div class="layui-form-item">
+        <label class="layui-form-label">回复给</label>
+        <div class="layui-input-inline w500">
+            <div class="layui-input"><a href="{:url('edit?id='.$data['reid'])}" class="shenglue">{$data.catreid}</a></div>
+        </div>
+        <div class="layui-form-mid layui-word-aux"></div>
+    </div>
+    {/if}
     <div class="layui-form-item">
         <label class="layui-form-label">内容</label>
         <div class="layui-input-block w500" style="overflow:hidden;padding:0 10px 0 0">
@@ -12,15 +21,15 @@
     <div class="layui-form-item">
         <label class="layui-form-label">姓名</label>
         <div class="layui-input-inline w200">
-            <div class="layui-input">{$data.nickname}</div>
+            <div class="layui-input">{$data.meminfo.nick}</div>
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
     <div class="layui-form-item">
-        <label class="layui-form-label">QQ</label>
+        <label class="layui-form-label">E-mail</label>
         <div class="layui-input-inline w200">
-            <div class="layui-input" style="width:150px; float:left; margin-right:10px;">{$data.qq}</div>
-            <img src="{if condition="$data.qq eq '' "}__ADMIN_IMG__/gravatar.png{else /}https://q1.qlogo.cn/g?b=qq&nk={$data.qq}&s=100{/if}" style="border-radius:5px;border:1px solid #ccc; float:left;" width="36" height="36">
+            <div class="layui-input" style="width:150px; float:left; margin-right:10px;">{$data.meminfo.email}</div>
+            <img src='{$vo.meminfo.avatar|default="__IMG__/avatar.png"}' style="border-radius:50%;border:1px solid #ccc; float:left;" width="36" height="36">
         </div>
         <div class="layui-form-mid layui-word-aux"></div>
     </div>
@@ -47,8 +56,8 @@
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">回复内容</label>
-        <div class="layui-input-block" style="overflow:hidden;padding:0 10px 0 0">
-            <textarea id="content" name="recontent" class="field-recontent"></textarea>
+        <div class="layui-input-block w500" style="overflow:hidden;padding:0 10px 0 0">
+            <textarea name="recontent" class="field-recontent layui-textarea"></textarea>
         </div>
     </div>
     <div class="layui-form-item">

@@ -12,6 +12,7 @@
 namespace app\yupaker\admin;
 use app\admin\controller\Admin;
 use app\yupaker\model\YupakerMessages as MessagesModel;
+use app\common\model\AdminMember as MemberModel;
 use think\Db;
 
 /**
@@ -27,7 +28,10 @@ class Messages extends Admin
         if ($_keywords) {
             $map['content'] = ['like', '%'.$_keywords.'%'];
         }
-        $list = MessagesModel::where($map)->paginate(50);
+        $list = MessagesModel::where($map)->order('addtime desc, id desc')->paginate(10)->each(function($item, $key){
+			$item['meminfo'] = MemberModel::where('id', $item['memid'])->field('nick,email,avatar')->find()->toArray();
+			return $item;
+		});
 		$pages = $list->render();
         $this->assign('list', $list);
         $this->assign('pages', $pages);
@@ -53,6 +57,7 @@ class Messages extends Admin
 		if (!$data) {
             return $this->error('留言不存在');
         }
+		$data['meminfo'] = MemberModel::where('id', $data['memid'])->field('nick,email,avatar')->find()->toArray();
         $this->assign('data', $data);
         return $this->afetch();
     }

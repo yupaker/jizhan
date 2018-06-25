@@ -105,4 +105,40 @@ class YupakerMessages extends Model
         }
         return $res;
     }
+	
+	/**
+     * 后台回复评论
+     * @param array $data 入库数据
+     * @author yupaker
+     * @return bool
+     */  
+	public function storage($data = [])
+    {
+       if (empty($data)) {
+            $data = request()->post();
+        }
+		if(empty($data['recontent'])){
+            $res = $this->update($data);
+		}else{
+			//回复
+			$reid = self::where('id = '.$data['id'].'')->value('reid');
+			$arr = array(
+				'content'=>$data['recontent'],
+				'addtime'=> time(),
+				'ip'=> get_client_ip(),
+				'status'=> 1,//直接留言成功
+				'memid'=> '1000000',
+				'reid'=> empty($reid)?0:$reid,
+				'catreid'=> empty($data['id'])?0:$data['id'],
+			);
+            $res = $this->create($arr);
+		}
+        if (!$res) {
+            $this->error = '保存失败';
+            return false;
+        }
+        return $res;
+    }
+
+	
 }

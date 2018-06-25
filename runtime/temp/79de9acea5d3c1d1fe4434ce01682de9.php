@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:54:"E:\gitlearn\yupaker/app/yupaker\view\comments\edit.php";i:1529484826;s:47:"E:\gitlearn\yupaker\app\yupaker\view\layout.php";i:1523842193;s:51:"E:\gitlearn\yupaker\app\admin\view\block\header.php";i:1523412544;s:50:"E:\gitlearn\yupaker\app\admin\view\block\layui.php";i:1523412544;s:51:"E:\gitlearn\yupaker\app\admin\view\block\footer.php";i:1523412544;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:54:"E:\gitlearn\yupaker/app/yupaker\view\comments\edit.php";i:1529898539;s:47:"E:\gitlearn\yupaker\app\yupaker\view\layout.php";i:1523842193;s:51:"E:\gitlearn\yupaker\app\admin\view\block\header.php";i:1523412544;s:50:"E:\gitlearn\yupaker\app\admin\view\block\layui.php";i:1523412544;s:51:"E:\gitlearn\yupaker\app\admin\view\block\footer.php";i:1523412544;}*/ ?>
 <?php if(input('param.hisi_iframe') || cookie('hisi_iframe')): ?>
 <!DOCTYPE html>
 <html>
@@ -188,6 +188,12 @@ $ca = strtolower(request()->controller().'/'.request()->action());
         </div>
     </div>
     <div class="layui-form-item">
+        <label class="layui-form-label">回复内容</label>
+        <div class="layui-input-block w500" style="overflow:hidden;padding:0 10px 0 0">
+            <textarea name="recontent" class="field-recontent layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
         <div class="layui-input-block">
             <input type="hidden" class="field-id" name="id">
             <button type="submit" class="layui-btn" lay-submit="" lay-filter="formSubmit">提交</button>
@@ -295,6 +301,12 @@ var formData = <?php echo json_encode($data); ?>;
         </div>
     </div>
     <div class="layui-form-item">
+        <label class="layui-form-label">回复内容</label>
+        <div class="layui-input-block w500" style="overflow:hidden;padding:0 10px 0 0">
+            <textarea name="recontent" class="field-recontent layui-textarea"></textarea>
+        </div>
+    </div>
+    <div class="layui-form-item">
         <div class="layui-input-block">
             <input type="hidden" class="field-id" name="id">
             <button type="submit" class="layui-btn" lay-submit="" lay-filter="formSubmit">提交</button>
@@ -382,6 +394,12 @@ var formData = <?php echo json_encode($data); ?>;
             <input type="radio" class="field-status" name="status" value="0" title="未审核" checked>
             <input type="radio" class="field-status" name="status" value="1" title="通过">
             <input type="radio" class="field-status" name="status" value="2" title="驳回">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">回复内容</label>
+        <div class="layui-input-block w500" style="overflow:hidden;padding:0 10px 0 0">
+            <textarea name="recontent" class="field-recontent layui-textarea"></textarea>
         </div>
     </div>
     <div class="layui-form-item">
@@ -482,6 +500,12 @@ var formData = <?php echo json_encode($data); ?>;
             <input type="radio" class="field-status" name="status" value="0" title="未审核" checked>
             <input type="radio" class="field-status" name="status" value="1" title="通过">
             <input type="radio" class="field-status" name="status" value="2" title="驳回">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">回复内容</label>
+        <div class="layui-input-block w500" style="overflow:hidden;padding:0 10px 0 0">
+            <textarea name="recontent" class="field-recontent layui-textarea"></textarea>
         </div>
     </div>
     <div class="layui-form-item">

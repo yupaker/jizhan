@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:40:"theme\yupaker\default\messages\index.php";i:1529474060;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\head.php";i:1524129565;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\index_head.php";i:1528859023;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\foot.php";i:1523931524;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:40:"theme\yupaker\default\messages\index.php";i:1529890570;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\head.php";i:1524129565;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\index_head.php";i:1528859023;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\foot.php";i:1529890090;}*/ ?>
 <?php defined("IN_SYSTEM") or die("Access Denied");/* 防止模板被盗 */?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -56,7 +56,7 @@
         </svg>
 	</div>
 	<style>
-	body{background: linear-gradient(-35deg, #d9d3c1, #ffefce);}
+	body{background:linear-gradient(-35deg, #f7f6f1, #ffefce);}
     header{ background:none !important; position:fixed; width:100%; z-index:100; height:auto;}
     section{background: linear-gradient(-35deg, #2aa4d5, #030633);margin-top: -400px;}
     .cannes {width: 100%;position: fixed;bottom: 0; z-index:-1;overflow: hidden;box-shadow: 0 0 150px #031f40; line-height:0; display:none;}
@@ -85,7 +85,7 @@
     <div style="width:80%; margin:0 auto; padding:80px 0;">
       <dl>
         <dt class="comments-title">留言</dt>
-        <dd class="comments-form"><form action="<?php echo url('messages/save'); ?>" method="post" >
+        <dd class="comments-form" style="overflow:hidden; margin-bottom:40px;"><form action="<?php echo url('messages/save'); ?>" method="post" >
           <ul>
           	<?php if($memid == ''): ?>
             <li class="comli30 nickname"><input class="inputtext" type="text" id="nick" name="nick" placeholder="尊姓大名" maxlength="10" required ></li>
@@ -95,15 +95,15 @@
             <li class="comli100"><textarea name="content"  placeholder="留言..."></textarea></li>
             <li class="comli30 verifycode">
                 <input class="inputtext" type="text" id="verifycode" name="verifycode" placeholder="验证码" maxlength="10" required>
-            </li><div class="codeimg"><?php echo captcha_img(); ?></div>
-            <div class="clearfix"></div>
+            </li>
+            <div class="codeimg" style="float:left;"><?php echo captcha_img(); ?></div>
             <?php echo token(); ?>
-            <li><input class="comsubmit" type="submit" value="发表评论"></li>
+            <li style="float:right;"><input class="comsubmit" type="submit" value="发表评论"></li>
           </ul>
         </form></dd>
       </dl>
       <dl>
-        <dt class="comments-title">留言列表</dt>
+        <dt class="comments-title"></dt>
         <dd>
           <ul class="comments-list">
             <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
@@ -141,7 +141,7 @@
     	<p class="power">ICP备案号：津ICP备00000000号</p>
       </div>
     </footer>
-<script src="/theme/yupaker/default/static/js/canvas-nest.min.js"></script>
+<!--script src="/theme/yupaker/default/static/js/canvas-nest.min.js"></script-->
 </div>
 </body>
 </html>
