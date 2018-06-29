@@ -62,6 +62,15 @@ class News extends Base
 		//获取cookie
 		$memid = Cookie::get('memid');
 		$this->assign('memid',$memid);
+		
+		
+		$toemail='838764236@qq.com';
+        $name='838764236';
+        $subject='QQ邮件发送测试';
+        $content='恭喜你，邮件测试成功。';
+        //dump(send_mail($toemail,$name,$subject,$content));
+		
+		
 		return $this->fetch();	
 	}
 	

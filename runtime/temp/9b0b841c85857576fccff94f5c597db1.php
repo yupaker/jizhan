@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:40:"theme\yupaker\default\messages\index.php";i:1529890570;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\head.php";i:1524129565;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\index_head.php";i:1528859023;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\foot.php";i:1529890090;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:40:"theme\yupaker\default\messages\index.php";i:1530240845;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\head.php";i:1530240845;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\index_head.php";i:1530240845;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\foot.php";i:1530240845;}*/ ?>
 <?php defined("IN_SYSTEM") or die("Access Denied");/* 防止模板被盗 */?>
 <!DOCTYPE html>
 <html lang="zh-CN">

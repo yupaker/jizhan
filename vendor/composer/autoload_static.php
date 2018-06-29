@@ -7,25 +7,23 @@ namespace Composer\Autoload;
 class ComposerStaticInit547f1ba8138a17d6b867624279d0c7eb
 {
     public static $files = array (
-        '9b552a3cc426e3287cc811caefa3cf53' => __DIR__ . '/..' . '/topthink/think-helper/src/helper.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '9b552a3cc426e3287cc811caefa3cf53' => __DIR__ . '/..' . '/topthink/think-helper/src/helper.php',
         '1cfd2761b63b0a29ed23657ea394cb2d' => __DIR__ . '/..' . '/topthink/think-captcha/src/helper.php',
-        '72c97b53391125cae04082a81029f42d' => __DIR__ . '/..' . '/topthink/think-testing/src/config.php',
         'ddc3cd2a04224f9638c5d0de6a69c7e3' => __DIR__ . '/..' . '/topthink/think-migration/src/config.php',
         'cc56288302d9df745d97c934d6a6e5f0' => __DIR__ . '/..' . '/topthink/think-queue/src/common.php',
+        '72c97b53391125cae04082a81029f42d' => __DIR__ . '/..' . '/topthink/think-testing/src/config.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         't' => 
         array (
-            'think\\worker\\' => 13,
             'think\\testing\\' => 14,
-            'think\\mongo\\' => 12,
             'think\\migration\\' => 16,
             'think\\helper\\' => 13,
             'think\\composer\\' => 15,
             'think\\captcha\\' => 14,
-            'think\\angular\\' => 14,
             'think\\' => 6,
         ),
         'p' => 
@@ -34,18 +32,19 @@ class ComposerStaticInit547f1ba8138a17d6b867624279d0c7eb
         ),
         'W' => 
         array (
-            'Workerman\\' => 10,
             'Webmozart\\Assert\\' => 17,
         ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\DomCrawler\\' => 29,
         ),
         'P' => 
         array (
             'Phinx\\' => 6,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
         'D' => 
         array (
@@ -54,17 +53,9 @@ class ComposerStaticInit547f1ba8138a17d6b867624279d0c7eb
     );
 
     public static $prefixDirsPsr4 = array (
-        'think\\worker\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/topthink/think-worker/src',
-        ),
         'think\\testing\\' => 
         array (
             0 => __DIR__ . '/..' . '/topthink/think-testing/src',
-        ),
-        'think\\mongo\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/topthink/think-mongo/src',
         ),
         'think\\migration\\' => 
         array (
@@ -82,25 +73,16 @@ class ComposerStaticInit547f1ba8138a17d6b867624279d0c7eb
         array (
             0 => __DIR__ . '/..' . '/topthink/think-captcha/src',
         ),
-        'think\\angular\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/topthink/think-angular/src',
-        ),
         'think\\' => 
         array (
             0 => __DIR__ . '/..' . '/topthink/think-image/src',
-            1 => __DIR__ . '/../..' . '/thinkphp/library/think',
-            2 => __DIR__ . '/..' . '/topthink/think-queue/src',
+            1 => __DIR__ . '/..' . '/topthink/think-queue/src',
         ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-        ),
-        'Workerman\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/workerman/workerman',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -109,6 +91,10 @@ class ComposerStaticInit547f1ba8138a17d6b867624279d0c7eb
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
         'Symfony\\Component\\Yaml\\' => 
         array (
@@ -121,6 +107,10 @@ class ComposerStaticInit547f1ba8138a17d6b867624279d0c7eb
         'Phinx\\' => 
         array (
             0 => __DIR__ . '/..' . '/topthink/think-migration/phinx/src/Phinx',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -143,9 +133,12 @@ class ComposerStaticInit547f1ba8138a17d6b867624279d0c7eb
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
+        'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/AssertionFailedError.php',
         'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
+        'PHPUnit\\Framework\\Test' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Test.php',
         'PHPUnit\\Framework\\TestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestCase.php',
         'PHPUnit\\Framework\\TestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestListener.php',
+        'PHPUnit\\Framework\\TestSuite' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestSuite.php',
         'PHPUnit_Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit_Extensions_GroupTestSuite' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
         'PHPUnit_Extensions_PhptTestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',
@@ -581,7 +574,6 @@ class ComposerStaticInit547f1ba8138a17d6b867624279d0c7eb
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
-        'think\\view\\driver\\Angular' => __DIR__ . '/..' . '/topthink/think-angular/drivers/thinkphp5/Angular.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
