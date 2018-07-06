@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:7:{s:35:"theme\yupaker\default\news\show.php";i:1530691236;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\head.php";i:1530240845;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\index_head.php";i:1530240845;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\avatar_box.php";i:1530240845;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\menu.php";i:1530240845;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\left.php";i:1530240845;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\foot.php";i:1530240845;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:9:{s:36:"theme\yupaker\default\news\index.php";i:1530240845;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\head.php";i:1530240845;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\index_head.php";i:1530240845;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\avatar_box.php";i:1530240845;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\menu.php";i:1530240845;s:64:"E:\gitlearn\yupaker\theme\yupaker\default\block\actions_menu.php";i:1530240845;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\left.php";i:1530240845;s:58:"E:\gitlearn\yupaker\theme\yupaker\default\block\canvas.php";i:1530240845;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\foot.php";i:1530240845;}*/ ?>
 <?php defined("IN_SYSTEM") or die("Access Denied");/* 防止模板被盗 */?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -15,7 +15,6 @@
 
     <link rel="stylesheet" type="text/css" href="/theme/yupaker/default/static/css/style.css" />
     <script type="text/javascript" src="/theme/yupaker/default/static/js/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/theme/yupaker/default/static/css/comment.css" />
 </head>
 <body>
 <div class="wrapper">
@@ -78,6 +77,10 @@
                 <?php endforeach; endif; else: echo "" ;endif; ?>
               </ul>
             </div>
+			<div class="actions-menu">
+  <a class="layouts_width selected" href="javascript:;" onClick="box_list();"><i class="fa fa-align-justify"></i></a>
+  <a class="layouts_box" href="javascript:;" onClick="list_box();"><i class="fa fa-th-large"></i></a>
+</div>
           </div>
           <div class="main_body">
 			<aside id="sidebar">
@@ -140,78 +143,71 @@
             
             </aside>
             <div id="main">
+              <div class="banner"><img src="/theme/yupaker/default/static/image/banner_01.jpg" width="100%"></div>
+              <div class="canvas">
+				<iframe id="z" width="100%" height="100%" scrolling="no" src="canvas/1.html"></iframe>
+				<script type="text/javascript">
+                try {
+                    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i ["test"](navigator["userAgent"])) {
+                        
+                    } else {
+                        $("#z", parent["document"]["body"])["attr"]("src",  "/theme/yupaker/default/static/canvas/"+getRandom(7) + ".html");
+                    }
+                } catch (e) {
+                    
+                }
+            
+                function getRandom(n) {
+                    return window["Math"]["floor"](window["Math"]["random"]() * n + 1);
+                }
+                </script>
+              </div>
               <div class="main-content">
                 <div id="posts-lists" class="posts-box">
-                  <div class="post-wrap show-wrap">
-                    <div class="post-title show-title"><a><?php echo $data['title']; ?></a></div>
-                    <div class="post-content show-content"><?php echo $data['content']; ?></div>
-              		<div class="post-btm">
-                      <span><i class="fa fa-clock-o"></i> <?php echo $data['addtime']; ?></span>
-                      <span title="作者"><i class="fa fa-bookmark"></i> <?php echo $data['author']; ?></span>
-                      <span title="标签"><i class="fa fa-tags"></i> 
-                      <?php if(is_array($data['tagids']) || $data['tagids'] instanceof \think\Collection || $data['tagids'] instanceof \think\Paginator): $i = 0; $__LIST__ = $data['tagids'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                      <a><?php echo $vo; ?></a>
-                      <?php endforeach; endif; else: echo "" ;endif; ?>
-                      </span>
-                      <span><a target="_blank" href="<?php echo url('orders/cart','id='.$data['id']); ?>">支付测试</a></span>
-                    </div>
-                  </div>
-                </div>
-                <!--评论-->
-                <div class="comments-box">
-                  <dl>
-                    <dt class="comments-title">评论列表</dt>
-                    <dd>
-                      <ul class="comments-list">
-                        <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                      	<li class="comments-li">
-                          <div class="author-img"><img src='<?php echo (isset($vo['meminfo']['avatar']) && ($vo['meminfo']['avatar'] !== '')?$vo['meminfo']['avatar']:"/theme/yupaker/default/static/image/avatar.png"); ?>' ></div>
-                          <div class="comments-body">
-                            <div class="comment-name">
-                              <span class="arrow left"></span>
-                              <cite class="fn"><?php echo $vo['meminfo']['nick']; ?></cite><span class="right"><?php echo date('Y-m-d H:i:s', $vo['addtime']); ?> <a href="javascript:;" onClick="retextarea(<?php echo $vo['id']; ?>,<?php echo $vo['id']; ?>,'<?php echo $vo['meminfo']['nick']; ?>',<?php echo $vo['newsid']; ?>);">回复</a></span>
-                            </div>
-                            <div class="comment-text">
-                            <?php echo $vo['content']; ?>
-                            </div>
-                            <div class="recomment">
-                              <?php if(is_array($vo['childlist']) || $vo['childlist'] instanceof \think\Collection || $vo['childlist'] instanceof \think\Paginator): $i = 0; $__LIST__ = $vo['childlist'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vol): $mod = ($i % 2 );++$i;?>
-                              <div class="recomlist"><blue><?php echo $vol['meminfo']['nick']; ?></blue> 回复： <?php echo $vol['content']; ?>  <span><?php echo date('Y-m-d H:i:s', $vol['addtime']); ?> <a href="javascript:;" onClick="retextarea(<?php echo $vol['id']; ?>,<?php echo $vo['id']; ?>,'<?php echo $vol['meminfo']['nick']; ?>',<?php echo $vo['newsid']; ?>);">回复</a></span></div>
-                              <?php endforeach; endif; else: echo "" ;endif; ?>
-                              <div class="retextarea" id="retextarea<?php echo $vo['id']; ?>">
-                                  
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                        <?php endforeach; endif; else: echo "" ;endif; ?>
-                      
-                      </ul>
-                    </dd>
-                  </dl>
-                  <dl>
-                    <dt class="comments-title">发表评论</dt>
-                    <dd class="comments-form"><form action="<?php echo url('comments/save'); ?>" method="post" >
-                      <ul>
-                        <?php if($memid == ''): ?>
-                        <li class="comli30 nickname"><input class="inputtext" type="text" id="nick" name="nick" placeholder="尊姓大名" maxlength="10" required ></li>
-                        <li class="comli30 email"><input class="inputtext" type="email" id="email" name="email" placeholder="联系邮箱" maxlength="30" required></li>
-                        <li class="comli30 site"><input class="inputtext" type="text" id="site" name="site" placeholder="站点域名" ></li>
+                  <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                  <article>
+                    <div class="post-wrap show-wrap">
+                      <div class="featured-box">
+                        <div class="featured-image"><a href="<?php echo url('news/show','id='.$vo['id']); ?>"><img src="<?php echo (isset($vo['image']) && ($vo['image'] !== '')?$vo['image']:'/theme/yupaker/default/static/image/20170222193904_255.jpg'); ?>" alt="<?php echo $vo['title']; ?>"></a></div>
+                        <div class="post-btm post-meta">
+                          <span title="浏览"><i class="fa fa-eye"></i> <?php echo $vo['viewnum']; ?></span>
+                          <span title="评论"><i class="fa fa-comments-o"></i> <?php echo $vo['commentnum']; ?></span>
+                        </div>
+                        <?php if($vo['ishot'] == 1): ?>
+                        <div class="post-ishot"></div>
                         <?php endif; ?>
-                        <li class="comli100"><textarea name="content"  placeholder="评论..."></textarea></li>
-                    	<li class="comli30 verifycode">
-                        	<input class="inputtext" type="text" id="verifycode" name="verifycode" placeholder="验证码" maxlength="10" required>
-                        </li><div class="codeimg"><?php echo captcha_img(); ?></div>
-                        <div class="clearfix"></div>
-            			<?php echo token(); ?>
-                        <input type="hidden" name="newsid" value="<?php echo $data['id']; ?>">
-                        <li><input class="comsubmit" type="submit" value="发表评论"></li>
+                        <div class="post-isnew"></div>
+                      </div>
+                      <dl>
+                        <dt class="post-title"><a href="<?php echo url('news/show','id='.$vo['id']); ?>"><?php echo $vo['title']; ?></a></dt>
+                        <dd class="post-content">
+                          <div class="post-memo"><?php echo msubstr(nl2br($vo['memo']),0,300); ?></div>
+                          <a href="<?php echo url('news/show','id='.$vo['id']); ?>" class="read-more">阅读更多</a>
+                        </dd>
+                        <dd class="post-btm">
+                          <span><i class="fa fa-clock-o"></i> <?php echo date('Y-m-d H:i:s',$vo['addtime']); ?></span>
+                          <span title="作者"><i class="fa fa-bookmark"></i> <?php echo $vo['author']; ?></span>
+                          <span title="标签"><i class="fa fa-tags"></i> 
+						  <?php if(is_array($vo['tagids']) || $vo['tagids'] instanceof \think\Collection || $vo['tagids'] instanceof \think\Paginator): $i = 0; $__LIST__ = $vo['tagids'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vol): $mod = ($i % 2 );++$i;?>
+                          <a href="<?php echo url('news/index','tagname='.$vol); ?>"><?php echo $vol; ?></a>
+                          <?php endforeach; endif; else: echo "" ;endif; ?></span>
+                        </dd>
+                      </dl>
+                    </div>
+                    <div class="post-comments">
+                      <ul class="list comments-list">
+                        <?php if(is_array($vo['commentlist']) || $vo['commentlist'] instanceof \think\Collection || $vo['commentlist'] instanceof \think\Paginator): $i = 0; $__LIST__ = $vo['commentlist'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vol): $mod = ($i % 2 );++$i;?>
+                        <li class="list-bt"><a href="<?php echo url('news/show','id='.$vol['newsid']); ?>" title="<?php echo $vol['content']; ?>">
+                        <img src="<?php if($vol['qq'] == ''): ?>/static/admin/image/gravatar.png<?php else: ?>https://q1.qlogo.cn/g?b=qq&nk=<?php echo $vol['qq']; ?>&s=100<?php endif; ?>">
+                        <blue><?php echo $vol['nickname']; ?></blue><?php if($vol['reid'] != 0): ?>回复给<blue><?php echo $vol['rename']; ?></blue><?php endif; ?>：<?php echo msubstr($vol['content'],0,100); ?></a></li>
+                        <?php endforeach; endif; else: echo "" ;endif; ?></span>
                       </ul>
-                    </form></dd>
-                  </dl>
-                  
-    			  <script type="text/javascript" src="/theme/yupaker/default/static/js/comments.js"></script>
+                      <div style="text-align:center; cursor:pointer" class="skenjd"><i class="fa fa-angle-double-down"></i></div>
+                    </div>
+                  </article>
+                  <?php endforeach; endif; else: echo "" ;endif; ?>
                 </div>
+                <?php echo $pages; ?>
               </div>
             </div>
           </div>
@@ -227,5 +223,29 @@
     </footer>
 <!--script src="/theme/yupaker/default/static/js/canvas-nest.min.js"></script-->
 </div>
+<script>
+function box_list(){
+	$('#posts-lists').removeClass('posts-lists');
+	$('.layouts_box').removeClass('selected');
+	$('.layouts_width').addClass('selected');
+}
+function list_box(){
+	$('#posts-lists').addClass('posts-lists');
+	$('.layouts_box').addClass('selected');
+	$('.layouts_width').removeClass('selected');
+}
+
+//展开
+$(".post-comments").each(function(){
+	var thebig = $(this);
+	var thesmall = thebig.find(".comments-list");
+	var thebtn = thebig.find(".skenjd");
+	var tarheight = thesmall.height();
+	thesmall.css("margin-top","-"+tarheight+"px");
+	thebtn.bind("click",function(){
+			thesmall.animate({"margin-top":"0"},100);
+		});
+});
+</script>
 </body>
 </html>

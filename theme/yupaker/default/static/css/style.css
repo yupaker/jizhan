@@ -31,7 +31,7 @@ red,.red{ color:red}
 blue,.blue{ color:blue}
 green,.green{ color:green}
 .right{float:right;}
-.wrapper{}
+.wrapper{ overflow:hidden;}
 header{height:450px; background:rgb(217, 211, 193) url(../image/bigbannerpic_01.jpg) no-repeat scroll center -10px;}
 .header-inner{height: 50px;line-height: 50px;z-index: 9999;background:rgba(249, 248, 243,0.7)}
 .container{max-width: 1200px;margin: 0 auto;}

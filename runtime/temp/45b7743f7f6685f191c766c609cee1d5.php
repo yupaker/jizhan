@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:9:{s:37:"theme\yupaker\default\index\index.php";i:1530240845;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\head.php";i:1530240845;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\index_head.php";i:1530240845;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\avatar_box.php";i:1530240845;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\menu.php";i:1530240845;s:64:"E:\gitlearn\yupaker\theme\yupaker\default\block\actions_menu.php";i:1530240845;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\left.php";i:1530240845;s:58:"E:\gitlearn\yupaker\theme\yupaker\default\block\canvas.php";i:1530240845;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\foot.php";i:1530240845;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:9:{s:37:"theme\yupaker\default\index\index.php";i:1530240845;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\head.php";i:1530839502;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\index_head.php";i:1530240845;s:62:"E:\gitlearn\yupaker\theme\yupaker\default\block\avatar_box.php";i:1530240845;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\menu.php";i:1530240845;s:64:"E:\gitlearn\yupaker\theme\yupaker\default\block\actions_menu.php";i:1530240845;s:56:"E:\gitlearn\yupaker\theme\yupaker\default\block\left.php";i:1530240845;s:58:"E:\gitlearn\yupaker\theme\yupaker\default\block\canvas.php";i:1530240845;s:57:"E:\gitlearn\yupaker\theme\yupaker\default\public\foot.php";i:1530240845;}*/ ?>
 <?php defined("IN_SYSTEM") or die("Access Denied");/* 防止模板被盗 */?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" type="text/css" href="/theme/yupaker/default/static/css/style.css" />
     <script type="text/javascript" src="/theme/yupaker/default/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/theme/yupaker/default/static/js/jquery.dialog.js"></script>
 </head>
 <body>
 <div class="wrapper">

@@ -10,3 +10,4 @@
 
     {load href="__CSS__/style.css" /}
     {load href="__JS__/jquery.min.js" /}
+    {load href="__JS__/jquery.dialog.js" /}

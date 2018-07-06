@@ -31,6 +31,7 @@
                       <a>{$vo}</a>
                       {/volist}
                       </span>
+                      <span><a target="_blank" href="{:url('orders/cart','id='.$data['id'])}">支付测试</a></span>
                     </div>
                   </div>
                 </div>
