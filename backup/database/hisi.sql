@@ -202,78 +202,30 @@ CREATE TABLE `hisi_admin_log` (
   `ctime` int(10) unsigned NOT NULL DEFAULT '0',
   `mtime` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=720 DEFAULT CHARSET=utf8 COMMENT='[系统] 操作日志';
+) ENGINE=InnoDB AUTO_INCREMENT=777 DEFAULT CHARSET=utf8 COMMENT='[系统] 操作日志';
 
 /*Data for the table `hisi_admin_log` */
 
 insert  into `hisi_admin_log`(`id`,`uid`,`title`,`url`,`param`,`remark`,`count`,`ip`,`ctime`,`mtime`) values 
-(653,1,'标签云','yupaker/tags/index','[]','浏览数据',1,'0.0.0.0',1528946668,1528946668),
-(654,1,'系统日志','admin/log/index','[]','浏览数据',2,'0.0.0.0',1528946670,1528946678),
-(655,1,'新闻列表','yupaker/news/index','[]','浏览数据',1,'0.0.0.0',1528946677,1528946677),
-(656,1,'数据库管理','admin/database/index','[]','浏览数据',5,'0.0.0.0',1528946679,1528962354),
-(657,1,'优化数据库','admin/database/optimize','{\"ids\":[\"hisi_admin_annex\",\"hisi_admin_annex_group\",\"hisi_admin_config\",\"hisi_admin_hook\",\"hisi_admin_hook_plugins\",\"hisi_admin_language\",\"hisi_admin_log\",\"hisi_admin_member\",\"hisi_admin_member_level\",\"hisi_admin_menu\",\"hisi_admin_menu_lang\",\"hisi_admin_module\",\"hisi_admin_plugins\",\"hisi_admin_role\",\"hisi_admin_user\",\"hisi_example_category\",\"hisi_example_news\",\"hisi_yupaker_comments\",\"hisi_yupaker_messages\",\"hisi_yupaker_news\",\"hisi_yupaker_newscategory\",\"hisi_yupaker_tags\"]}','保存数据',1,'0.0.0.0',1528946713,1528946713),
-(658,1,'评论管理','yupaker/comments/index','[]','浏览数据',47,'0.0.0.0',1528947772,1529900046),
-(659,1,'留言管理','yupaker/messages/index','[]','浏览数据',27,'127.0.0.1',1528947779,1529898567),
-(660,1,'查看留言','yupaker/messages/edit','{\"id\":\"1\"}','浏览数据',1,'0.0.0.0',1528947797,1528947797),
-(661,1,'系统菜单','admin/menu/index','[]','浏览数据',2,'127.0.0.1',1528962356,1529373127),
-(662,1,'模块管理','admin/module/index','[]','浏览数据',3,'0.0.0.0',1528962365,1528962409),
-(663,1,'系统设置','admin/system/index','{\"group\":\"yupaker\"}','浏览数据',1,'0.0.0.0',1528962382,1528962382),
-(664,1,'数据库配置','admin/system/index','{\"group\":\"databases\"}','浏览数据',1,'0.0.0.0',1528962384,1528962384),
-(665,1,'基础配置','admin/system/index','{\"group\":\"base\"}','浏览数据',1,'0.0.0.0',1528962391,1528962391),
-(666,1,'编辑模块','admin/module/edit','{\"id\":\"7\"}','浏览数据',1,'0.0.0.0',1528962396,1528962396),
-(667,1,'会员等级','admin/member/level','[]','浏览数据',13,'0.0.0.0',1528967384,1529897553),
-(668,1,'会员列表','admin/member/index','[]','浏览数据',41,'127.0.0.1',1528967385,1529897610),
-(669,1,'添加会员等级','admin/member/addlevel','[]','浏览数据',3,'0.0.0.0',1529026298,1529897551),
-(670,1,'添加会员等级','admin/member/addlevel','{\"name\":\"\\u6e38\\u5ba2\",\"discount\":\"100\",\"min_exper\":\"0\",\"max_exper\":\"0\",\"expire\":\"0\",\"status\":\"1\",\"default\":\"1\",\"intro\":\"\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1529026345,1529026345),
-(671,1,'修改会员等级','admin/member/editlevel','{\"id\":\"1\"}','浏览数据',1,'0.0.0.0',1529026354,1529026354),
-(672,1,'修改会员','admin/member/edit','{\"id\":\"1000000\"}','浏览数据',6,'0.0.0.0',1529027915,1529897573),
-(673,1,'修改会员','admin/member/edit','{\"level_id\":\"1\",\"username\":\"test\",\"nick\":\"\\u7ea2\\u8863\\u5c0f\\u59d1\\u5a18\",\"password\":\"\",\"email\":\"\",\"mobile\":\"0\",\"expire_time\":\"0\",\"status\":\"1\",\"id\":\"1000000\"}','保存数据',1,'0.0.0.0',1529029005,1529029005),
-(674,1,'修改会员等级','admin/member/editlevel','{\"id\":\"2\"}','浏览数据',2,'0.0.0.0',1529032955,1529032970),
-(675,1,'修改会员等级','admin/member/editlevel','{\"name\":\"\\u6e38\\u5ba2\",\"discount\":\"100\",\"min_exper\":\"0\",\"max_exper\":\"0\",\"expire\":\"0\",\"status\":\"1\",\"default\":\"0\",\"intro\":\"\",\"id\":\"2\"}','保存数据',2,'0.0.0.0',1529032968,1529032969),
-(676,1,'添加会员','admin/member/add','[]','浏览数据',10,'0.0.0.0',1529034667,1529053739),
-(677,1,'添加会员','admin/member/add','{\"level_id\":\"1\",\"username\":\"jj\",\"nick\":\"jj\",\"password\":\"123456\",\"email\":\"132456@qq.com\",\"mobile\":\"1\",\"expire_time\":\"0\",\"status\":\"1\",\"id\":\"\"}','保存数据',2,'0.0.0.0',1529034702,1529034708),
-(678,1,'添加会员','admin/member/add','{\"level_id\":\"1\",\"username\":\"\\u963f\\u65af\\u8fbejj\",\"nick\":\"jj\",\"password\":\"123456\",\"email\":\"132456@qq.com\",\"mobile\":\"1\",\"expire_time\":\"0\",\"status\":\"1\",\"id\":\"\"}','保存数据',3,'0.0.0.0',1529034715,1529034723),
-(679,1,'添加会员','admin/member/add','{\"level_id\":\"1\",\"username\":\"\\u963f\\u65af\\u8fbeasd\",\"nick\":\"\",\"password\":\"\",\"email\":\"\",\"mobile\":\"\",\"expire_time\":\"0\",\"status\":\"1\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1529053340,1529053340),
-(680,1,'添加会员','admin/member/add','{\"level_id\":\"1\",\"username\":\"\\u963f\\u65af\\u8fbe\",\"nick\":\"\",\"password\":\"\",\"email\":\"\",\"mobile\":\"\",\"expire_time\":\"\",\"status\":\"1\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1529053347,1529053347),
-(681,1,'添加会员','admin/member/add','{\"level_id\":\"1\",\"username\":\"\\u963f\\u65af\\u8fbe\",\"nick\":\"\",\"password\":\"123123\",\"email\":\"\",\"mobile\":\"\",\"expire_time\":\"\",\"status\":\"1\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1529053351,1529053351),
-(682,1,'删除会员','admin/member/del','{\"table\":\"admin_member\",\"ids\":\"1000003\"}','浏览数据',1,'0.0.0.0',1529053361,1529053361),
-(683,1,'添加会员','admin/member/add','{\"level_id\":\"1\",\"username\":\"\\u963f\\u65af\\u8fbe\",\"nick\":\"\",\"password\":\"123123\",\"email\":\"132456@qq.com\",\"mobile\":\"\",\"expire_time\":\"\",\"status\":\"1\",\"id\":\"\"}','保存数据',3,'0.0.0.0',1529053377,1529053440),
-(684,1,'添加会员','admin/member/add','{\"level_id\":\"1\",\"username\":\"\\u963f\\u65af\\u8fbe\",\"nick\":\"\",\"password\":\"\",\"email\":\"132456@qq.com\",\"mobile\":\"\",\"expire_time\":\"\",\"status\":\"1\",\"id\":\"\"}','保存数据',21,'0.0.0.0',1529053751,1529054748),
-(685,1,'后台首页','admin/index/index','[]','浏览数据',4,'0.0.0.0',1529372726,1529891504),
-(686,1,'系统设置','admin/system/index','[]','浏览数据',1,'127.0.0.1',1529373124,1529373124),
-(687,1,'配置管理','admin/config/index','[]','浏览数据',1,'127.0.0.1',1529373126,1529373126),
-(688,1,'修改会员','admin/member/edit','{\"id\":\"1000005\"}','浏览数据',2,'0.0.0.0',1529473682,1529480948),
-(689,1,'修改会员','admin/member/edit','{\"id\":\"1000001\"}','浏览数据',1,'0.0.0.0',1529480937,1529480937),
-(690,1,'状态设置','yupaker/comments/status','{\"status\":\"1\",\"ids\":[\"21\",\"22\"],\"table\":\"yupaker_comments\",\"val\":\"2\"}','保存数据',1,'0.0.0.0',1529481092,1529481092),
-(691,1,'状态设置','yupaker/comments/status','{\"val\":\"1\",\"table\":\"yupaker_comments\",\"ids\":\"21\"}','浏览数据',1,'0.0.0.0',1529481102,1529481102),
-(692,1,'状态设置','yupaker/comments/status','{\"val\":\"1\",\"table\":\"yupaker_comments\",\"ids\":\"22\"}','浏览数据',1,'0.0.0.0',1529481107,1529481107),
-(693,1,'评论管理','yupaker/comments/index','{\"newsid\":\"5\"}','浏览数据',6,'0.0.0.0',1529482235,1529482648),
-(694,1,'修改新闻','yupaker/news/edit','{\"id\":\"5\"}','浏览数据',1,'0.0.0.0',1529482243,1529482243),
-(695,1,'评论管理','yupaker/comments/index','{\"page\":\"2\"}','浏览数据',2,'0.0.0.0',1529482265,1529482268),
-(696,1,'评论管理','yupaker/comments/index','{\"page\":\"1\"}','浏览数据',2,'0.0.0.0',1529482266,1529482270),
-(697,1,'评论管理','yupaker/comments/index','{\"page\":\"2\",\"newsid\":\"5\"}','浏览数据',1,'0.0.0.0',1529482272,1529482272),
-(698,1,'评论管理','yupaker/comments/index','{\"page\":\"1\",\"newsid\":\"5\"}','浏览数据',1,'0.0.0.0',1529482274,1529482274),
-(699,1,'评论管理','yupaker/comments/index','{\"keywords\":\"oo\"}','浏览数据',1,'0.0.0.0',1529482555,1529482555),
-(700,1,'评论管理','yupaker/comments/index','{\"memid\":\"1000005\"}','浏览数据',2,'0.0.0.0',1529482704,1529484976),
-(701,1,'评论管理','yupaker/comments/index','{\"memid\":\"1000004\"}','浏览数据',3,'0.0.0.0',1529482707,1529484291),
-(702,1,'评论管理','yupaker/comments/index','{\"page\":\"2\",\"memid\":\"1000004\"}','浏览数据',1,'0.0.0.0',1529482713,1529482713),
-(703,1,'查看评论','yupaker/comments/edit','{\"id\":\"22\"}','浏览数据',12,'0.0.0.0',1529484350,1529484978),
-(704,1,'查看评论','yupaker/comments/edit','{\"id\":\"20\"}','浏览数据',4,'0.0.0.0',1529484925,1529484965),
-(705,1,'查看留言','yupaker/messages/edit','{\"id\":\"11\"}','浏览数据',12,'127.0.0.1',1529892819,1529898565),
-(706,1,'查看评论','yupaker/comments/edit','{\"id\":\"24\"}','浏览数据',7,'0.0.0.0',1529892831,1529900005),
-(707,1,'查看评论','yupaker/comments/edit','{\"id\":\"23\"}','浏览数据',3,'0.0.0.0',1529892834,1529900038),
-(708,1,'查看留言','yupaker/messages/edit','{\"id\":\"7\"}','浏览数据',2,'0.0.0.0',1529893063,1529896265),
-(709,1,'查看留言','yupaker/messages/edit','{\"status\":\"1\",\"recontent\":\"111\",\"id\":\"7\"}','保存数据',1,'0.0.0.0',1529896270,1529896270),
-(710,1,'查看留言','yupaker/messages/edit','{\"status\":\"1\",\"recontent\":\"111\",\"id\":\"11\"}','保存数据',3,'0.0.0.0',1529896299,1529896323),
-(711,1,'查看留言','yupaker/messages/edit','{\"status\":\"1\",\"recontent\":\"11\",\"id\":\"11\"}','保存数据',1,'127.0.0.1',1529896351,1529896351),
-(712,1,'查看留言','yupaker/messages/edit','{\"status\":\"1\",\"recontent\":\"\",\"id\":\"11\"}','保存数据',1,'127.0.0.1',1529896356,1529896356),
-(713,1,'添加会员等级','admin/member/addlevel','{\"name\":\"\\u7ba1\\u7406\\u5458\",\"discount\":\"100\",\"min_exper\":\"0\",\"max_exper\":\"0\",\"expire\":\"0\",\"status\":\"1\",\"default\":\"0\",\"intro\":\"\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1529897546,1529897546),
-(714,1,'修改会员','admin/member/edit','{\"level_id\":\"3\",\"username\":\"admin\",\"nick\":\"\\u7ba1\\u7406\\u5458\",\"password\":\"\",\"email\":\"\",\"mobile\":\"0\",\"expire_time\":\"0\",\"status\":\"1\",\"id\":\"1000000\"}','保存数据',1,'0.0.0.0',1529897577,1529897577),
-(715,1,'查看留言','yupaker/messages/edit','{\"status\":\"1\",\"recontent\":\"\\u90a3\\u4e2a&amp;nbsp; G\\u4e86\\u5427&lt;br \\/&gt;\",\"id\":\"11\"}','保存数据',1,'0.0.0.0',1529898369,1529898369),
-(716,1,'查看留言','yupaker/messages/edit','{\"status\":\"1\",\"recontent\":\"\\u5185\\u4e2a \\u8981\\u4e0dg\\u4e86\\u5427 \\u6253\\u4e0d\\u8fc7\\u4e86\\u5df2\\u7ecf\",\"id\":\"11\"}','保存数据',1,'127.0.0.1',1529898562,1529898562),
-(717,1,'查看评论','yupaker/comments/edit','{\"status\":\"1\",\"recontent\":\"jjjjjjjj\",\"id\":\"24\"}','保存数据',1,'0.0.0.0',1529899636,1529899636),
-(718,1,'查看评论','yupaker/comments/edit','{\"status\":\"1\",\"recontent\":\"jijijij\",\"id\":\"24\"}','保存数据',1,'0.0.0.0',1529900002,1529900002),
-(719,1,'查看评论','yupaker/comments/edit','{\"status\":\"1\",\"recontent\":\"nnnnn\",\"id\":\"23\"}','保存数据',1,'0.0.0.0',1529900045,1529900045);
+(758,1,'系统日志','admin/log/index','[]','浏览数据',1,'0.0.0.0',1530771556,1530771556),
+(759,1,'会员等级','admin/member/level','[]','浏览数据',2,'0.0.0.0',1530771557,1530771563),
+(760,1,'会员列表','admin/member/index','[]','浏览数据',2,'0.0.0.0',1530771561,1530771565),
+(761,1,'模块管理','admin/module/index','[]','浏览数据',1,'0.0.0.0',1530771567,1530771567),
+(762,1,'插件管理','admin/plugins/index','[]','浏览数据',1,'0.0.0.0',1530771569,1530771569),
+(763,1,'钩子管理','admin/hook/index','[]','浏览数据',1,'0.0.0.0',1530771571,1530771571),
+(764,1,'在线升级','admin/upgrade/index','[]','浏览数据',1,'0.0.0.0',1530771572,1530771572),
+(765,1,'[示例]列表模板','admin/develop/lists','[]','浏览数据',1,'0.0.0.0',1530771587,1530771587),
+(766,1,'[示例]编辑模板','admin/develop/edit','[]','浏览数据',1,'0.0.0.0',1530771589,1530771589),
+(767,1,'附件上传','admin/annex/upload','{\"action\":\"config\",\"noCache\":\"1530771589490\",\"thumb\":\"no\",\"from\":\"ueditor\"}','浏览数据',2,'0.0.0.0',1530771589,1530771590),
+(768,1,'全部订单','yupaker/orders/index','[]','浏览数据',11,'0.0.0.0',1530771594,1530772368),
+(769,1,'系统菜单','admin/menu/index','[]','浏览数据',5,'0.0.0.0',1530772256,1530772318),
+(770,1,'配置管理','admin/config/index','[]','浏览数据',1,'0.0.0.0',1530772259,1530772259),
+(771,1,'修改菜单','admin/menu/edit','{\"id\":\"260\"}','浏览数据',1,'0.0.0.0',1530772270,1530772270),
+(772,1,'修改菜单','admin/menu/edit','{\"id\":\"262\"}','浏览数据',1,'0.0.0.0',1530772279,1530772279),
+(773,1,'添加菜单','admin/menu/add','{\"pid\":\"262\",\"mod\":\"yupaker\"}','浏览数据',1,'0.0.0.0',1530772285,1530772285),
+(774,1,'添加菜单','admin/menu/add','{\"module\":\"yupaker\",\"pid\":\"262\",\"title\":\"\\u72b6\\u6001\\u8bbe\\u7f6e\",\"icon\":\"\",\"url\":\"yupaker\\/orders\\/status\",\"param\":\"\",\"status\":\"1\",\"system\":\"0\",\"nav\":\"1\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1530772315,1530772315),
+(775,1,'状态设置','yupaker/orders/status','{\"ids\":[\"1\"],\"table\":\"yupaker_orders\",\"val\":\"0\"}','保存数据',2,'0.0.0.0',1530772324,1530772356),
+(776,1,'状态设置','yupaker/orders/status','{\"ids\":[\"1\"],\"table\":\"yupaker_orders\",\"val\":\"1\"}','保存数据',1,'0.0.0.0',1530772365,1530772365);
 
 /*Table structure for table `hisi_admin_member` */
 
@@ -304,7 +256,7 @@ CREATE TABLE `hisi_admin_member` (
   `ctime` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
   `site` varchar(50) DEFAULT NULL COMMENT '站点',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000007 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='[系统] 会员表';
+) ENGINE=InnoDB AUTO_INCREMENT=1000006 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='[系统] 会员表';
 
 /*Data for the table `hisi_admin_member` */
 
@@ -363,7 +315,7 @@ CREATE TABLE `hisi_admin_menu` (
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态1显示，0隐藏',
   `ctime` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=261 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='[系统] 管理菜单';
+) ENGINE=InnoDB AUTO_INCREMENT=265 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='[系统] 管理菜单';
 
 /*Data for the table `hisi_admin_menu` */
 
@@ -606,7 +558,11 @@ insert  into `hisi_admin_menu`(`id`,`uid`,`pid`,`module`,`title`,`icon`,`url`,`p
 (257,0,256,'yupaker','留言管理','fa fa-commenting','yupaker/messages/index','','_self',0,0,0,1,1,1524106509),
 (258,0,257,'yupaker','查看留言','','yupaker/messages/edit','','_self',0,0,0,1,1,1524106543),
 (259,0,257,'yupaker','删除留言','','yupaker/messages/del','','_self',0,0,0,1,1,1524106563),
-(260,0,257,'yupaker','状态设置','','yupaker/messages/status','','_self',0,0,0,1,1,1524106586);
+(260,0,257,'yupaker','状态设置','','yupaker/messages/status','','_self',0,0,0,1,1,1524106586),
+(261,0,234,'yupaker','订单管理','fa fa-shopping-cart','yupaker/orders','','_self',3,0,0,1,1,1530759006),
+(262,0,261,'yupaker','全部订单','fa fa-shopping-cart','yupaker/orders/index','','_self',0,0,0,1,1,1530759168),
+(263,0,262,'yupaker','查看','','yupaker/orders/view','','_self',0,0,0,1,1,1530759219),
+(264,0,262,'yupaker','状态设置','','yupaker/orders/status','','_self',0,0,0,1,1,1530772315);
 
 /*Table structure for table `hisi_admin_menu_lang` */
 
@@ -940,7 +896,7 @@ CREATE TABLE `hisi_admin_user` (
 /*Data for the table `hisi_admin_user` */
 
 insert  into `hisi_admin_user`(`id`,`role_id`,`username`,`password`,`nick`,`mobile`,`email`,`auth`,`iframe`,`status`,`last_login_ip`,`last_login_time`,`ctime`,`mtime`) values 
-(1,1,'admin','$2y$10$rPCBmZ3HYR6QqvsuWR/lwuc.f8j/DKWRLHq.fiDlFOIZE3XWldada','超级管理员','','','',0,1,'0.0.0.0',1529891501,1523413362,1529891501),
+(1,1,'admin','$2y$10$rPCBmZ3HYR6QqvsuWR/lwuc.f8j/DKWRLHq.fiDlFOIZE3XWldada','超级管理员','','','',0,1,'0.0.0.0',1530754670,1523413362,1530754670),
 (2,3,'ceshi','$2y$10$s6KZTIMS4amAwKiImB9WlOJyxwZVCHhEaLfgUE7PV.LBZCKRMkqae','测试','','','',0,1,'0.0.0.0',1523429195,1523428977,1523429195);
 
 /*Table structure for table `hisi_example_category` */
@@ -1022,7 +978,7 @@ CREATE TABLE `hisi_yupaker_comments` (
   `email` varchar(30) DEFAULT NULL,
   `site` varchar(50) DEFAULT NULL COMMENT '站点',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 /*Data for the table `hisi_yupaker_comments` */
 
@@ -1049,8 +1005,10 @@ insert  into `hisi_yupaker_comments`(`id`,`newsid`,`content`,`reid`,`catreid`,`m
 (22,5,'额呵呵',20,21,1000005,'0.0.0.0',1529480894,1,NULL,'0',NULL,NULL,NULL,NULL,NULL,NULL),
 (23,5,'jjjjjjj',0,0,1000005,'0.0.0.0',1529891458,1,NULL,'0',NULL,NULL,NULL,NULL,NULL,NULL),
 (24,5,'iiiii',23,23,1000005,'0.0.0.0',1529891471,1,NULL,'0',NULL,NULL,NULL,NULL,NULL,NULL),
+(28,5,'666',6,19,1000000,'0.0.0.0',1529912540,1,NULL,'0',NULL,NULL,NULL,NULL,NULL,NULL),
 (26,5,'jijijij',23,24,1000000,'0.0.0.0',1529900002,1,NULL,'0',NULL,NULL,NULL,NULL,NULL,NULL),
-(27,5,'nnnnn',23,23,1000000,'0.0.0.0',1529900045,1,NULL,'0',NULL,NULL,NULL,NULL,NULL,NULL);
+(27,5,'nnnnn',23,23,1000000,'0.0.0.0',1529900045,1,NULL,'0',NULL,NULL,NULL,NULL,NULL,NULL),
+(29,3,'1',0,0,1000005,'127.0.0.1',1530172511,1,NULL,'0',NULL,NULL,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `hisi_yupaker_messages` */
 
@@ -1074,7 +1032,7 @@ CREATE TABLE `hisi_yupaker_messages` (
   `reip` varchar(50) DEFAULT NULL COMMENT '回复IP',
   `email` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 /*Data for the table `hisi_yupaker_messages` */
 
@@ -1091,7 +1049,8 @@ insert  into `hisi_yupaker_messages`(`id`,`content`,`addtime`,`status`,`ip`,`mem
 (10,'sdlkfj',1529473672,1,'0.0.0.0',1000005,0,0,NULL,NULL,NULL,NULL,NULL,1529473672,NULL,NULL),
 (11,'hehe',1529473702,1,'0.0.0.0',1000005,7,8,NULL,NULL,NULL,NULL,NULL,1529473702,NULL,NULL),
 (12,'那个&amp;nbsp; G了吧&lt;br /&gt;',1529898369,1,'0.0.0.0',1000000,7,11,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL),
-(13,'内个 要不g了吧 打不过了已经',1529898562,1,'127.0.0.1',1000000,7,11,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL);
+(13,'内个 要不g了吧 打不过了已经',1529898562,1,'127.0.0.1',1000000,7,11,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL),
+(14,'ggg',1530254989,1,'127.0.0.1',1000005,0,0,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL);
 
 /*Table structure for table `hisi_yupaker_news` */
 
@@ -1123,11 +1082,11 @@ CREATE TABLE `hisi_yupaker_news` (
 
 insert  into `hisi_yupaker_news`(`id`,`catid`,`title`,`code`,`author`,`addtime`,`memo`,`content`,`ishot`,`isnew`,`sort`,`status`,`images`,`image`,`source`,`file`,`viewnum`,`tagids`) values 
 (2,4,'news',NULL,'马云',1524039648,'让天下没有难写的代码','&lt;p&gt;123&lt;br/&gt;&lt;/p&gt;',1,0,0,1,NULL,'/upload/sys/image/91/8e72db27cbf14011c87f21ac938e96.png','123','',197,'js+jquery,html+css,canvas'),
-(3,4,'hehe',NULL,'管理员',1523956553,'','&lt;p&gt;1&lt;br/&gt;&lt;/p&gt;',0,0,0,1,NULL,'','','',53749,'php,java'),
-(5,1,'拜拜了,浮动布局-基于display:inline-block的列表布局',NULL,'张鑫旭',1524032482,'对于浮动局部的局限性，想必同行们都知道，就是每个列表元素的高度必须要一致，否则就会像是俄罗斯方块一样，“锯齿相错”，例如一个左浮动列表布局，如果第一行有个列表高度高于其他列表，那就在第二行，第一个元素会沿着最高元素的右侧对齐。\r\n浮动本身就是个魔鬼，所以，使用浮动布局还需要修复其带来的副作用——高度塌陷的问题，也就是常提到的“清除浮动”了。\r\n另外，IE6下，重复的列表元素会出现莫名的bug，例如出现不知哪来的文字。\r\n而基于display:inline-block的列表布局可以避免这些问题，本文就将一步一步地展示基于displ','&lt;p style=&quot;text-align:left;&quot;&gt;\r\n	&lt;span&gt;如果你以为基于display:inline-block的列表布局的优点仅仅在于可以让列表元素不等高，那你就大错特错了。&lt;/span&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span&gt;在IE6/7下，inline水平标签inline-block化后与纯正的inline-block元素的作用就像是一个模子里出来的，这种“兼容性”可以很好地发挥inline-block列表布局的潜力。例如，使用white-space:nowrap属性可以让列表不换行，你是否想到了列表元素的水平滚动切换？&lt;/span&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;http://image.zhangxinxu.com/image/blog/201011/2010-11-03_221329.png&quot; /&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span&gt;使用text-align:justify可以实现自动等宽水平排列的列表布局，而且是两端对齐的，不需要计算宽度，一切都是浏览器自动的，很方便很强大。尤其在自适应布局中，大显身手，大放光彩。就以此举个简单的例子吧，如下CSS代码：&lt;/span&gt; \r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-css&quot;&gt;.box{width:50%; padding:20px; margin:20px auto; background-color:#f0f3f9; text-align:justify;}\r\n.list{width:120px; display:inline-block; padding-bottom:20px; text-align:center; vertical-align:top;}&lt;/pre&gt;\r\n&lt;p&gt;\r\n	如下HTML代码：\r\n&lt;/p&gt;\r\n&lt;div&gt;\r\n&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&amp;lt;div class=&quot;box&quot;&amp;gt;\r\n    &amp;lt;span class=&quot;list&quot;&amp;gt;&amp;lt;img src=&quot;mm9.jpg&quot; /&amp;gt;\r\n哇哦，美女，口水，鼻血~~~&amp;lt;/span&amp;gt;\r\n    &amp;lt;span class=&quot;list&quot;&amp;gt;&amp;lt;img src=&quot;mm9.jpg&quot; /&amp;gt;\r\n哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~&amp;lt;/span&amp;gt;\r\n    .\r\n    .\r\n    .\r\n&amp;lt;/div&amp;gt;&lt;/pre&gt;\r\n&lt;br /&gt;\r\n&lt;/div&gt;\r\n转载自: &lt;a href=&quot;http://www.zhangxinxu.com/wordpress/2010/11/拜拜了,浮动布局-基于display:inline-block的列表布局/&quot; target=&quot;_blank&quot;&gt;张鑫旭个人博客&lt;span id=&quot;__kindeditor_bookmark_start_38__&quot;&gt;&lt;/span&gt;www.zhangxinxu.com&lt;/a&gt;&lt;span id=&quot;__kindeditor_bookmark_end_39__&quot;&gt;&lt;/span&gt;&lt;br /&gt;',1,0,0,1,NULL,'','http://www.zhangxinxu.com/wordpress/2010/11/拜拜了,浮动布局-基于display:inline-block的列表布局/','',280,'html+css'),
-(6,1,'cookie和session',NULL,'管理员',1525748951,'session 是一个抽象概念，开发者为了实现中断和继续等操作，将 user agent 和 server 之间一对一的交互，抽象为“会话”，进而衍生出“会话状态”，也就是 session 的概念。\r\ncookie 是一个实际存在的东西，http 协议中定义在 header 中的字段。可以认为是 session 的一种后端无状态实现。\r\n而我们今天常说的 “session”，是为了绕开 cookie 的各种限制，通常借助 cookie 本身和后端存储实现的，一种更高级的会话状态实现。','&lt;p&gt;\r\n	1，session 在服务器端，cookie 在客户端（浏览器）&lt;br /&gt;\r\n2，session 默认被存在在服务器的一个文件里（不是内存）&lt;br /&gt;\r\n3，session 的运行依赖 session id，而 session id 是存在 cookie 中的，也就是说，如果浏览器禁用了 cookie ，同时 session 也会失效（但是可以通过其它方式实现，比如在 url 中传递 session_id）&lt;br /&gt;\r\n4，session 可以放在 文件、数据库、或内存中都可以。&lt;br /&gt;\r\n5，用户验证这种场合一般会用 session\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	当我们需要保存用户信息时，就用cookie；不需要时，就用session。\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	JSP：\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	创建cookie\r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-js&quot;&gt;//创建一个Cookie对象\r\nCookie name = new Cookie(&quot;name&quot;,&quot;heheda&quot;); \r\n//设置有效期  \r\nname.setMaxAge(5); \r\n//将cookie发送至HTTP响应头中\r\nresponse.addCookie( name );&lt;/pre&gt;\r\n&lt;p&gt;\r\n	读取cookie\r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-js&quot;&gt;//获取cookie数组 \r\nCookie[] cookies = request.getCookies();\r\nif( cookies != null){\r\n    for( int i=0;i&amp;lt;cookies.length;i++){\r\n        Cookie cookie = cookies[i];\r\n        if(cookie.getName().equals(&quot;name&quot;)){\r\n            out.print(cookie.getName()+&quot;:&quot;+ cookie.getValue());\r\n        }\r\n    }\r\n}&lt;/pre&gt;\r\n&lt;p&gt;\r\n	未完\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;',1,0,0,1,NULL,'','',NULL,23,'java'),
-(7,1,'socket bind failed的原因以及解决办法',NULL,'管理员',1525748938,'socket bind failed\r\n出现原因：一般是tomcat启动所需的端口号被占用造成的；\r\n解决办法：找出这个占用进程，并关闭它，重启tomcat即可。','socket bind failed&lt;br /&gt;\r\n出现原因：一般是tomcat启动所需的端口号被占用造成的；&lt;br /&gt;\r\n解决办法：找出这个占用进程，并关闭它，重启tomcat即可。&lt;br /&gt;\r\n具体步骤：&lt;br /&gt;\r\n第一步：在dos窗口中输入指令：netstat -ano | findstr 8080，其中8080是指你启动该tomcat所需的，被占用的端口号；&lt;br /&gt;\r\n第二步：输入 tasklist|findstr 3292 ,3292是指占用端口号的进程的pid， 查看占用的进程（可省略）；&lt;br /&gt;\r\n第三步：输入 taskkill /f /pid 3292 , 关闭进程即可；&lt;br /&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;/upload/sys/image/24/19f52e966ea8ec2380c5c1f4ec57cd.png&quot; alt=&quot;&quot; /&gt; \r\n&lt;/p&gt;',0,0,0,1,NULL,'','',NULL,18,'java'),
-(8,1,'分享一种phpstudy支持多版本php的方法',NULL,'管理员',1525757929,'因为设计多个项目的开发，每个项目的php版本会有所不同，用多个服务器肯定不太现实，于是总结了这个方法做个记录。\r\n本方法只针对phpstudy，其他可以做参考。','&lt;p&gt;\r\n	&amp;nbsp; &amp;nbsp; &amp;nbsp; 首先打开apache配置文件 httpd.conf 查找&amp;nbsp;LoadModule&amp;nbsp;fcgid_module&amp;nbsp;modules/mod_fcgid.so，如果有就可以忽略这步操作，一般新版本phpstudy都已经自动开启；没有的话查找&amp;nbsp;Include conf/extra/httpd-mpm.conf，在该行代码下面添加两行代码：\r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-php&quot;&gt;Include conf/extra/httpd-mpm.conf\r\nLoadModule fcgid_module modules/mod_fcgid.so\r\nAddHandler fcgid-script .fcgi .php \r\nInclude conf/extra/httpd-php-fcgid70.conf&lt;/pre&gt;\r\n&lt;p&gt;\r\n	然后打开你的站点域名配置文件 vhosts.conf，在需要添加不同php版本的地方添加两行代码，注意修改路径：\r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-php&quot;&gt;&amp;lt;VirtualHost *:81&amp;gt;\r\n    DocumentRoot &quot;E:\\gitlearn\\hisiphp&quot;\r\n    ServerName localhost\r\n    ServerAlias \r\n    FcgidInitialEnv PHPRC &quot;E:/phpstudy/php55n&quot;\r\n    FcgidWrapper &quot;E:/phpstudy/php55n/php-cgi.exe&quot; .php\r\n  &amp;lt;Directory &quot;E:\\gitlearn\\hisiphp&quot;&amp;gt;\r\n      Options FollowSymLinks ExecCGI\r\n      AllowOverride All\r\n      Order allow,deny\r\n      Allow from all\r\n      Require all granted\r\n  &amp;lt;/Directory&amp;gt;\r\n&amp;lt;/VirtualHost&amp;gt;&lt;/pre&gt;\r\n&lt;p&gt;\r\n	然后重启apache。。就没了\r\n&lt;br&gt;\r\n	是不是很简单，想要哪个版本就加哪个版本\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;strong&gt;加一个测试结果&lt;/strong&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	我测试了4个版本： &amp;nbsp;php7.0（全局默认版本）；5.5；5.3；5.2；\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	我的vhosts.conf配置如下：\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;file://C:\\Users\\Administrator\\AppData\\Roaming\\Tencent\\Users\\302700308\\QQ\\WinTemp\\RichOle\\8%{DXS{W3RD0$CT``1M56E3.png&quot; /&gt;&lt;img src=&quot;/upload/sys/image/dc/71723ea93635dde058879131085383.png&quot; alt=&quot;&quot; /&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	重启Apache查看结果：\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;/upload/sys/image/28/2a380bc96ebe0ee4e704bcac843f79.png&quot; alt=&quot;&quot; /&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#E53333;&quot;&gt;该方法有个缺点，每次添加站点并保存配置文件时，即配置文件vhost.conf被修改后都需要重新设置；所以请看情况使用该方法。&lt;/span&gt; \r\n&lt;/p&gt;',1,0,0,1,NULL,'','',NULL,47,'php');
+(3,4,'hehe',NULL,'管理员',1523956553,'','&lt;p&gt;1&lt;br/&gt;&lt;/p&gt;',0,0,0,1,NULL,'','','',53789,'php,java'),
+(5,1,'拜拜了,浮动布局-基于display:inline-block的列表布局',NULL,'张鑫旭',1524032482,'对于浮动局部的局限性，想必同行们都知道，就是每个列表元素的高度必须要一致，否则就会像是俄罗斯方块一样，“锯齿相错”，例如一个左浮动列表布局，如果第一行有个列表高度高于其他列表，那就在第二行，第一个元素会沿着最高元素的右侧对齐。\r\n浮动本身就是个魔鬼，所以，使用浮动布局还需要修复其带来的副作用——高度塌陷的问题，也就是常提到的“清除浮动”了。\r\n另外，IE6下，重复的列表元素会出现莫名的bug，例如出现不知哪来的文字。\r\n而基于display:inline-block的列表布局可以避免这些问题，本文就将一步一步地展示基于displ','&lt;p style=&quot;text-align:left;&quot;&gt;\r\n	&lt;span&gt;如果你以为基于display:inline-block的列表布局的优点仅仅在于可以让列表元素不等高，那你就大错特错了。&lt;/span&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span&gt;在IE6/7下，inline水平标签inline-block化后与纯正的inline-block元素的作用就像是一个模子里出来的，这种“兼容性”可以很好地发挥inline-block列表布局的潜力。例如，使用white-space:nowrap属性可以让列表不换行，你是否想到了列表元素的水平滚动切换？&lt;/span&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;http://image.zhangxinxu.com/image/blog/201011/2010-11-03_221329.png&quot; /&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span&gt;使用text-align:justify可以实现自动等宽水平排列的列表布局，而且是两端对齐的，不需要计算宽度，一切都是浏览器自动的，很方便很强大。尤其在自适应布局中，大显身手，大放光彩。就以此举个简单的例子吧，如下CSS代码：&lt;/span&gt; \r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-css&quot;&gt;.box{width:50%; padding:20px; margin:20px auto; background-color:#f0f3f9; text-align:justify;}\r\n.list{width:120px; display:inline-block; padding-bottom:20px; text-align:center; vertical-align:top;}&lt;/pre&gt;\r\n&lt;p&gt;\r\n	如下HTML代码：\r\n&lt;/p&gt;\r\n&lt;div&gt;\r\n&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&amp;lt;div class=&quot;box&quot;&amp;gt;\r\n    &amp;lt;span class=&quot;list&quot;&amp;gt;&amp;lt;img src=&quot;mm9.jpg&quot; /&amp;gt;\r\n哇哦，美女，口水，鼻血~~~&amp;lt;/span&amp;gt;\r\n    &amp;lt;span class=&quot;list&quot;&amp;gt;&amp;lt;img src=&quot;mm9.jpg&quot; /&amp;gt;\r\n哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~&amp;lt;/span&amp;gt;\r\n    .\r\n    .\r\n    .\r\n&amp;lt;/div&amp;gt;&lt;/pre&gt;\r\n&lt;br /&gt;\r\n&lt;/div&gt;\r\n转载自: &lt;a href=&quot;http://www.zhangxinxu.com/wordpress/2010/11/拜拜了,浮动布局-基于display:inline-block的列表布局/&quot; target=&quot;_blank&quot;&gt;张鑫旭个人博客&lt;span id=&quot;__kindeditor_bookmark_start_38__&quot;&gt;&lt;/span&gt;www.zhangxinxu.com&lt;/a&gt;&lt;span id=&quot;__kindeditor_bookmark_end_39__&quot;&gt;&lt;/span&gt;&lt;br /&gt;',1,0,0,1,NULL,'','http://www.zhangxinxu.com/wordpress/2010/11/拜拜了,浮动布局-基于display:inline-block的列表布局/','',288,'html+css'),
+(6,1,'cookie和session',NULL,'管理员',1525748951,'session 是一个抽象概念，开发者为了实现中断和继续等操作，将 user agent 和 server 之间一对一的交互，抽象为“会话”，进而衍生出“会话状态”，也就是 session 的概念。\r\ncookie 是一个实际存在的东西，http 协议中定义在 header 中的字段。可以认为是 session 的一种后端无状态实现。\r\n而我们今天常说的 “session”，是为了绕开 cookie 的各种限制，通常借助 cookie 本身和后端存储实现的，一种更高级的会话状态实现。','&lt;p&gt;\r\n	1，session 在服务器端，cookie 在客户端（浏览器）&lt;br /&gt;\r\n2，session 默认被存在在服务器的一个文件里（不是内存）&lt;br /&gt;\r\n3，session 的运行依赖 session id，而 session id 是存在 cookie 中的，也就是说，如果浏览器禁用了 cookie ，同时 session 也会失效（但是可以通过其它方式实现，比如在 url 中传递 session_id）&lt;br /&gt;\r\n4，session 可以放在 文件、数据库、或内存中都可以。&lt;br /&gt;\r\n5，用户验证这种场合一般会用 session\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	当我们需要保存用户信息时，就用cookie；不需要时，就用session。\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	JSP：\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	创建cookie\r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-js&quot;&gt;//创建一个Cookie对象\r\nCookie name = new Cookie(&quot;name&quot;,&quot;heheda&quot;); \r\n//设置有效期  \r\nname.setMaxAge(5); \r\n//将cookie发送至HTTP响应头中\r\nresponse.addCookie( name );&lt;/pre&gt;\r\n&lt;p&gt;\r\n	读取cookie\r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-js&quot;&gt;//获取cookie数组 \r\nCookie[] cookies = request.getCookies();\r\nif( cookies != null){\r\n    for( int i=0;i&amp;lt;cookies.length;i++){\r\n        Cookie cookie = cookies[i];\r\n        if(cookie.getName().equals(&quot;name&quot;)){\r\n            out.print(cookie.getName()+&quot;:&quot;+ cookie.getValue());\r\n        }\r\n    }\r\n}&lt;/pre&gt;\r\n&lt;p&gt;\r\n	未完\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;',1,0,0,1,NULL,'','',NULL,24,'java'),
+(7,1,'socket bind failed的原因以及解决办法',NULL,'管理员',1525748938,'socket bind failed\r\n出现原因：一般是tomcat启动所需的端口号被占用造成的；\r\n解决办法：找出这个占用进程，并关闭它，重启tomcat即可。','socket bind failed&lt;br /&gt;\r\n出现原因：一般是tomcat启动所需的端口号被占用造成的；&lt;br /&gt;\r\n解决办法：找出这个占用进程，并关闭它，重启tomcat即可。&lt;br /&gt;\r\n具体步骤：&lt;br /&gt;\r\n第一步：在dos窗口中输入指令：netstat -ano | findstr 8080，其中8080是指你启动该tomcat所需的，被占用的端口号；&lt;br /&gt;\r\n第二步：输入 tasklist|findstr 3292 ,3292是指占用端口号的进程的pid， 查看占用的进程（可省略）；&lt;br /&gt;\r\n第三步：输入 taskkill /f /pid 3292 , 关闭进程即可；&lt;br /&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;/upload/sys/image/24/19f52e966ea8ec2380c5c1f4ec57cd.png&quot; alt=&quot;&quot; /&gt; \r\n&lt;/p&gt;',0,0,0,1,NULL,'','',NULL,25,'java'),
+(8,1,'分享一种phpstudy支持多版本php的方法',NULL,'管理员',1525757929,'因为设计多个项目的开发，每个项目的php版本会有所不同，用多个服务器肯定不太现实，于是总结了这个方法做个记录。\r\n本方法只针对phpstudy，其他可以做参考。','&lt;p&gt;\r\n	&amp;nbsp; &amp;nbsp; &amp;nbsp; 首先打开apache配置文件 httpd.conf 查找&amp;nbsp;LoadModule&amp;nbsp;fcgid_module&amp;nbsp;modules/mod_fcgid.so，如果有就可以忽略这步操作，一般新版本phpstudy都已经自动开启；没有的话查找&amp;nbsp;Include conf/extra/httpd-mpm.conf，在该行代码下面添加两行代码：\r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-php&quot;&gt;Include conf/extra/httpd-mpm.conf\r\nLoadModule fcgid_module modules/mod_fcgid.so\r\nAddHandler fcgid-script .fcgi .php \r\nInclude conf/extra/httpd-php-fcgid70.conf&lt;/pre&gt;\r\n&lt;p&gt;\r\n	然后打开你的站点域名配置文件 vhosts.conf，在需要添加不同php版本的地方添加两行代码，注意修改路径：\r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-php&quot;&gt;&amp;lt;VirtualHost *:81&amp;gt;\r\n    DocumentRoot &quot;E:\\gitlearn\\hisiphp&quot;\r\n    ServerName localhost\r\n    ServerAlias \r\n    FcgidInitialEnv PHPRC &quot;E:/phpstudy/php55n&quot;\r\n    FcgidWrapper &quot;E:/phpstudy/php55n/php-cgi.exe&quot; .php\r\n  &amp;lt;Directory &quot;E:\\gitlearn\\hisiphp&quot;&amp;gt;\r\n      Options FollowSymLinks ExecCGI\r\n      AllowOverride All\r\n      Order allow,deny\r\n      Allow from all\r\n      Require all granted\r\n  &amp;lt;/Directory&amp;gt;\r\n&amp;lt;/VirtualHost&amp;gt;&lt;/pre&gt;\r\n&lt;p&gt;\r\n	然后重启apache。。就没了\r\n&lt;br&gt;\r\n	是不是很简单，想要哪个版本就加哪个版本\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;strong&gt;加一个测试结果&lt;/strong&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	我测试了4个版本： &amp;nbsp;php7.0（全局默认版本）；5.5；5.3；5.2；\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	我的vhosts.conf配置如下：\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;file://C:\\Users\\Administrator\\AppData\\Roaming\\Tencent\\Users\\302700308\\QQ\\WinTemp\\RichOle\\8%{DXS{W3RD0$CT``1M56E3.png&quot; /&gt;&lt;img src=&quot;/upload/sys/image/dc/71723ea93635dde058879131085383.png&quot; alt=&quot;&quot; /&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	重启Apache查看结果：\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;/upload/sys/image/28/2a380bc96ebe0ee4e704bcac843f79.png&quot; alt=&quot;&quot; /&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#E53333;&quot;&gt;该方法有个缺点，每次添加站点并保存配置文件时，即配置文件vhost.conf被修改后都需要重新设置；所以请看情况使用该方法。&lt;/span&gt; \r\n&lt;/p&gt;',1,0,0,1,NULL,'','',NULL,79,'php');
 
 /*Table structure for table `hisi_yupaker_newscategory` */
 
@@ -1152,6 +1111,46 @@ insert  into `hisi_yupaker_newscategory`(`id`,`upid`,`title`,`code`,`memo`,`addt
 (6,0,'分享','',NULL,0,1,NULL),
 (4,0,'生活','',NULL,0,1,NULL),
 (5,0,'资料','',NULL,0,1,'');
+
+/*Table structure for table `hisi_yupaker_ordergoods` */
+
+DROP TABLE IF EXISTS `hisi_yupaker_ordergoods`;
+
+CREATE TABLE `hisi_yupaker_ordergoods` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `orderid` int(10) DEFAULT '0' COMMENT '订单ID',
+  `goodsid` int(10) DEFAULT '0' COMMENT '商品ID',
+  `goodsname` varchar(100) DEFAULT NULL COMMENT '商品名称',
+  `goodsprice` decimal(10,2) DEFAULT '0.00' COMMENT '商品价格',
+  `goodsnumber` int(10) DEFAULT '0' COMMENT '商品数量',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+/*Data for the table `hisi_yupaker_ordergoods` */
+
+/*Table structure for table `hisi_yupaker_orders` */
+
+DROP TABLE IF EXISTS `hisi_yupaker_orders`;
+
+CREATE TABLE `hisi_yupaker_orders` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `orderno` varchar(30) NOT NULL COMMENT '订单号',
+  `memid` int(10) NOT NULL DEFAULT '0' COMMENT '付款会员ID',
+  `price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '总价格',
+  `addtime` int(10) DEFAULT '0' COMMENT '下单时间',
+  `memo` varchar(200) DEFAULT NULL COMMENT '备注',
+  `ip` varchar(50) DEFAULT '0' COMMENT '下单IP',
+  `paytype` tinyint(3) DEFAULT '0' COMMENT '付款状态',
+  `status` tinyint(3) DEFAULT '0' COMMENT '订单状态',
+  `payid` int(10) DEFAULT '0' COMMENT '付款方式ID',
+  `payname` varchar(50) DEFAULT NULL COMMENT '付款方式名称',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+/*Data for the table `hisi_yupaker_orders` */
+
+insert  into `hisi_yupaker_orders`(`id`,`orderno`,`memid`,`price`,`addtime`,`memo`,`ip`,`paytype`,`status`,`payid`,`payname`) values 
+(1,'20180101002562',1000005,1.00,175869584,NULL,'0.0.0.1',1,1,1,'支付宝');
 
 /*Table structure for table `hisi_yupaker_tags` */
 
