@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:49:"E:\gitlearn\yupaker/app/admin\view\hook\index.php";i:1530240845;s:45:"E:\gitlearn\yupaker\app\admin\view\layout.php";i:1530240845;s:51:"E:\gitlearn\yupaker\app\admin\view\block\header.php";i:1530240845;s:50:"E:\gitlearn\yupaker\app\admin\view\block\layui.php";i:1530240845;s:51:"E:\gitlearn\yupaker\app\admin\view\block\footer.php";i:1530240845;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:5:{s:48:"E:\gitlearn\yupaker/app/admin\view\user\role.php";i:1530240845;s:45:"E:\gitlearn\yupaker\app\admin\view\layout.php";i:1530240845;s:51:"E:\gitlearn\yupaker\app\admin\view\block\header.php";i:1530240845;s:50:"E:\gitlearn\yupaker\app\admin\view\block\layui.php";i:1530240845;s:51:"E:\gitlearn\yupaker\app\admin\view\block\footer.php";i:1530240845;}*/ ?>
 <?php if(input('param.hisi_iframe') || cookie('hisi_iframe')): ?>
 <!DOCTYPE html>
 <html>
@@ -124,25 +124,15 @@ $ca = strtolower(request()->controller().'/'.request()->action());
             </ul>
             <div class="layui-tab-content page-tab-content">
                 <div class="layui-tab-item layui-show">
-                    <div class="page-toolbar">
-    <div class="page-filter fr">
-        <form class="layui-form layui-form-pane" action="<?php echo url(); ?>" method="get">
-        <div class="layui-form-item">
-            <label class="layui-form-label">搜索</label>
-            <div class="layui-input-inline">
-                <input type="text" name="q" value="<?php echo input('get.q'); ?>" lay-verify="required" placeholder="请输入钩子名称" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        </form>
-    </div>
+                    <form class="page-list-form">
+<div class="page-toolbar">
     <div class="layui-btn-group fl">
-        <a href="<?php echo url('add'); ?>" class="layui-btn layui-btn-primary"><i class="aicon ai-tianjia"></i>添加</a>
-        <a data-href="<?php echo url('status?table=hook&val=1'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-qiyong"></i>启用</a>
-        <a data-href="<?php echo url('status?table=hook&val=0'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-jinyong1"></i>禁用</a>
-        <a data-href="<?php echo url('del'); ?>" class="layui-btn layui-btn-primary j-page-btns confirm"><i class="aicon ai-jinyong"></i>删除</a>
+        <a href="<?php echo url('addRole'); ?>" class="layui-btn layui-btn-primary"><i class="aicon ai-tianjia"></i>添加</a>
+        <a data-href="<?php echo url('status?table=admin_role&val=1'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-qiyong"></i>启用</a>
+        <a data-href="<?php echo url('status?table=admin_role&val=0'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-jinyong1"></i>禁用</a>
+        <a data-href="<?php echo url('delRole'); ?>" class="layui-btn layui-btn-primary j-page-btns confirm"><i class="aicon ai-jinyong"></i>删除</a>
     </div>
 </div>
-<form id="pageListForm">
 <div class="layui-form">
     <table class="layui-table mt10" lay-even="" lay-skin="row">
         <colgroup>
@@ -150,29 +140,31 @@ $ca = strtolower(request()->controller().'/'.request()->action());
         </colgroup>
         <thead>
             <tr>
-                <th><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
-                <th>名称</th>
-                <th>简介</th>
-                <th>钩子来源</th>
-                <th>系统钩子</th>
+                <th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></th>
+                <th>角色名称</th>
+                <th>角色简介</th>
+                <th>创建时间</th>
                 <th>状态</th>
                 <th>操作</th>
             </tr> 
         </thead>
         <tbody>
-            <?php if(is_array($data_list) || $data_list instanceof \think\Collection || $data_list instanceof \think\Paginator): $i = 0; $__LIST__ = $data_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+            <?php if(is_array($data_list) || $data_list instanceof \think\Collection || $data_list instanceof \think\Paginator): $i = 0; $__LIST__ = $data_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
             <tr>
-                <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="<?php echo $vo['id']; ?>" lay-skin="primary"></td>
-                <td><?php echo $vo['name']; ?></td>
-                <td><?php echo $vo['intro']; ?></td>
-                <td><?php if($vo['source']): ?><?php echo $vo['source']; else: ?>系统<?php endif; ?></td>
-                <td><img src="/static/admin/image/if<?php echo $vo['system']; ?>.png" width="20" height="20"></td>
-                <td><input type="checkbox" name="status" <?php if($vo['status'] == 1): ?>checked=""<?php endif; ?> value="<?php echo $vo['status']; ?>" lay-skin="switch" lay-filter="switchStatus" lay-text="正常|关闭" data-href="<?php echo url('status?ids='.$vo['id']); ?>"></td>
+                <td><input type="checkbox" name="ids[]" value="<?php echo $v['id']; ?>" <?php if($v['id'] == 1): ?>disabled<?php else: ?>class="layui-checkbox checkbox-ids"<?php endif; ?> lay-skin="primary"></td>
+                <td><?php echo $v['name']; ?></td>
+                <td><?php echo $v['intro']; ?></td>
+                <td><?php echo $v['ctime']; ?></td>
+                <td><input type="checkbox" name="status" <?php if($v['status'] == 1): ?>checked=""<?php endif; if($v['id'] == 1): ?>disabled<?php endif; ?> value="<?php echo $v['status']; ?>" lay-skin="switch" lay-filter="switchStatus" lay-text="正常|关闭" data-href="<?php echo url('status?table=admin_role&ids='.$v['id']); ?>"></td>
                 <td>
+                    <?php if($v['id'] != 1): ?>
                     <div class="layui-btn-group">
-                        <a href="<?php echo url('edit?id='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon">&#xe642;</i></a>
-                        <a data-href="<?php echo url('del?ids='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-sm j-tr-del"><i class="layui-icon">&#xe640;</i></a>
+                        <div class="layui-btn-group">
+                        <a href="<?php echo url('editRole?id='.$v['id']); ?>" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon">&#xe642;</i></a>
+                        <a data-href="<?php echo url('delRole?ids='.$v['id']); ?>" class="layui-btn layui-btn-primary layui-btn-sm j-tr-del"><i class="layui-icon">&#xe640;</i></a>
+                        </div>
                     </div>
+                    <?php endif; ?>
                 </td>
             </tr>
             <?php endforeach; endif; else: echo "" ;endif; ?>
@@ -210,25 +202,15 @@ $ca = strtolower(request()->controller().'/'.request()->action());
                 </div>
             </ul>
             <div class="layui-tab-content page-tab-content">
-                <div class="page-toolbar">
-    <div class="page-filter fr">
-        <form class="layui-form layui-form-pane" action="<?php echo url(); ?>" method="get">
-        <div class="layui-form-item">
-            <label class="layui-form-label">搜索</label>
-            <div class="layui-input-inline">
-                <input type="text" name="q" value="<?php echo input('get.q'); ?>" lay-verify="required" placeholder="请输入钩子名称" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        </form>
-    </div>
+                <form class="page-list-form">
+<div class="page-toolbar">
     <div class="layui-btn-group fl">
-        <a href="<?php echo url('add'); ?>" class="layui-btn layui-btn-primary"><i class="aicon ai-tianjia"></i>添加</a>
-        <a data-href="<?php echo url('status?table=hook&val=1'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-qiyong"></i>启用</a>
-        <a data-href="<?php echo url('status?table=hook&val=0'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-jinyong1"></i>禁用</a>
-        <a data-href="<?php echo url('del'); ?>" class="layui-btn layui-btn-primary j-page-btns confirm"><i class="aicon ai-jinyong"></i>删除</a>
+        <a href="<?php echo url('addRole'); ?>" class="layui-btn layui-btn-primary"><i class="aicon ai-tianjia"></i>添加</a>
+        <a data-href="<?php echo url('status?table=admin_role&val=1'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-qiyong"></i>启用</a>
+        <a data-href="<?php echo url('status?table=admin_role&val=0'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-jinyong1"></i>禁用</a>
+        <a data-href="<?php echo url('delRole'); ?>" class="layui-btn layui-btn-primary j-page-btns confirm"><i class="aicon ai-jinyong"></i>删除</a>
     </div>
 </div>
-<form id="pageListForm">
 <div class="layui-form">
     <table class="layui-table mt10" lay-even="" lay-skin="row">
         <colgroup>
@@ -236,29 +218,31 @@ $ca = strtolower(request()->controller().'/'.request()->action());
         </colgroup>
         <thead>
             <tr>
-                <th><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
-                <th>名称</th>
-                <th>简介</th>
-                <th>钩子来源</th>
-                <th>系统钩子</th>
+                <th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></th>
+                <th>角色名称</th>
+                <th>角色简介</th>
+                <th>创建时间</th>
                 <th>状态</th>
                 <th>操作</th>
             </tr> 
         </thead>
         <tbody>
-            <?php if(is_array($data_list) || $data_list instanceof \think\Collection || $data_list instanceof \think\Paginator): $i = 0; $__LIST__ = $data_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+            <?php if(is_array($data_list) || $data_list instanceof \think\Collection || $data_list instanceof \think\Paginator): $i = 0; $__LIST__ = $data_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
             <tr>
-                <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="<?php echo $vo['id']; ?>" lay-skin="primary"></td>
-                <td><?php echo $vo['name']; ?></td>
-                <td><?php echo $vo['intro']; ?></td>
-                <td><?php if($vo['source']): ?><?php echo $vo['source']; else: ?>系统<?php endif; ?></td>
-                <td><img src="/static/admin/image/if<?php echo $vo['system']; ?>.png" width="20" height="20"></td>
-                <td><input type="checkbox" name="status" <?php if($vo['status'] == 1): ?>checked=""<?php endif; ?> value="<?php echo $vo['status']; ?>" lay-skin="switch" lay-filter="switchStatus" lay-text="正常|关闭" data-href="<?php echo url('status?ids='.$vo['id']); ?>"></td>
+                <td><input type="checkbox" name="ids[]" value="<?php echo $v['id']; ?>" <?php if($v['id'] == 1): ?>disabled<?php else: ?>class="layui-checkbox checkbox-ids"<?php endif; ?> lay-skin="primary"></td>
+                <td><?php echo $v['name']; ?></td>
+                <td><?php echo $v['intro']; ?></td>
+                <td><?php echo $v['ctime']; ?></td>
+                <td><input type="checkbox" name="status" <?php if($v['status'] == 1): ?>checked=""<?php endif; if($v['id'] == 1): ?>disabled<?php endif; ?> value="<?php echo $v['status']; ?>" lay-skin="switch" lay-filter="switchStatus" lay-text="正常|关闭" data-href="<?php echo url('status?table=admin_role&ids='.$v['id']); ?>"></td>
                 <td>
+                    <?php if($v['id'] != 1): ?>
                     <div class="layui-btn-group">
-                        <a href="<?php echo url('edit?id='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon">&#xe642;</i></a>
-                        <a data-href="<?php echo url('del?ids='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-sm j-tr-del"><i class="layui-icon">&#xe640;</i></a>
+                        <div class="layui-btn-group">
+                        <a href="<?php echo url('editRole?id='.$v['id']); ?>" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon">&#xe642;</i></a>
+                        <a data-href="<?php echo url('delRole?ids='.$v['id']); ?>" class="layui-btn layui-btn-primary layui-btn-sm j-tr-del"><i class="layui-icon">&#xe640;</i></a>
+                        </div>
                     </div>
+                    <?php endif; ?>
                 </td>
             </tr>
             <?php endforeach; endif; else: echo "" ;endif; ?>
@@ -279,25 +263,15 @@ $ca = strtolower(request()->controller().'/'.request()->action());
         </div>
     <?php break; case "3": ?>
     
-        <div class="page-toolbar">
-    <div class="page-filter fr">
-        <form class="layui-form layui-form-pane" action="<?php echo url(); ?>" method="get">
-        <div class="layui-form-item">
-            <label class="layui-form-label">搜索</label>
-            <div class="layui-input-inline">
-                <input type="text" name="q" value="<?php echo input('get.q'); ?>" lay-verify="required" placeholder="请输入钩子名称" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        </form>
-    </div>
+        <form class="page-list-form">
+<div class="page-toolbar">
     <div class="layui-btn-group fl">
-        <a href="<?php echo url('add'); ?>" class="layui-btn layui-btn-primary"><i class="aicon ai-tianjia"></i>添加</a>
-        <a data-href="<?php echo url('status?table=hook&val=1'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-qiyong"></i>启用</a>
-        <a data-href="<?php echo url('status?table=hook&val=0'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-jinyong1"></i>禁用</a>
-        <a data-href="<?php echo url('del'); ?>" class="layui-btn layui-btn-primary j-page-btns confirm"><i class="aicon ai-jinyong"></i>删除</a>
+        <a href="<?php echo url('addRole'); ?>" class="layui-btn layui-btn-primary"><i class="aicon ai-tianjia"></i>添加</a>
+        <a data-href="<?php echo url('status?table=admin_role&val=1'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-qiyong"></i>启用</a>
+        <a data-href="<?php echo url('status?table=admin_role&val=0'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-jinyong1"></i>禁用</a>
+        <a data-href="<?php echo url('delRole'); ?>" class="layui-btn layui-btn-primary j-page-btns confirm"><i class="aicon ai-jinyong"></i>删除</a>
     </div>
 </div>
-<form id="pageListForm">
 <div class="layui-form">
     <table class="layui-table mt10" lay-even="" lay-skin="row">
         <colgroup>
@@ -305,29 +279,31 @@ $ca = strtolower(request()->controller().'/'.request()->action());
         </colgroup>
         <thead>
             <tr>
-                <th><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
-                <th>名称</th>
-                <th>简介</th>
-                <th>钩子来源</th>
-                <th>系统钩子</th>
+                <th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></th>
+                <th>角色名称</th>
+                <th>角色简介</th>
+                <th>创建时间</th>
                 <th>状态</th>
                 <th>操作</th>
             </tr> 
         </thead>
         <tbody>
-            <?php if(is_array($data_list) || $data_list instanceof \think\Collection || $data_list instanceof \think\Paginator): $i = 0; $__LIST__ = $data_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+            <?php if(is_array($data_list) || $data_list instanceof \think\Collection || $data_list instanceof \think\Paginator): $i = 0; $__LIST__ = $data_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
             <tr>
-                <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="<?php echo $vo['id']; ?>" lay-skin="primary"></td>
-                <td><?php echo $vo['name']; ?></td>
-                <td><?php echo $vo['intro']; ?></td>
-                <td><?php if($vo['source']): ?><?php echo $vo['source']; else: ?>系统<?php endif; ?></td>
-                <td><img src="/static/admin/image/if<?php echo $vo['system']; ?>.png" width="20" height="20"></td>
-                <td><input type="checkbox" name="status" <?php if($vo['status'] == 1): ?>checked=""<?php endif; ?> value="<?php echo $vo['status']; ?>" lay-skin="switch" lay-filter="switchStatus" lay-text="正常|关闭" data-href="<?php echo url('status?ids='.$vo['id']); ?>"></td>
+                <td><input type="checkbox" name="ids[]" value="<?php echo $v['id']; ?>" <?php if($v['id'] == 1): ?>disabled<?php else: ?>class="layui-checkbox checkbox-ids"<?php endif; ?> lay-skin="primary"></td>
+                <td><?php echo $v['name']; ?></td>
+                <td><?php echo $v['intro']; ?></td>
+                <td><?php echo $v['ctime']; ?></td>
+                <td><input type="checkbox" name="status" <?php if($v['status'] == 1): ?>checked=""<?php endif; if($v['id'] == 1): ?>disabled<?php endif; ?> value="<?php echo $v['status']; ?>" lay-skin="switch" lay-filter="switchStatus" lay-text="正常|关闭" data-href="<?php echo url('status?table=admin_role&ids='.$v['id']); ?>"></td>
                 <td>
+                    <?php if($v['id'] != 1): ?>
                     <div class="layui-btn-group">
-                        <a href="<?php echo url('edit?id='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon">&#xe642;</i></a>
-                        <a data-href="<?php echo url('del?ids='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-sm j-tr-del"><i class="layui-icon">&#xe640;</i></a>
+                        <div class="layui-btn-group">
+                        <a href="<?php echo url('editRole?id='.$v['id']); ?>" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon">&#xe642;</i></a>
+                        <a data-href="<?php echo url('delRole?ids='.$v['id']); ?>" class="layui-btn layui-btn-primary layui-btn-sm j-tr-del"><i class="layui-icon">&#xe640;</i></a>
+                        </div>
                     </div>
+                    <?php endif; ?>
                 </td>
             </tr>
             <?php endforeach; endif; else: echo "" ;endif; ?>
@@ -358,25 +334,15 @@ $ca = strtolower(request()->controller().'/'.request()->action());
             </ul>
             <div class="layui-tab-content page-tab-content">
                 <div class="layui-tab-item layui-show">
-                    <div class="page-toolbar">
-    <div class="page-filter fr">
-        <form class="layui-form layui-form-pane" action="<?php echo url(); ?>" method="get">
-        <div class="layui-form-item">
-            <label class="layui-form-label">搜索</label>
-            <div class="layui-input-inline">
-                <input type="text" name="q" value="<?php echo input('get.q'); ?>" lay-verify="required" placeholder="请输入钩子名称" autocomplete="off" class="layui-input">
-            </div>
-        </div>
-        </form>
-    </div>
+                    <form class="page-list-form">
+<div class="page-toolbar">
     <div class="layui-btn-group fl">
-        <a href="<?php echo url('add'); ?>" class="layui-btn layui-btn-primary"><i class="aicon ai-tianjia"></i>添加</a>
-        <a data-href="<?php echo url('status?table=hook&val=1'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-qiyong"></i>启用</a>
-        <a data-href="<?php echo url('status?table=hook&val=0'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-jinyong1"></i>禁用</a>
-        <a data-href="<?php echo url('del'); ?>" class="layui-btn layui-btn-primary j-page-btns confirm"><i class="aicon ai-jinyong"></i>删除</a>
+        <a href="<?php echo url('addRole'); ?>" class="layui-btn layui-btn-primary"><i class="aicon ai-tianjia"></i>添加</a>
+        <a data-href="<?php echo url('status?table=admin_role&val=1'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-qiyong"></i>启用</a>
+        <a data-href="<?php echo url('status?table=admin_role&val=0'); ?>" class="layui-btn layui-btn-primary j-page-btns"><i class="aicon ai-jinyong1"></i>禁用</a>
+        <a data-href="<?php echo url('delRole'); ?>" class="layui-btn layui-btn-primary j-page-btns confirm"><i class="aicon ai-jinyong"></i>删除</a>
     </div>
 </div>
-<form id="pageListForm">
 <div class="layui-form">
     <table class="layui-table mt10" lay-even="" lay-skin="row">
         <colgroup>
@@ -384,29 +350,31 @@ $ca = strtolower(request()->controller().'/'.request()->action());
         </colgroup>
         <thead>
             <tr>
-                <th><input type="checkbox" lay-skin="primary" lay-filter="allChoose"></th>
-                <th>名称</th>
-                <th>简介</th>
-                <th>钩子来源</th>
-                <th>系统钩子</th>
+                <th><input type="checkbox" name="" lay-skin="primary" lay-filter="allChoose"></th>
+                <th>角色名称</th>
+                <th>角色简介</th>
+                <th>创建时间</th>
                 <th>状态</th>
                 <th>操作</th>
             </tr> 
         </thead>
         <tbody>
-            <?php if(is_array($data_list) || $data_list instanceof \think\Collection || $data_list instanceof \think\Paginator): $i = 0; $__LIST__ = $data_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+            <?php if(is_array($data_list) || $data_list instanceof \think\Collection || $data_list instanceof \think\Paginator): $i = 0; $__LIST__ = $data_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
             <tr>
-                <td><input type="checkbox" name="ids[]" class="layui-checkbox checkbox-ids" value="<?php echo $vo['id']; ?>" lay-skin="primary"></td>
-                <td><?php echo $vo['name']; ?></td>
-                <td><?php echo $vo['intro']; ?></td>
-                <td><?php if($vo['source']): ?><?php echo $vo['source']; else: ?>系统<?php endif; ?></td>
-                <td><img src="/static/admin/image/if<?php echo $vo['system']; ?>.png" width="20" height="20"></td>
-                <td><input type="checkbox" name="status" <?php if($vo['status'] == 1): ?>checked=""<?php endif; ?> value="<?php echo $vo['status']; ?>" lay-skin="switch" lay-filter="switchStatus" lay-text="正常|关闭" data-href="<?php echo url('status?ids='.$vo['id']); ?>"></td>
+                <td><input type="checkbox" name="ids[]" value="<?php echo $v['id']; ?>" <?php if($v['id'] == 1): ?>disabled<?php else: ?>class="layui-checkbox checkbox-ids"<?php endif; ?> lay-skin="primary"></td>
+                <td><?php echo $v['name']; ?></td>
+                <td><?php echo $v['intro']; ?></td>
+                <td><?php echo $v['ctime']; ?></td>
+                <td><input type="checkbox" name="status" <?php if($v['status'] == 1): ?>checked=""<?php endif; if($v['id'] == 1): ?>disabled<?php endif; ?> value="<?php echo $v['status']; ?>" lay-skin="switch" lay-filter="switchStatus" lay-text="正常|关闭" data-href="<?php echo url('status?table=admin_role&ids='.$v['id']); ?>"></td>
                 <td>
+                    <?php if($v['id'] != 1): ?>
                     <div class="layui-btn-group">
-                        <a href="<?php echo url('edit?id='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon">&#xe642;</i></a>
-                        <a data-href="<?php echo url('del?ids='.$vo['id']); ?>" class="layui-btn layui-btn-primary layui-btn-sm j-tr-del"><i class="layui-icon">&#xe640;</i></a>
+                        <div class="layui-btn-group">
+                        <a href="<?php echo url('editRole?id='.$v['id']); ?>" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon">&#xe642;</i></a>
+                        <a data-href="<?php echo url('delRole?ids='.$v['id']); ?>" class="layui-btn layui-btn-primary layui-btn-sm j-tr-del"><i class="layui-icon">&#xe640;</i></a>
+                        </div>
                     </div>
+                    <?php endif; ?>
                 </td>
             </tr>
             <?php endforeach; endif; else: echo "" ;endif; ?>

@@ -103,11 +103,12 @@ class YupakerMessages extends Model
             $this->error = '保存失败';
             return false;
         }
+		
         return $res;
     }
 	
 	/**
-     * 后台回复评论
+     * 后台管理员回复评论
      * @param array $data 入库数据
      * @author yupaker
      * @return bool
@@ -121,14 +122,14 @@ class YupakerMessages extends Model
             $res = $this->update($data);
 		}else{
 			//回复
-			$reid = self::where('id = '.$data['id'].'')->value('reid');
+			$redata = self::where('id = '.$data['id'].'')->field('memid,reid')->find();
 			$arr = array(
 				'content'=>$data['recontent'],
 				'addtime'=> time(),
 				'ip'=> get_client_ip(),
 				'status'=> 1,//直接留言成功
 				'memid'=> '1000000',
-				'reid'=> empty($reid)?0:$reid,
+				'reid'=> empty($redata['reid'])?$data['id']:$redata['reid'],
 				'catreid'=> empty($data['id'])?0:$data['id'],
 			);
             $res = $this->create($arr);
@@ -137,6 +138,16 @@ class YupakerMessages extends Model
             $this->error = '保存失败';
             return false;
         }
+		if($redata['memid'] != '1000000'){
+			$meminfo = MemberModel::where('id', $redata['memid'])->field('nick,email')->find()->toArray();
+			//留言成功，发送邮件
+			$toemail = $meminfo['email'];
+			$name = $meminfo['nick'];
+			$subject='网站留言';
+			$content='回复内容：' . $data['recontent'];
+			send_mail($toemail,$name,$subject,$content);
+			
+		}
         return $res;
     }
 

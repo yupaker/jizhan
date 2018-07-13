@@ -37,6 +37,7 @@ return [
         'upload'    => '上传',
         'develop'   => '开发',
         'databases'  => '数据库',
+        'paytype'  => '支付',
     ],
     // 系统标准模块
     'modules' => ['admin', 'common', 'index', 'install', 'hisiphp', 'plugin'],

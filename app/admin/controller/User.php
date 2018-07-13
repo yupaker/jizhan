@@ -160,8 +160,9 @@ class User extends Admin
             }
 
             if ($data['password'] == '') {
-                unset($data['password'], $data['password_confirm']);
+                unset($data['password']);
             }
+			unset($data['password_confirm']);
 
             if (!UserModel::update($data)) {
                 return $this->error('修改失败');

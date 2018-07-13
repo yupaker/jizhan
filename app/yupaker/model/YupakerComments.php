@@ -128,7 +128,7 @@ class YupakerComments extends Model
             $res = $this->update($data);
 		}else{
 			//回复
-			$redata = self::where('id = '.$data['id'].'')->field('newsid,reid')->find();
+			$redata = self::where('id = '.$data['id'].'')->field('newsid,reid,memid')->find();
 			$arr = array(
 				'content'=>$data['recontent'],
 				'addtime'=> time(),
@@ -147,6 +147,17 @@ class YupakerComments extends Model
             $this->error = '保存失败';
             return false;
         }
+		
+		if($redata['memid'] != '1000000'){
+			$meminfo = MemberModel::where('id', $redata['memid'])->field('nick,email')->find()->toArray();
+			//留言成功，发送邮件
+			$toemail = $meminfo['email'];
+			$name = $meminfo['nick'];
+			$subject='网站留言';
+			$content='回复内容：' . $data['recontent'];
+			send_mail($toemail,$name,$subject,$content);
+			
+		}
         return $res;
     }
 }
