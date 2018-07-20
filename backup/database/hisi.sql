@@ -73,12 +73,12 @@ CREATE TABLE `hisi_admin_config` (
   `ctime` int(10) unsigned NOT NULL DEFAULT '0',
   `mtime` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8 COMMENT='[系统] 系统配置';
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COMMENT='[系统] 系统配置';
 
 /*Data for the table `hisi_admin_config` */
 
 insert  into `hisi_admin_config`(`id`,`system`,`group`,`title`,`name`,`value`,`type`,`options`,`url`,`tips`,`sort`,`status`,`ctime`,`mtime`) values 
-(1,1,'sys','扩展配置分组','config_group','sendmail:邮箱设置','array',' ','','请按如下格式填写：&lt;br&gt;键值:键名&lt;br&gt;键值:键名&lt;br&gt;&lt;span style=&quot;color:#f00&quot;&gt;键值只能为英文、数字、下划线&lt;/span&gt;',1,1,1492140215,1492140215),
+(1,1,'sys','扩展配置分组','config_group','sendmail:邮箱设置\r\nalipay:阿里支付\r\nwechat:微信API','array',' ','','请按如下格式填写：&lt;br&gt;键值:键名&lt;br&gt;键值:键名&lt;br&gt;&lt;span style=&quot;color:#f00&quot;&gt;键值只能为英文、数字、下划线&lt;/span&gt;',1,1,1492140215,1492140215),
 (13,1,'base','网站域名','site_domain','www.yupaker.com','input','','','',2,1,1492140215,1492140215),
 (14,1,'upload','图片上传大小限制','upload_image_size','0','input','','','单位：KB，0表示不限制大小',3,1,1490841797,1491040778),
 (15,1,'upload','允许上传图片格式','upload_image_ext','jpg,png,gif,jpeg,ico','input','','','多个格式请用英文逗号（,）隔开',4,1,1490842130,1491040778),
@@ -117,11 +117,13 @@ insert  into `hisi_admin_config`(`id`,`system`,`group`,`title`,`name`,`value`,`t
 (50,1,'sys','云端推送','cloud_push','0','switch','0:关闭\r\n1:开启','','关闭之后，无法通过云端推送安装扩展',3,1,1504250320,1504250320),
 (51,0,'base','手机网站域名','wap_domain','','input','','','手机访问将自动跳转至此域名',2,1,1504304776,1504304837),
 (52,0,'sys','多语言支持','multi_language','0','switch','0:关闭\r\n1:开启','','开启后你可以自由上传多种语言包',4,1,1506532211,1506532211),
-(53,0,'paytype','名称','pay_name','hehehdeh','input','','','配置名称',0,1,1531105810,1531105810),
 (54,0,'sendmail','SMTP服务器','smtp','smtp.qq.com','input','','','',0,1,1531463383,1531463383),
 (55,0,'sendmail','用户名','username','302700308@qq.com','input','','','',0,1,1531463422,1531463422),
 (56,0,'sendmail','密码','password','tfhhdojukilhbhde','input','','','',0,1,1531463444,1531463444),
-(57,0,'sendmail','发件人姓名','nickname','发件人姓名','input','','','',0,1,1531463478,1531463478);
+(57,0,'sendmail','发件人姓名','nickname','发件人姓名','input','','','',0,1,1531463478,1531463478),
+(58,0,'alipay','APPID','app_id','2018061960417597','input','','','',0,1,1531708621,1531708621),
+(59,0,'wechat','appid','appid','wxa3cf17ca2b64573f','input','','','',0,1,1532068538,1532068538),
+(60,0,'wechat','secret','secret','937d1498ed51a84af1155699d52c4d67','input','','','',0,1,1532068548,1532068548);
 
 /*Table structure for table `hisi_admin_hook` */
 
@@ -207,125 +209,28 @@ CREATE TABLE `hisi_admin_log` (
   `ctime` int(10) unsigned NOT NULL DEFAULT '0',
   `mtime` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=872 DEFAULT CHARSET=utf8 COMMENT='[系统] 操作日志';
+) ENGINE=InnoDB AUTO_INCREMENT=914 DEFAULT CHARSET=utf8 COMMENT='[系统] 操作日志';
 
 /*Data for the table `hisi_admin_log` */
 
 insert  into `hisi_admin_log`(`id`,`uid`,`title`,`url`,`param`,`remark`,`count`,`ip`,`ctime`,`mtime`) values 
-(758,1,'系统日志','admin/log/index','[]','浏览数据',3,'0.0.0.0',1530771556,1531469443),
-(759,1,'会员等级','admin/member/level','[]','浏览数据',4,'0.0.0.0',1530771557,1531470821),
-(760,1,'会员列表','admin/member/index','[]','浏览数据',3,'0.0.0.0',1530771561,1531470817),
-(761,1,'模块管理','admin/module/index','[]','浏览数据',1,'0.0.0.0',1530771567,1530771567),
-(762,1,'插件管理','admin/plugins/index','[]','浏览数据',1,'0.0.0.0',1530771569,1530771569),
-(763,1,'钩子管理','admin/hook/index','[]','浏览数据',1,'0.0.0.0',1530771571,1530771571),
-(764,1,'在线升级','admin/upgrade/index','[]','浏览数据',1,'0.0.0.0',1530771572,1530771572),
-(765,1,'[示例]列表模板','admin/develop/lists','[]','浏览数据',1,'0.0.0.0',1530771587,1530771587),
-(766,1,'[示例]编辑模板','admin/develop/edit','[]','浏览数据',1,'0.0.0.0',1530771589,1530771589),
-(767,1,'附件上传','admin/annex/upload','{\"action\":\"config\",\"noCache\":\"1530771589490\",\"thumb\":\"no\",\"from\":\"ueditor\"}','浏览数据',2,'0.0.0.0',1530771589,1530771590),
-(768,1,'全部订单','yupaker/orders/index','[]','浏览数据',11,'0.0.0.0',1530771594,1530772368),
-(769,1,'系统菜单','admin/menu/index','[]','浏览数据',12,'0.0.0.0',1530772256,1531470824),
-(770,1,'配置管理','admin/config/index','[]','浏览数据',34,'0.0.0.0',1530772259,1531470823),
-(771,1,'修改菜单','admin/menu/edit','{\"id\":\"260\"}','浏览数据',1,'0.0.0.0',1530772270,1530772270),
-(772,1,'修改菜单','admin/menu/edit','{\"id\":\"262\"}','浏览数据',1,'0.0.0.0',1530772279,1530772279),
-(773,1,'添加菜单','admin/menu/add','{\"pid\":\"262\",\"mod\":\"yupaker\"}','浏览数据',1,'0.0.0.0',1530772285,1530772285),
-(774,1,'添加菜单','admin/menu/add','{\"module\":\"yupaker\",\"pid\":\"262\",\"title\":\"\\u72b6\\u6001\\u8bbe\\u7f6e\",\"icon\":\"\",\"url\":\"yupaker\\/orders\\/status\",\"param\":\"\",\"status\":\"1\",\"system\":\"0\",\"nav\":\"1\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1530772315,1530772315),
-(775,1,'状态设置','yupaker/orders/status','{\"ids\":[\"1\"],\"table\":\"yupaker_orders\",\"val\":\"0\"}','保存数据',2,'0.0.0.0',1530772324,1530772356),
-(776,1,'状态设置','yupaker/orders/status','{\"ids\":[\"1\"],\"table\":\"yupaker_orders\",\"val\":\"1\"}','保存数据',1,'0.0.0.0',1530772365,1530772365),
-(777,1,'后台首页','admin/index/index','[]','浏览数据',6,'0.0.0.0',1531102081,1531471040),
-(778,1,'系统设置','admin/system/index','[]','浏览数据',16,'0.0.0.0',1531102562,1531470822),
-(779,1,'配置管理','admin/config/index','{\"group\":\"sys\"}','浏览数据',14,'0.0.0.0',1531102569,1531463236),
-(780,1,'配置管理','admin/config/index','{\"group\":\"upload\"}','浏览数据',10,'0.0.0.0',1531102570,1531463228),
-(781,1,'配置管理','admin/config/index','{\"group\":\"develop\"}','浏览数据',7,'0.0.0.0',1531102571,1531463227),
-(782,1,'配置管理','admin/config/index','{\"group\":\"databases\"}','浏览数据',7,'0.0.0.0',1531102572,1531300044),
-(783,1,'配置管理','admin/config/index','{\"group\":\"base\"}','浏览数据',5,'0.0.0.0',1531102576,1531105523),
-(784,1,'添加快捷菜单','admin/menu/quick','{\"id\":\"11\"}','浏览数据',1,'0.0.0.0',1531105135,1531105135),
-(785,1,'添加配置','admin/config/add','[]','浏览数据',2,'0.0.0.0',1531105162,1531105825),
-(786,1,'修改配置','admin/config/edit','{\"id\":\"39\"}','浏览数据',2,'0.0.0.0',1531105177,1531105828),
-(787,1,'修改配置','admin/config/edit','{\"id\":\"40\"}','浏览数据',1,'0.0.0.0',1531105184,1531105184),
-(788,1,'修改配置','admin/config/edit','{\"id\":\"21\"}','浏览数据',1,'0.0.0.0',1531105189,1531105189),
-(789,1,'修改配置','admin/config/edit','{\"id\":\"30\"}','浏览数据',1,'0.0.0.0',1531105192,1531105192),
-(790,1,'修改配置','admin/config/edit','{\"id\":\"35\"}','浏览数据',1,'0.0.0.0',1531105197,1531105197),
-(791,1,'清空缓存','admin/index/clear','[]','浏览数据',5,'0.0.0.0',1531105494,1531470764),
-(792,1,'配置管理','admin/config/index','{\"group\":\"paytype\"}','浏览数据',10,'0.0.0.0',1531105519,1531463298),
-(793,1,'添加配置','admin/config/add','{\"group\":\"paytype\"}','浏览数据',1,'0.0.0.0',1531105525,1531105525),
-(794,1,'添加配置','admin/config/add','{\"group\":\"paytype\",\"title\":\"\\u540d\\u79f0\",\"name\":\"pay_name\",\"type\":\"input\",\"value\":\"\",\"options\":\"\",\"tips\":\"\\u914d\\u7f6e\\u540d\\u79f0\",\"status\":\"1\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1531105810,1531105810),
-(795,1,'修改配置','admin/config/edit','{\"id\":\"53\"}','浏览数据',3,'0.0.0.0',1531105821,1531299971),
-(796,1,'数据库管理','admin/database/index','[]','浏览数据',8,'0.0.0.0',1531299955,1531469445),
-(797,1,'系统管理员','admin/user/index','[]','浏览数据',29,'0.0.0.0',1531300054,1531470994),
-(798,1,'系统设置','admin/system/index','{\"group\":\"paytype\"}','浏览数据',9,'0.0.0.0',1531300081,1531464212),
-(799,1,'数据库配置','admin/system/index','{\"group\":\"databases\"}','浏览数据',2,'0.0.0.0',1531300102,1531464213),
-(800,1,'开发配置','admin/system/index','{\"group\":\"develop\"}','浏览数据',1,'0.0.0.0',1531300104,1531300104),
-(801,1,'上传配置','admin/system/index','{\"group\":\"upload\"}','浏览数据',2,'0.0.0.0',1531300105,1531462992),
-(802,1,'系统配置','admin/system/index','{\"group\":\"sys\"}','浏览数据',4,'0.0.0.0',1531300106,1531464215),
-(803,1,'基础配置','admin/system/index','{\"group\":\"base\"}','浏览数据',2,'0.0.0.0',1531300107,1531462966),
-(804,1,'系统设置','admin/system/index','{\"id\":{\"pay_name\":\"hehehdeh\"},\"type\":{\"pay_name\":\"input\"},\"group\":\"paytype\"}','保存数据',1,'0.0.0.0',1531462938,1531462938),
-(805,1,'系统配置','admin/system/index','{\"id\":{\"admin_path\":\"admin.php\",\"config_group\":\"123\",\"editor\":\"umeditor\"},\"type\":{\"admin_path\":\"input\",\"config_group\":\"array\",\"editor\":\"select\",\"cloud_push\":\"switch\",\"multi_language\":\"switch\"},\"group\":\"sys\"}','保存数据',1,'0.0.0.0',1531463209,1531463209),
-(806,1,'配置管理','admin/config/index','{\"group\":\"0\"}','浏览数据',1,'0.0.0.0',1531463218,1531463218),
-(807,1,'修改配置','admin/config/edit','{\"id\":\"1\"}','浏览数据',1,'0.0.0.0',1531463234,1531463234),
-(808,1,'系统配置','admin/system/index','{\"id\":{\"admin_path\":\"admin.php\",\"config_group\":\"sendmail:\\u90ae\\u7bb1\\u8bbe\\u7f6e\",\"editor\":\"umeditor\"},\"type\":{\"admin_path\":\"input\",\"config_group\":\"array\",\"editor\":\"select\",\"cloud_push\":\"switch\",\"multi_language\":\"switch\"},\"group\":\"sys\"}','保存数据',1,'0.0.0.0',1531463285,1531463285),
-(809,1,'配置管理','admin/config/index','{\"group\":\"sendmail\"}','浏览数据',3,'0.0.0.0',1531463291,1531463392),
-(810,1,'系统设置','admin/system/index','{\"group\":\"sendmail\"}','浏览数据',7,'0.0.0.0',1531463294,1531464771),
-(811,1,'添加配置','admin/config/add','{\"group\":\"sendmail\"}','浏览数据',4,'0.0.0.0',1531463304,1531463448),
-(812,1,'添加配置','admin/config/add','{\"group\":\"sendmail\",\"title\":\"SMTP\\u670d\\u52a1\\u5668\",\"name\":\"smtp\",\"type\":\"input\",\"value\":\"smtp.qq.com\",\"options\":\"\",\"tips\":\"\",\"status\":\"1\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1531463383,1531463383),
-(813,1,'添加配置','admin/config/add','{\"group\":\"sendmail\",\"title\":\"\\u7528\\u6237\\u540d\",\"name\":\"username\",\"type\":\"input\",\"value\":\"\",\"options\":\"\",\"tips\":\"\",\"status\":\"1\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1531463422,1531463422),
-(814,1,'添加配置','admin/config/add','{\"group\":\"sendmail\",\"title\":\"\\u5bc6\\u7801\",\"name\":\"password\",\"type\":\"input\",\"value\":\"\",\"options\":\"\",\"tips\":\"\",\"status\":\"1\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1531463444,1531463444),
-(815,1,'添加配置','admin/config/add','{\"group\":\"sendmail\",\"title\":\"\\u53d1\\u4ef6\\u4eba\\u59d3\\u540d\",\"name\":\"nickname\",\"type\":\"input\",\"value\":\"\",\"options\":\"\",\"tips\":\"\",\"status\":\"1\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1531463478,1531463478),
-(816,1,'系统设置','admin/system/index','{\"id\":{\"smtp\":\"smtp.qq.com\",\"username\":\"302700308@qq.com\",\"password\":\"tfhhdojukilhbhde\",\"nickname\":\"\\u53d1\\u4ef6\\u4eba\\u59d3\\u540d\"},\"type\":{\"smtp\":\"input\",\"username\":\"input\",\"password\":\"input\",\"nickname\":\"input\"},\"group\":\"sendmail\"}','保存数据',1,'0.0.0.0',1531463515,1531463515),
-(817,1,'留言管理','yupaker/messages/index','[]','浏览数据',12,'0.0.0.0',1531464903,1531469293),
-(818,1,'查看留言','yupaker/messages/edit','{\"id\":\"14\"}','浏览数据',4,'0.0.0.0',1531464916,1531469332),
-(819,1,'查看留言','yupaker/messages/edit','{\"status\":\"1\",\"recontent\":\"\\u7ba1\\u7406\\u5458\\u56de\\u590d\",\"id\":\"14\"}','保存数据',1,'0.0.0.0',1531464928,1531464928),
-(820,1,'查看留言','yupaker/messages/edit','{\"status\":\"1\",\"recontent\":\"\\u8fd9\\u91cc\\u662f\\u7ba1\\u7406\\u5458\\u56de\\u590d\\u5185\\u5bb9\",\"id\":\"14\"}','保存数据',1,'0.0.0.0',1531465365,1531465365),
-(821,1,'查看留言','yupaker/messages/edit','{\"id\":\"16\"}','浏览数据',1,'0.0.0.0',1531465643,1531465643),
-(822,1,'查看留言','yupaker/messages/edit','{\"status\":\"1\",\"recontent\":\"\\u7559\\u8a00\\u53d1\\u9001\\u90ae\\u4ef6\\u6d4b\\u8bd5\",\"id\":\"16\"}','保存数据',1,'0.0.0.0',1531465656,1531465656),
-(823,1,'查看留言','yupaker/messages/edit','{\"id\":\"17\"}','浏览数据',1,'0.0.0.0',1531466539,1531466539),
-(824,1,'查看留言','yupaker/messages/edit','{\"status\":\"1\",\"recontent\":\"1\",\"id\":\"17\"}','保存数据',1,'0.0.0.0',1531466540,1531466540),
-(825,1,'查看留言','yupaker/messages/edit','{\"id\":\"18\"}','浏览数据',2,'0.0.0.0',1531466557,1531466562),
-(826,1,'查看留言','yupaker/messages/edit','{\"status\":\"1\",\"recontent\":\"2\",\"id\":\"18\"}','保存数据',1,'0.0.0.0',1531466559,1531466559),
-(827,1,'查看留言','yupaker/messages/edit','{\"id\":\"19\"}','浏览数据',2,'0.0.0.0',1531466659,1531466667),
-(828,1,'查看留言','yupaker/messages/edit','{\"status\":\"1\",\"recontent\":\"3\",\"id\":\"19\"}','保存数据',1,'0.0.0.0',1531466661,1531466661),
-(829,1,'优化数据库','admin/database/optimize','{\"ids\":[\"hisi_admin_annex\",\"hisi_admin_annex_group\",\"hisi_admin_config\",\"hisi_admin_hook\",\"hisi_admin_hook_plugins\",\"hisi_admin_language\",\"hisi_admin_log\",\"hisi_admin_member\",\"hisi_admin_member_level\",\"hisi_admin_menu\",\"hisi_admin_menu_lang\",\"hisi_admin_module\",\"hisi_admin_plugins\",\"hisi_admin_role\",\"hisi_admin_user\",\"hisi_example_category\",\"hisi_example_news\",\"hisi_yupaker_comments\",\"hisi_yupaker_messages\",\"hisi_yupaker_news\",\"hisi_yupaker_newscategory\",\"hisi_yupaker_ordergoods\",\"hisi_yupaker_orders\",\"hisi_yupaker_tags\"]}','保存数据',2,'0.0.0.0',1531467129,1531467155),
-(830,1,'修复数据库','admin/database/repair','{\"ids\":[\"hisi_admin_annex\",\"hisi_admin_annex_group\",\"hisi_admin_config\",\"hisi_admin_hook\",\"hisi_admin_hook_plugins\",\"hisi_admin_language\",\"hisi_admin_log\",\"hisi_admin_member\",\"hisi_admin_member_level\",\"hisi_admin_menu\",\"hisi_admin_menu_lang\",\"hisi_admin_module\",\"hisi_admin_plugins\",\"hisi_admin_role\",\"hisi_admin_user\",\"hisi_example_category\",\"hisi_example_news\",\"hisi_yupaker_comments\",\"hisi_yupaker_messages\",\"hisi_yupaker_news\",\"hisi_yupaker_newscategory\",\"hisi_yupaker_ordergoods\",\"hisi_yupaker_orders\",\"hisi_yupaker_tags\"]}','保存数据',2,'0.0.0.0',1531467142,1531467149),
-(831,1,'评论管理','yupaker/comments/index','[]','浏览数据',4,'0.0.0.0',1531467794,1531469421),
-(832,1,'查看评论','yupaker/comments/edit','{\"id\":\"28\"}','浏览数据',4,'0.0.0.0',1531467878,1531468033),
-(833,1,'查看评论','yupaker/comments/edit','{\"id\":\"6\"}','浏览数据',2,'0.0.0.0',1531467881,1531467884),
-(834,1,'留言管理','yupaker/messages/index','{\"page\":\"2\"}','浏览数据',1,'0.0.0.0',1531469071,1531469071),
-(835,1,'查看留言','yupaker/messages/edit','{\"id\":\"5\"}','浏览数据',2,'0.0.0.0',1531469075,1531469105),
-(836,1,'查看留言','yupaker/messages/edit','{\"status\":\"1\",\"recontent\":\"\\u81ea\\u52a8\\u53d1\\u9001\\u90ae\\u4ef6\\u6d4b\\u8bd5\",\"id\":\"5\"}','保存数据',1,'0.0.0.0',1531469099,1531469099),
-(837,1,'查看留言','yupaker/messages/edit','{\"id\":\"21\"}','浏览数据',2,'0.0.0.0',1531469275,1531469292),
-(838,1,'查看留言','yupaker/messages/edit','{\"status\":\"1\",\"recontent\":\"\\u65e0\\u6536\\u4ef6\\u7bb1\\u6d4b\\u8bd5\",\"id\":\"21\"}','保存数据',1,'0.0.0.0',1531469287,1531469287),
-(839,1,'系统日志','admin/log/index','{\"uid\":\"2\"}','浏览数据',1,'0.0.0.0',1531469453,1531469453),
-(840,1,'系统日志','admin/log/index','{\"uid\":\"1\"}','浏览数据',1,'0.0.0.0',1531469456,1531469456),
-(841,1,'修改管理员','admin/user/edituser','{\"id\":\"2\"}','浏览数据',15,'0.0.0.0',1531469462,1531470990),
-(842,1,'修改管理员','admin/user/edituser','{\"role_id\":\"3\",\"username\":\"ceshi\",\"nick\":\"\\u6d4b\\u8bd5\",\"password\":\"123456\",\"password_confirm\":\"123456\",\"email\":\"\",\"mobile\":\"\",\"status\":\"1\",\"auth\":[\"1\",\"4\",\"25\",\"24\",\"105\",\"106\"],\"id\":\"2\"}','保存数据',5,'0.0.0.0',1531469470,1531470179),
-(843,1,'修改管理员','admin/user/edituser','{\"role_id\":\"3\",\"username\":\"ceshi\",\"nick\":\"\\u6d4b\\u8bd5\",\"password\":\"123123123\",\"password_confirm\":\"123123123\",\"email\":\"\",\"mobile\":\"\",\"status\":\"1\",\"auth\":[\"1\",\"4\",\"25\",\"24\",\"105\",\"106\"],\"id\":\"2\"}','保存数据',1,'0.0.0.0',1531469496,1531469496),
-(844,1,'修改管理员','admin/user/edituser','{\"role_id\":\"3\",\"username\":\"ceshi\",\"nick\":\"\\u6d4b\\u8bd5\",\"password\":\"123123\",\"password_confirm\":\"\",\"email\":\"\",\"mobile\":\"\",\"status\":\"1\",\"auth\":[\"1\",\"4\",\"25\",\"24\",\"105\",\"106\"],\"id\":\"2\"}','保存数据',2,'0.0.0.0',1531470046,1531470077),
-(845,1,'修改管理员','admin/user/edituser','{\"role_id\":\"3\",\"username\":\"ceshi\",\"nick\":\"\\u6d4b\\u8bd5\",\"password\":\"123456\",\"password_confirm\":\"321654\",\"email\":\"\",\"mobile\":\"\",\"status\":\"1\",\"auth\":[\"1\",\"4\",\"25\",\"24\",\"105\",\"106\"],\"id\":\"2\"}','保存数据',1,'0.0.0.0',1531470202,1531470202),
-(846,1,'添加管理员','admin/user/adduser','[]','浏览数据',2,'0.0.0.0',1531470340,1531470368),
-(847,1,'添加管理员','admin/user/adduser','{\"role_id\":\"3\",\"username\":\"asd\",\"nick\":\"\\u963f\\u65af\\u8fbe\",\"password\":\"\",\"password_confirm\":\"\",\"email\":\"\",\"mobile\":\"\",\"status\":\"1\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1531470352,1531470352),
-(848,1,'添加管理员','admin/user/adduser','{\"role_id\":\"3\",\"username\":\"asd\",\"nick\":\"\\u963f\\u65af\\u8fbe\",\"password\":\"asd\",\"password_confirm\":\"\",\"email\":\"\",\"mobile\":\"\",\"status\":\"1\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1531470355,1531470355),
-(849,1,'添加管理员','admin/user/adduser','{\"role_id\":\"3\",\"username\":\"asd\",\"nick\":\"\\u963f\\u65af\\u8fbe\",\"password\":\"asdasd\",\"password_confirm\":\"\",\"email\":\"\",\"mobile\":\"\",\"status\":\"1\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1531470359,1531470359),
-(850,1,'添加管理员','admin/user/adduser','{\"role_id\":\"3\",\"username\":\"asd\",\"nick\":\"\\u963f\\u65af\\u8fbe\",\"password\":\"asdasd\",\"password_confirm\":\"asd\",\"email\":\"\",\"mobile\":\"\",\"status\":\"1\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1531470362,1531470362),
-(851,1,'添加管理员','admin/user/adduser','{\"role_id\":\"3\",\"username\":\"asd\",\"nick\":\"\\u963f\\u65af\\u8fbe\",\"password\":\"asdasd\",\"password_confirm\":\"asdasd\",\"email\":\"\",\"mobile\":\"\",\"status\":\"1\",\"id\":\"\"}','保存数据',1,'0.0.0.0',1531470364,1531470364),
-(852,1,'修改管理员','admin/user/edituser','{\"id\":\"3\"}','浏览数据',5,'0.0.0.0',1531470677,1531470996),
-(853,1,'修改管理员','admin/user/edituser','{\"role_id\":\"3\",\"username\":\"asd\",\"nick\":\"\\u963f\\u65af\\u8fbe\",\"password\":\"123\",\"password_confirm\":\"\",\"email\":\"\",\"mobile\":\"\",\"status\":\"1\",\"auth\":[\"1\",\"4\",\"25\",\"24\",\"105\",\"106\"],\"id\":\"3\"}','保存数据',1,'0.0.0.0',1531470681,1531470681),
-(854,1,'修改管理员','admin/user/edituser','{\"role_id\":\"3\",\"username\":\"asd\",\"nick\":\"\\u963f\\u65af\\u8fbe\",\"password\":\"123456\",\"password_confirm\":\"\",\"email\":\"\",\"mobile\":\"\",\"status\":\"1\",\"auth\":[\"1\",\"4\",\"25\",\"24\",\"105\",\"106\"],\"id\":\"3\"}','保存数据',1,'0.0.0.0',1531470685,1531470685),
-(855,1,'修改管理员','admin/user/edituser','{\"role_id\":\"3\",\"username\":\"asd\",\"nick\":\"\\u963f\\u65af\\u8fbe\",\"password\":\"123123\",\"password_confirm\":\"\",\"email\":\"\",\"mobile\":\"\",\"status\":\"1\",\"auth\":[\"1\",\"4\",\"25\",\"24\",\"105\",\"106\"],\"id\":\"3\"}','保存数据',1,'0.0.0.0',1531470710,1531470710),
-(856,1,'修改管理员','admin/user/edituser','{\"role_id\":\"3\",\"username\":\"asd\",\"nick\":\"\\u963f\\u65af\\u8fbe\",\"password\":\"123123\",\"password_confirm\":\"456\",\"email\":\"\",\"mobile\":\"\",\"status\":\"1\",\"auth\":[\"1\",\"4\",\"25\",\"24\",\"105\",\"106\"],\"id\":\"3\"}','保存数据',1,'0.0.0.0',1531470714,1531470714),
-(857,1,'修改管理员','admin/user/edituser','{\"role_id\":\"3\",\"username\":\"asd\",\"nick\":\"\\u963f\\u65af\\u8fbe\",\"password\":\"123123\",\"password_confirm\":\"123123\",\"email\":\"\",\"mobile\":\"\",\"status\":\"1\",\"auth\":[\"1\",\"4\",\"25\",\"24\",\"105\",\"106\"],\"id\":\"3\"}','保存数据',1,'0.0.0.0',1531470720,1531470720),
-(858,2,'后台首页','admin/index/index','[]','浏览数据',7,'0.0.0.0',1531470782,1531471014),
-(859,1,'管理员角色','admin/user/role','[]','浏览数据',5,'0.0.0.0',1531470843,1531470937),
-(860,1,'修改角色','admin/user/editrole','{\"id\":\"3\"}','浏览数据',3,'0.0.0.0',1531470859,1531470939),
-(861,1,'修改角色','admin/user/editrole','{\"id\":\"2\"}','浏览数据',1,'0.0.0.0',1531470870,1531470870),
-(862,1,'修改角色','admin/user/editrole','{\"name\":\"\\u6d4b\\u8bd5\\u6a21\\u5757\\u7ba1\\u7406\\u5458\",\"intro\":\"\",\"status\":\"1\",\"auth\":{\"0\":\"1\",\"1\":\"4\",\"2\":\"25\",\"3\":\"24\",\"4\":\"105\",\"5\":\"106\",\"123\":\"234\",\"124\":\"235\",\"125\":\"236\",\"126\":\"238\",\"127\":\"239\",\"128\":\"240\",\"129\":\"241\",\"130\":\"237\",\"131\":\"242\",\"132\":\"243\",\"133\":\"244\",\"134\":\"245\",\"135\":\"246\",\"136\":\"247\",\"137\":\"248\",\"138\":\"249\",\"139\":\"250\",\"140\":\"251\",\"141\":\"252\",\"142\":\"253\",\"143\":\"254\",\"144\":\"255\",\"145\":\"256\",\"146\":\"257\",\"147\":\"258\",\"148\":\"259\",\"149\":\"260\",\"150\":\"261\",\"151\":\"262\",\"152\":\"263\",\"153\":\"264\"},\"id\":\"3\"}','保存数据',1,'0.0.0.0',1531470892,1531470892),
-(863,1,'修改管理员','admin/user/edituser','{\"role_id\":\"3\",\"username\":\"ceshi\",\"nick\":\"\\u6d4b\\u8bd5\",\"password\":\"\",\"password_confirm\":\"\",\"email\":\"\",\"mobile\":\"\",\"status\":\"1\",\"auth\":{\"0\":\"1\",\"1\":\"4\",\"2\":\"25\",\"3\":\"24\",\"4\":\"105\",\"5\":\"106\",\"123\":\"234\",\"124\":\"235\",\"125\":\"236\",\"126\":\"238\",\"127\":\"239\",\"128\":\"240\",\"129\":\"241\",\"130\":\"237\",\"131\":\"242\",\"132\":\"243\",\"133\":\"244\",\"134\":\"245\",\"135\":\"246\",\"136\":\"247\",\"137\":\"248\",\"138\":\"249\",\"139\":\"250\",\"140\":\"251\",\"141\":\"252\",\"142\":\"253\",\"143\":\"254\",\"144\":\"255\",\"145\":\"256\",\"146\":\"257\",\"147\":\"258\",\"148\":\"259\",\"149\":\"260\",\"150\":\"261\",\"151\":\"262\",\"152\":\"263\",\"153\":\"264\"},\"id\":\"2\"}','保存数据',1,'0.0.0.0',1531470983,1531470983),
-(864,2,'新闻分类','yupaker/newscategory/index','[]','浏览数据',1,'0.0.0.0',1531471017,1531471017),
-(865,2,'新闻列表','yupaker/news/index','[]','浏览数据',1,'0.0.0.0',1531471018,1531471018),
-(866,2,'标签云','yupaker/tags/index','[]','浏览数据',1,'0.0.0.0',1531471019,1531471019),
-(867,2,'全部订单','yupaker/orders/index','[]','浏览数据',1,'0.0.0.0',1531471021,1531471021),
-(868,1,'新闻列表','yupaker/news/index','[]','浏览数据',4,'0.0.0.0',1531471047,1531471284),
-(869,1,'新闻分类','yupaker/newscategory/index','[]','浏览数据',1,'0.0.0.0',1531471051,1531471051),
-(870,1,'标签云','yupaker/tags/index','[]','浏览数据',1,'0.0.0.0',1531471052,1531471052),
-(871,1,'添加新闻','yupaker/news/add','[]','浏览数据',1,'0.0.0.0',1531471056,1531471056);
+(897,1,'系统日志','admin/log/index','[]','浏览数据',1,'127.0.0.1',1531969710,1531969710),
+(898,1,'后台首页','admin/index/index','[]','浏览数据',5,'127.0.0.1',1531982492,1532068953),
+(899,1,'清空缓存','admin/index/clear','[]','浏览数据',2,'0.0.0.0',1531982493,1531982588),
+(900,1,'系统设置','admin/system/index','[]','浏览数据',4,'127.0.0.1',1532068460,1532068583),
+(901,1,'系统设置','admin/system/index','{\"group\":\"yupaker\"}','浏览数据',1,'127.0.0.1',1532068462,1532068462),
+(902,1,'数据库配置','admin/system/index','{\"group\":\"databases\"}','浏览数据',1,'127.0.0.1',1532068464,1532068464),
+(903,1,'系统设置','admin/system/index','{\"group\":\"sendmail\"}','浏览数据',4,'127.0.0.1',1532068466,1532068569),
+(904,1,'系统配置','admin/system/index','{\"group\":\"sys\"}','浏览数据',2,'127.0.0.1',1532068475,1532068500),
+(905,1,'系统配置','admin/system/index','{\"id\":{\"admin_path\":\"admin.php\",\"config_group\":\"sendmail:\\u90ae\\u7bb1\\u8bbe\\u7f6e\\r\\nalipay:\\u963f\\u91cc\\u652f\\u4ed8\\r\\nwechat:\\u5fae\\u4fe1API\",\"editor\":\"umeditor\"},\"type\":{\"admin_path\":\"input\",\"config_group\":\"array\",\"editor\":\"select\",\"cloud_push\":\"switch\",\"multi_language\":\"switch\"},\"group\":\"sys\"}','保存数据',1,'127.0.0.1',1532068499,1532068499),
+(906,1,'系统设置','admin/system/index','{\"group\":\"wechat\"}','浏览数据',5,'127.0.0.1',1532068502,1532068584),
+(907,1,'配置管理','admin/config/index','[]','浏览数据',3,'127.0.0.1',1532068503,1532068550),
+(908,1,'配置管理','admin/config/index','{\"group\":\"wechat\"}','浏览数据',3,'127.0.0.1',1532068505,1532068551),
+(909,1,'添加配置','admin/config/add','{\"group\":\"wechat\"}','浏览数据',2,'127.0.0.1',1532068511,1532068541),
+(910,1,'添加配置','admin/config/add','{\"group\":\"wechat\",\"title\":\"appid\",\"name\":\"appid\",\"type\":\"input\",\"value\":\"\",\"options\":\"\",\"tips\":\"\",\"status\":\"1\",\"id\":\"\"}','保存数据',1,'127.0.0.1',1532068538,1532068538),
+(911,1,'添加配置','admin/config/add','{\"group\":\"wechat\",\"title\":\"secret\",\"name\":\"secret\",\"type\":\"input\",\"value\":\"\",\"options\":\"\",\"tips\":\"\",\"status\":\"1\",\"id\":\"\"}','保存数据',1,'127.0.0.1',1532068548,1532068548),
+(912,1,'系统设置','admin/system/index','{\"group\":\"alipay\"}','浏览数据',4,'127.0.0.1',1532068556,1532068569),
+(913,1,'系统设置','admin/system/index','{\"id\":{\"appid\":\"wxa3cf17ca2b64573f\",\"secret\":\"937d1498ed51a84af1155699d52c4d67\"},\"type\":{\"appid\":\"input\",\"secret\":\"input\"},\"group\":\"wechat\"}','保存数据',1,'127.0.0.1',1532068580,1532068580);
 
 /*Table structure for table `hisi_admin_member` */
 
@@ -415,7 +320,7 @@ CREATE TABLE `hisi_admin_menu` (
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '状态1显示，0隐藏',
   `ctime` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=266 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='[系统] 管理菜单';
+) ENGINE=InnoDB AUTO_INCREMENT=267 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='[系统] 管理菜单';
 
 /*Data for the table `hisi_admin_menu` */
 
@@ -663,7 +568,8 @@ insert  into `hisi_admin_menu`(`id`,`uid`,`pid`,`module`,`title`,`icon`,`url`,`p
 (262,0,261,'yupaker','全部订单','fa fa-shopping-cart','yupaker/orders/index','','_self',0,0,0,1,1,1530759168),
 (263,0,262,'yupaker','查看','','yupaker/orders/view','','_self',0,0,0,1,1,1530759219),
 (264,0,262,'yupaker','状态设置','','yupaker/orders/status','','_self',0,0,0,1,1,1530772315),
-(265,1,4,'admin','配置管理','aicon ai-peizhiguanli','admin/config/index','','_self',2,0,0,1,1,1531105135);
+(265,1,4,'admin','配置管理','aicon ai-peizhiguanli','admin/config/index','','_self',2,0,0,1,1,1531105135),
+(266,0,0,'wx','微信模板','aicon ai-shezhi','wx','','_self',100,0,0,1,1,1531903891);
 
 /*Table structure for table `hisi_admin_menu_lang` */
 
@@ -908,7 +814,7 @@ CREATE TABLE `hisi_admin_module` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`),
   UNIQUE KEY `identifier` (`identifier`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='[系统] 模块';
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COMMENT='[系统] 模块';
 
 /*Data for the table `hisi_admin_module` */
 
@@ -917,7 +823,8 @@ insert  into `hisi_admin_module`(`id`,`system`,`name`,`identifier`,`title`,`intr
 (2,1,'index','index.hisiphp.module','系统默认模块','仅供前端插件访问和应用市场推送安装，禁止在此模块下面开发任何东西。','HisiPHP官方出品','','1.0.0','http://www.hisiphp.com',0,2,0,'','0','','default',1489998096,1489998096),
 (3,1,'install','install.hisiphp.module','系统安装模块','系统安装模块，勿动。','HisiPHP官方出品','','1.0.0','http://www.hisiphp.com',0,2,0,'','0','','default',1489998096,1489998096),
 (6,0,'example','example.hisiphp.module','示例模块','这是一个开发示例模块，里面集成了后台开发和前台开发示例，仅供参考学习，您可以随时删除此模块。','1.0.0','/static/app_icon/example.png','1.0.0','http://www.hisiphp.com',0,2,0,'','0','','default',1523434990,1523434990),
-(7,0,'yupaker','yupaker.hisiphp.module','博客','个人博客','yupaker','/static/app_icon/yupaker.png','1.0.0','',0,2,1,'{\"100\":{\"sort\":\"100\",\"title\":\"\\u7f51\\u7ad9\\u540d\\u79f0\",\"name\":\"SETA_TITLE\",\"type\":\"input\",\"options\":[\"\"],\"value\":\"\\u4e2a\\u4eba\\u535a\\u5ba2\",\"tips\":\"\"},\"101\":{\"sort\":\"101\",\"title\":\"\\u7f51\\u7ad9\\u5173\\u952e\\u8bcd\",\"name\":\"SETA_KEYWORDS\",\"type\":\"input\",\"options\":[\"\"],\"value\":\"\\u4e2a\\u4eba\\u535a\\u5ba21\",\"tips\":\"\"},\"102\":{\"sort\":\"102\",\"title\":\"\\u7f51\\u7ad9\\u63cf\\u8ff0\",\"name\":\"SETA_DESCRIPTION\",\"type\":\"input\",\"options\":[\"\"],\"value\":\"\\u4e2a\\u4eba\\u535a\\u5ba22\",\"tips\":\"\"}}','0','','default',1523842193,1523842193);
+(7,0,'yupaker','yupaker.hisiphp.module','博客','个人博客','yupaker','/static/app_icon/yupaker.png','1.0.0','',0,2,1,'{\"100\":{\"sort\":\"100\",\"title\":\"\\u7f51\\u7ad9\\u540d\\u79f0\",\"name\":\"SETA_TITLE\",\"type\":\"input\",\"options\":[\"\"],\"value\":\"\\u4e2a\\u4eba\\u535a\\u5ba2\",\"tips\":\"\"},\"101\":{\"sort\":\"101\",\"title\":\"\\u7f51\\u7ad9\\u5173\\u952e\\u8bcd\",\"name\":\"SETA_KEYWORDS\",\"type\":\"input\",\"options\":[\"\"],\"value\":\"\\u4e2a\\u4eba\\u535a\\u5ba21\",\"tips\":\"\"},\"102\":{\"sort\":\"102\",\"title\":\"\\u7f51\\u7ad9\\u63cf\\u8ff0\",\"name\":\"SETA_DESCRIPTION\",\"type\":\"input\",\"options\":[\"\"],\"value\":\"\\u4e2a\\u4eba\\u535a\\u5ba22\",\"tips\":\"\"}}','0','','default',1523842193,1523842193),
+(8,0,'wx','wx.hisiphp.module','微信模板','微信开发模板','yupaker','/static/app_icon/wx.png','1.0.0','www.mengjiang.xyz',0,2,0,'','0','','default',1531903869,1531903869);
 
 /*Table structure for table `hisi_admin_plugins` */
 
@@ -997,7 +904,7 @@ CREATE TABLE `hisi_admin_user` (
 /*Data for the table `hisi_admin_user` */
 
 insert  into `hisi_admin_user`(`id`,`role_id`,`username`,`password`,`nick`,`mobile`,`email`,`auth`,`iframe`,`status`,`last_login_ip`,`last_login_time`,`ctime`,`mtime`) values 
-(1,1,'admin','$2y$10$rPCBmZ3HYR6QqvsuWR/lwuc.f8j/DKWRLHq.fiDlFOIZE3XWldada','超级管理员','','','',0,1,'0.0.0.0',1531471037,1523413362,1531471037),
+(1,1,'admin','$2y$10$rPCBmZ3HYR6QqvsuWR/lwuc.f8j/DKWRLHq.fiDlFOIZE3XWldada','超级管理员','','','',0,1,'0.0.0.0',1531982488,1523413362,1531982488),
 (2,3,'ceshi','$2y$10$QBmafnyorGXz.zVLHs7hO.MohgO3JkazV8/hTr0QyO5PLK7l.grrG','测试','','','',0,1,'0.0.0.0',1531471010,1523428977,1531471010),
 (3,3,'asd','$2y$10$G/y47y.IfEFMWP4XmOkjDepQkJeGmx9rzU9uRvZY2baViAak6sg9C','阿斯达','','','[\"1\",\"4\",\"25\",\"24\",\"105\",\"106\"]',0,1,'0.0.0.0',0,1531470364,1531470720);
 
@@ -1195,8 +1102,8 @@ insert  into `hisi_yupaker_news`(`id`,`catid`,`title`,`code`,`author`,`addtime`,
 (3,4,'hehe',NULL,'管理员',1523956553,'','&lt;p&gt;1&lt;br/&gt;&lt;/p&gt;',0,0,0,1,NULL,'','','',53789,'php,java'),
 (5,1,'拜拜了,浮动布局-基于display:inline-block的列表布局',NULL,'张鑫旭',1524032482,'对于浮动局部的局限性，想必同行们都知道，就是每个列表元素的高度必须要一致，否则就会像是俄罗斯方块一样，“锯齿相错”，例如一个左浮动列表布局，如果第一行有个列表高度高于其他列表，那就在第二行，第一个元素会沿着最高元素的右侧对齐。\r\n浮动本身就是个魔鬼，所以，使用浮动布局还需要修复其带来的副作用——高度塌陷的问题，也就是常提到的“清除浮动”了。\r\n另外，IE6下，重复的列表元素会出现莫名的bug，例如出现不知哪来的文字。\r\n而基于display:inline-block的列表布局可以避免这些问题，本文就将一步一步地展示基于displ','&lt;p style=&quot;text-align:left;&quot;&gt;\r\n	&lt;span&gt;如果你以为基于display:inline-block的列表布局的优点仅仅在于可以让列表元素不等高，那你就大错特错了。&lt;/span&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span&gt;在IE6/7下，inline水平标签inline-block化后与纯正的inline-block元素的作用就像是一个模子里出来的，这种“兼容性”可以很好地发挥inline-block列表布局的潜力。例如，使用white-space:nowrap属性可以让列表不换行，你是否想到了列表元素的水平滚动切换？&lt;/span&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;http://image.zhangxinxu.com/image/blog/201011/2010-11-03_221329.png&quot; /&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span&gt;使用text-align:justify可以实现自动等宽水平排列的列表布局，而且是两端对齐的，不需要计算宽度，一切都是浏览器自动的，很方便很强大。尤其在自适应布局中，大显身手，大放光彩。就以此举个简单的例子吧，如下CSS代码：&lt;/span&gt; \r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-css&quot;&gt;.box{width:50%; padding:20px; margin:20px auto; background-color:#f0f3f9; text-align:justify;}\r\n.list{width:120px; display:inline-block; padding-bottom:20px; text-align:center; vertical-align:top;}&lt;/pre&gt;\r\n&lt;p&gt;\r\n	如下HTML代码：\r\n&lt;/p&gt;\r\n&lt;div&gt;\r\n&lt;pre class=&quot;prettyprint lang-html&quot;&gt;&amp;lt;div class=&quot;box&quot;&amp;gt;\r\n    &amp;lt;span class=&quot;list&quot;&amp;gt;&amp;lt;img src=&quot;mm9.jpg&quot; /&amp;gt;\r\n哇哦，美女，口水，鼻血~~~&amp;lt;/span&amp;gt;\r\n    &amp;lt;span class=&quot;list&quot;&amp;gt;&amp;lt;img src=&quot;mm9.jpg&quot; /&amp;gt;\r\n哇哦，美女，口水，鼻血，不行了，我的小兔乱撞~~&amp;lt;/span&amp;gt;\r\n    .\r\n    .\r\n    .\r\n&amp;lt;/div&amp;gt;&lt;/pre&gt;\r\n&lt;br /&gt;\r\n&lt;/div&gt;\r\n转载自: &lt;a href=&quot;http://www.zhangxinxu.com/wordpress/2010/11/拜拜了,浮动布局-基于display:inline-block的列表布局/&quot; target=&quot;_blank&quot;&gt;张鑫旭个人博客&lt;span id=&quot;__kindeditor_bookmark_start_38__&quot;&gt;&lt;/span&gt;www.zhangxinxu.com&lt;/a&gt;&lt;span id=&quot;__kindeditor_bookmark_end_39__&quot;&gt;&lt;/span&gt;&lt;br /&gt;',1,0,0,1,NULL,'','http://www.zhangxinxu.com/wordpress/2010/11/拜拜了,浮动布局-基于display:inline-block的列表布局/','',291,'html+css'),
 (6,1,'cookie和session',NULL,'管理员',1525748951,'session 是一个抽象概念，开发者为了实现中断和继续等操作，将 user agent 和 server 之间一对一的交互，抽象为“会话”，进而衍生出“会话状态”，也就是 session 的概念。\r\ncookie 是一个实际存在的东西，http 协议中定义在 header 中的字段。可以认为是 session 的一种后端无状态实现。\r\n而我们今天常说的 “session”，是为了绕开 cookie 的各种限制，通常借助 cookie 本身和后端存储实现的，一种更高级的会话状态实现。','&lt;p&gt;\r\n	1，session 在服务器端，cookie 在客户端（浏览器）&lt;br /&gt;\r\n2，session 默认被存在在服务器的一个文件里（不是内存）&lt;br /&gt;\r\n3，session 的运行依赖 session id，而 session id 是存在 cookie 中的，也就是说，如果浏览器禁用了 cookie ，同时 session 也会失效（但是可以通过其它方式实现，比如在 url 中传递 session_id）&lt;br /&gt;\r\n4，session 可以放在 文件、数据库、或内存中都可以。&lt;br /&gt;\r\n5，用户验证这种场合一般会用 session\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	当我们需要保存用户信息时，就用cookie；不需要时，就用session。\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	JSP：\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	创建cookie\r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-js&quot;&gt;//创建一个Cookie对象\r\nCookie name = new Cookie(&quot;name&quot;,&quot;heheda&quot;); \r\n//设置有效期  \r\nname.setMaxAge(5); \r\n//将cookie发送至HTTP响应头中\r\nresponse.addCookie( name );&lt;/pre&gt;\r\n&lt;p&gt;\r\n	读取cookie\r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-js&quot;&gt;//获取cookie数组 \r\nCookie[] cookies = request.getCookies();\r\nif( cookies != null){\r\n    for( int i=0;i&amp;lt;cookies.length;i++){\r\n        Cookie cookie = cookies[i];\r\n        if(cookie.getName().equals(&quot;name&quot;)){\r\n            out.print(cookie.getName()+&quot;:&quot;+ cookie.getValue());\r\n        }\r\n    }\r\n}&lt;/pre&gt;\r\n&lt;p&gt;\r\n	未完\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;',1,0,0,1,NULL,'','',NULL,24,'java'),
-(7,1,'socket bind failed的原因以及解决办法',NULL,'管理员',1525748938,'socket bind failed\r\n出现原因：一般是tomcat启动所需的端口号被占用造成的；\r\n解决办法：找出这个占用进程，并关闭它，重启tomcat即可。','socket bind failed&lt;br /&gt;\r\n出现原因：一般是tomcat启动所需的端口号被占用造成的；&lt;br /&gt;\r\n解决办法：找出这个占用进程，并关闭它，重启tomcat即可。&lt;br /&gt;\r\n具体步骤：&lt;br /&gt;\r\n第一步：在dos窗口中输入指令：netstat -ano | findstr 8080，其中8080是指你启动该tomcat所需的，被占用的端口号；&lt;br /&gt;\r\n第二步：输入 tasklist|findstr 3292 ,3292是指占用端口号的进程的pid， 查看占用的进程（可省略）；&lt;br /&gt;\r\n第三步：输入 taskkill /f /pid 3292 , 关闭进程即可；&lt;br /&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;/upload/sys/image/24/19f52e966ea8ec2380c5c1f4ec57cd.png&quot; alt=&quot;&quot; /&gt; \r\n&lt;/p&gt;',0,0,0,1,NULL,'','',NULL,25,'java'),
-(8,1,'分享一种phpstudy支持多版本php的方法',NULL,'管理员',1525757929,'因为设计多个项目的开发，每个项目的php版本会有所不同，用多个服务器肯定不太现实，于是总结了这个方法做个记录。\r\n本方法只针对phpstudy，其他可以做参考。','&lt;p&gt;\r\n	&amp;nbsp; &amp;nbsp; &amp;nbsp; 首先打开apache配置文件 httpd.conf 查找&amp;nbsp;LoadModule&amp;nbsp;fcgid_module&amp;nbsp;modules/mod_fcgid.so，如果有就可以忽略这步操作，一般新版本phpstudy都已经自动开启；没有的话查找&amp;nbsp;Include conf/extra/httpd-mpm.conf，在该行代码下面添加两行代码：\r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-php&quot;&gt;Include conf/extra/httpd-mpm.conf\r\nLoadModule fcgid_module modules/mod_fcgid.so\r\nAddHandler fcgid-script .fcgi .php \r\nInclude conf/extra/httpd-php-fcgid70.conf&lt;/pre&gt;\r\n&lt;p&gt;\r\n	然后打开你的站点域名配置文件 vhosts.conf，在需要添加不同php版本的地方添加两行代码，注意修改路径：\r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-php&quot;&gt;&amp;lt;VirtualHost *:81&amp;gt;\r\n    DocumentRoot &quot;E:\\gitlearn\\hisiphp&quot;\r\n    ServerName localhost\r\n    ServerAlias \r\n    FcgidInitialEnv PHPRC &quot;E:/phpstudy/php55n&quot;\r\n    FcgidWrapper &quot;E:/phpstudy/php55n/php-cgi.exe&quot; .php\r\n  &amp;lt;Directory &quot;E:\\gitlearn\\hisiphp&quot;&amp;gt;\r\n      Options FollowSymLinks ExecCGI\r\n      AllowOverride All\r\n      Order allow,deny\r\n      Allow from all\r\n      Require all granted\r\n  &amp;lt;/Directory&amp;gt;\r\n&amp;lt;/VirtualHost&amp;gt;&lt;/pre&gt;\r\n&lt;p&gt;\r\n	然后重启apache。。就没了\r\n&lt;br&gt;\r\n	是不是很简单，想要哪个版本就加哪个版本\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;strong&gt;加一个测试结果&lt;/strong&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	我测试了4个版本： &amp;nbsp;php7.0（全局默认版本）；5.5；5.3；5.2；\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	我的vhosts.conf配置如下：\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;file://C:\\Users\\Administrator\\AppData\\Roaming\\Tencent\\Users\\302700308\\QQ\\WinTemp\\RichOle\\8%{DXS{W3RD0$CT``1M56E3.png&quot; /&gt;&lt;img src=&quot;/upload/sys/image/dc/71723ea93635dde058879131085383.png&quot; alt=&quot;&quot; /&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	重启Apache查看结果：\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;/upload/sys/image/28/2a380bc96ebe0ee4e704bcac843f79.png&quot; alt=&quot;&quot; /&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#E53333;&quot;&gt;该方法有个缺点，每次添加站点并保存配置文件时，即配置文件vhost.conf被修改后都需要重新设置；所以请看情况使用该方法。&lt;/span&gt; \r\n&lt;/p&gt;',1,0,0,1,NULL,'','',NULL,94,'php');
+(7,1,'socket bind failed的原因以及解决办法',NULL,'管理员',1525748938,'socket bind failed\r\n出现原因：一般是tomcat启动所需的端口号被占用造成的；\r\n解决办法：找出这个占用进程，并关闭它，重启tomcat即可。','socket bind failed&lt;br /&gt;\r\n出现原因：一般是tomcat启动所需的端口号被占用造成的；&lt;br /&gt;\r\n解决办法：找出这个占用进程，并关闭它，重启tomcat即可。&lt;br /&gt;\r\n具体步骤：&lt;br /&gt;\r\n第一步：在dos窗口中输入指令：netstat -ano | findstr 8080，其中8080是指你启动该tomcat所需的，被占用的端口号；&lt;br /&gt;\r\n第二步：输入 tasklist|findstr 3292 ,3292是指占用端口号的进程的pid， 查看占用的进程（可省略）；&lt;br /&gt;\r\n第三步：输入 taskkill /f /pid 3292 , 关闭进程即可；&lt;br /&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;/upload/sys/image/24/19f52e966ea8ec2380c5c1f4ec57cd.png&quot; alt=&quot;&quot; /&gt; \r\n&lt;/p&gt;',0,0,0,1,NULL,'','',NULL,28,'java'),
+(8,1,'分享一种phpstudy支持多版本php的方法',NULL,'管理员',1525757929,'因为设计多个项目的开发，每个项目的php版本会有所不同，用多个服务器肯定不太现实，于是总结了这个方法做个记录。\r\n本方法只针对phpstudy，其他可以做参考。','&lt;p&gt;\r\n	&amp;nbsp; &amp;nbsp; &amp;nbsp; 首先打开apache配置文件 httpd.conf 查找&amp;nbsp;LoadModule&amp;nbsp;fcgid_module&amp;nbsp;modules/mod_fcgid.so，如果有就可以忽略这步操作，一般新版本phpstudy都已经自动开启；没有的话查找&amp;nbsp;Include conf/extra/httpd-mpm.conf，在该行代码下面添加两行代码：\r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-php&quot;&gt;Include conf/extra/httpd-mpm.conf\r\nLoadModule fcgid_module modules/mod_fcgid.so\r\nAddHandler fcgid-script .fcgi .php \r\nInclude conf/extra/httpd-php-fcgid70.conf&lt;/pre&gt;\r\n&lt;p&gt;\r\n	然后打开你的站点域名配置文件 vhosts.conf，在需要添加不同php版本的地方添加两行代码，注意修改路径：\r\n&lt;/p&gt;\r\n&lt;pre class=&quot;prettyprint lang-php&quot;&gt;&amp;lt;VirtualHost *:81&amp;gt;\r\n    DocumentRoot &quot;E:\\gitlearn\\hisiphp&quot;\r\n    ServerName localhost\r\n    ServerAlias \r\n    FcgidInitialEnv PHPRC &quot;E:/phpstudy/php55n&quot;\r\n    FcgidWrapper &quot;E:/phpstudy/php55n/php-cgi.exe&quot; .php\r\n  &amp;lt;Directory &quot;E:\\gitlearn\\hisiphp&quot;&amp;gt;\r\n      Options FollowSymLinks ExecCGI\r\n      AllowOverride All\r\n      Order allow,deny\r\n      Allow from all\r\n      Require all granted\r\n  &amp;lt;/Directory&amp;gt;\r\n&amp;lt;/VirtualHost&amp;gt;&lt;/pre&gt;\r\n&lt;p&gt;\r\n	然后重启apache。。就没了\r\n&lt;br&gt;\r\n	是不是很简单，想要哪个版本就加哪个版本\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;strong&gt;加一个测试结果&lt;/strong&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	我测试了4个版本： &amp;nbsp;php7.0（全局默认版本）；5.5；5.3；5.2；\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	我的vhosts.conf配置如下：\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;file://C:\\Users\\Administrator\\AppData\\Roaming\\Tencent\\Users\\302700308\\QQ\\WinTemp\\RichOle\\8%{DXS{W3RD0$CT``1M56E3.png&quot; /&gt;&lt;img src=&quot;/upload/sys/image/dc/71723ea93635dde058879131085383.png&quot; alt=&quot;&quot; /&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	重启Apache查看结果：\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;img src=&quot;/upload/sys/image/28/2a380bc96ebe0ee4e704bcac843f79.png&quot; alt=&quot;&quot; /&gt; \r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;br /&gt;\r\n&lt;/p&gt;\r\n&lt;p&gt;\r\n	&lt;span style=&quot;color:#E53333;&quot;&gt;该方法有个缺点，每次添加站点并保存配置文件时，即配置文件vhost.conf被修改后都需要重新设置；所以请看情况使用该方法。&lt;/span&gt; \r\n&lt;/p&gt;',1,0,0,1,NULL,'','',NULL,96,'php');
 
 /*Table structure for table `hisi_yupaker_newscategory` */
 

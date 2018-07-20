@@ -94,6 +94,7 @@ class Base
             '__JS__'      => ROOT_DIR.'theme/'.$module.'/'.$theme.'/static/js',
             '__IMG__'      => ROOT_DIR.'theme/'.$module.'/'.$theme.'/static/image',
             '__CANVAS__'      => ROOT_DIR.'theme/'.$module.'/'.$theme.'/static/canvas',
+            '__ASSETS__'      => ROOT_DIR.'theme/'.$module.'/'.$theme.'/static/assets',
             // WAP前台模块静态目录
             '__WAP_CSS__'      => ROOT_DIR.'theme/'.$module.'/'.$theme.'/wap/static/css',
             '__WAP_JS__'      => ROOT_DIR.'theme/'.$module.'/'.$theme.'/wap/static/js',
