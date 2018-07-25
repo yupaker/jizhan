@@ -26,7 +26,6 @@ class Base extends Common
         parent::_initialize();
 		$mod = new AdminWechatModel();
 		$this->accessToken = $mod->getAccessToken();
-		
 		$data = array(
             // button下的每一个元素
             "button"=>array(

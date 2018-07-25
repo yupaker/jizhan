@@ -32,6 +32,11 @@ class AdminWechat extends Model
 		if(!$value){
 			$url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$appid."&secret=".$secret;
 			$result = $this->http_curl($url);
+			if(empty($result['access_token'])){
+				echo "请确认填写的APPID和secret是否正确";
+            	exit;
+				//$this->error('请确认填写的APPID和secret是否正确');
+			}
 			$value = $result['access_token'];
 			Cache::set($appid,$value,7000);
 		}
